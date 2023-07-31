@@ -11,15 +11,12 @@ class TestDynamicSecretsRevokeLeaseRequestModel(unittest.TestCase):
     def test_dynamic_secrets_revoke_lease_request(self):
         # Create DynamicSecretsRevokeLeaseRequest class instance
         test_model = DynamicSecretsRevokeLeaseRequest(
-            slug="corrupti",
-            dynamic_secret="cupiditate",
-            config="dicta",
-            project="doloremque",
+            slug="dicta", dynamic_secret="esse", config="quidem", project="ab"
         )
-        self.assertEqual(test_model.slug, "corrupti")
-        self.assertEqual(test_model.dynamic_secret, "cupiditate")
-        self.assertEqual(test_model.config, "dicta")
-        self.assertEqual(test_model.project, "doloremque")
+        self.assertEqual(test_model.slug, "dicta")
+        self.assertEqual(test_model.dynamic_secret, "esse")
+        self.assertEqual(test_model.config, "quidem")
+        self.assertEqual(test_model.project, "ab")
 
     def test_dynamic_secrets_revoke_lease_request_required_fields_missing(self):
         # Assert DynamicSecretsRevokeLeaseRequest class generation fails without required fields

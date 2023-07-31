@@ -8,8 +8,8 @@ class TestConfigsCreate200ResponseModel(unittest.TestCase):
 
     def test_configs_create200_response(self):
         # Create ConfigsCreate200Response class instance
-        test_model = ConfigsCreate200Response(config={"provident": 6})
-        self.assertEqual(test_model.config, {"provident": 6})
+        test_model = ConfigsCreate200Response(config={"maiores": 5})
+        self.assertEqual(test_model.config, {"maiores": 5})
 
 
 if __name__ == "__main__":

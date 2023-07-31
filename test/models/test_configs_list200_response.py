@@ -8,9 +8,9 @@ class TestConfigsList200ResponseModel(unittest.TestCase):
 
     def test_configs_list200_response(self):
         # Create ConfigsList200Response class instance
-        test_model = ConfigsList200Response(page=7, configs=["esse", "molestias"])
-        self.assertEqual(test_model.page, 7)
-        self.assertEqual(test_model.configs, ["esse", "molestias"])
+        test_model = ConfigsList200Response(page=1, configs=["ipsum", "tempore"])
+        self.assertEqual(test_model.page, 1)
+        self.assertEqual(test_model.configs, ["ipsum", "tempore"])
 
 
 if __name__ == "__main__":

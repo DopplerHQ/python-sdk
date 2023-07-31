@@ -354,8 +354,8 @@ results = sdk.secrets.list(
 	config = 'CONFIG_NAME',
 	accepts = 'application/json',
 	include_dynamic_secrets = True,
-	dynamic_secrets_ttl_sec = 96274025,
-	secrets = 'qui elit ut',
+	dynamic_secrets_ttl_sec = -26104901,
+	secrets = 'eu aute',
 	include_managed_secrets = True
 )
 
@@ -423,10 +423,10 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 results = sdk.secrets.download(
-	project = 'elit incididunt',
-	config = 'id',
+	project = 'reprehenderit labore Ut do ipsum',
+	config = 'occaecat magna sit',
 	format = 'json',
-	name_transformer = 'camel',
+	name_transformer = 'upper-camel',
 	include_dynamic_secrets = True,
 	dynamic_secrets_ttl_sec = 1800
 )
@@ -493,9 +493,9 @@ sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 input = {
 	'config': 'CONFIG_NAME',
-	'note': 'Ut velit aliquip culpa',
+	'note': 'Lorem ipsum minim pariatur eiusmod',
 	'project': 'PROJECT_NAME',
-	'secret': 'sed dolor'
+	'secret': 'magna enim eiusmod laborum minim'
 }
 results = sdk.secrets.update_note(request_body=input)
 
@@ -629,8 +629,8 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 results = sdk.environments.get(
-	project = 'sint',
-	environment = 'non adipisicing proident do magna'
+	project = 'veniam id cupidatat Ut',
+	environment = 'consectetur Ut'
 )
 
 pprint(vars(results))
@@ -660,8 +660,8 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 results = sdk.environments.delete(
-	project = 'pariatur irure',
-	environment = 'incididunt'
+	project = 'pariatur elit in Excepteur',
+	environment = 'ut consectetur veniam minim reprehenderit'
 )
 
 pprint(vars(results))
@@ -692,13 +692,13 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 input = {
-	'name': 'cillum',
-	'slug': 'dolor'
+	'name': 'sit minim non Ut in',
+	'slug': 'tempor eu dolor'
 }
 results = sdk.environments.rename(
 	request_body=input,
-	project = 'tempor',
-	environment = 'proident sint deserunt nisi'
+	project = 'dolore est culpa labore',
+	environment = 'in laborum Ut dolore'
 )
 
 pprint(vars(results))
@@ -728,12 +728,12 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 input = {
-	'name': 'in',
-	'slug': 'magna in'
+	'name': 'enim anim ut voluptate',
+	'slug': 'Excepteur sint culpa dolor dolore'
 }
 results = sdk.environments.create(
 	request_body=input,
-	project = 'tempor eiusmod'
+	project = 'et fugiat non'
 )
 
 pprint(vars(results))
@@ -761,7 +761,7 @@ from dopplersdk import DopplerSDK
 DOPPLERSDK_BEARER_TOKEN = ''  
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
-results = sdk.environments.list(project = 'est sit pariatur quis')
+results = sdk.environments.list(project = 'ipsum')
 
 pprint(vars(results))
 
@@ -825,7 +825,7 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 results = sdk.configs.list(
-	project = 'do qui amet',
+	project = 'labore qui elit',
 	environment = 'Environment slug',
 	page = 1,
 	per_page = 20
@@ -1134,7 +1134,7 @@ sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 input = {
 	'access': 'read',
 	'config': 'CONFIG_NAME',
-	'expire_at': '1935-11-25T08:23:55.0Z',
+	'expire_at': '1963-04-22T02:06:04.0Z',
 	'name': 'TOKEN_NAME',
 	'project': 'PROJECT_NAME'
 }
@@ -1231,10 +1231,10 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 input = {
-	'config': 'aliquip',
-	'dynamic_secret': 'reprehenderit',
-	'project': 'sed veniam quis',
-	'ttl_sec': 28724198
+	'config': 'et pariatur culpa consectetur sint',
+	'dynamic_secret': 'reprehenderit nulla',
+	'project': 'nulla enim',
+	'ttl_sec': -84695266
 }
 results = sdk.dynamic_secrets.issue_lease(request_body=input)
 
@@ -1264,10 +1264,10 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 input = {
-	'config': 'adipisicing in minim dolore',
-	'dynamic_secret': 'exercitation',
-	'project': 'fugiat elit',
-	'slug': 'labore sit sint ea sed'
+	'config': 'est',
+	'dynamic_secret': 'commodo sunt',
+	'project': 'ad ipsum',
+	'slug': 'nulla consectetur do ad'
 }
 results = sdk.dynamic_secrets.revoke_lease(request_body=input)
 
@@ -1299,8 +1299,8 @@ sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 input = {
 	'data': {},
-	'name': 'ut',
-	'type': 'exercitation nostrud est nisi id'
+	'name': 'cillum non ad occaecat dolor',
+	'type': 'et quis consequat'
 }
 results = sdk.integrations.create(request_body=input)
 
@@ -1355,7 +1355,7 @@ from dopplersdk import DopplerSDK
 DOPPLERSDK_BEARER_TOKEN = ''  
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
-results = sdk.integrations.get(integration = 'aliquip voluptate ex fugiat aliqua')
+results = sdk.integrations.get(integration = 'enim pariatur')
 
 pprint(vars(results))
 
@@ -1382,7 +1382,7 @@ from dopplersdk import DopplerSDK
 DOPPLERSDK_BEARER_TOKEN = ''  
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
-results = sdk.integrations.delete(integration = 'nisi veniam consequat amet')
+results = sdk.integrations.delete(integration = 'occaecat sunt est amet commodo')
 
 pprint(vars(results))
 
@@ -1411,12 +1411,12 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 input = {
-	'data': 'cillum sint nulla esse laboris',
-	'name': 'sint enim'
+	'data': 'consequat aliqua Excepteur',
+	'name': 'velit est commodo dolore'
 }
 results = sdk.integrations.update(
 	request_body=input,
-	integration = 'dolore pariatur est consectetur'
+	integration = 'tempor est minim dolor'
 )
 
 pprint(vars(results))
@@ -1450,12 +1450,12 @@ sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 input = {
 	'data': {},
 	'import_option': 'none',
-	'integration': 'in adipisicing reprehenderit pariatur irure'
+	'integration': 'in laborum ea'
 }
 results = sdk.syncs.create(
 	request_body=input,
-	project = 'id',
-	config = 'sit do eu incididunt'
+	project = 'dolor',
+	config = 'ad minim non'
 )
 
 pprint(vars(results))
@@ -1486,9 +1486,9 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 results = sdk.syncs.get(
-	project = 'in fugiat eiusmod incididunt',
-	config = 'in adipisicing fugiat',
-	sync = 'elit magna velit'
+	project = 'amet',
+	config = 'nulla velit laborum Ut qui',
+	sync = 'anim commodo'
 )
 
 pprint(vars(results))
@@ -1520,9 +1520,9 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 results = sdk.syncs.delete(
-	project = 'Duis nulla magna enim',
-	config = 'quis',
-	sync = 'dolore Ut',
+	project = 'adipisicing mollit id est in',
+	config = 'aliquip sint ex',
+	sync = 'dolor enim',
 	delete_from_target = True
 )
 

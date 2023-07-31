@@ -55,7 +55,7 @@ class TestIntegrations_(unittest.TestCase):
         )
         # call the method to test
         test_service = Integrations("testkey")
-        response = test_service.get("voluptatibus")
+        response = test_service.get("voluptates")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -78,7 +78,7 @@ class TestIntegrations_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Integrations("testkey")
-            test_service.get("maiores")
+            test_service.get("est")
         responses.reset()
 
     @responses.activate
@@ -89,7 +89,7 @@ class TestIntegrations_(unittest.TestCase):
         )
         # call the method to test
         test_service = Integrations("testkey")
-        response = test_service.update("autem", {})
+        response = test_service.update("ex", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -112,7 +112,7 @@ class TestIntegrations_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Integrations("testkey")
-            test_service.update("exercitationem", {})
+            test_service.update("aut", {})
         responses.reset()
 
     @responses.activate
@@ -123,7 +123,7 @@ class TestIntegrations_(unittest.TestCase):
         )
         # call the method to test
         test_service = Integrations("testkey")
-        response = test_service.delete("inventore")
+        response = test_service.delete("vitae")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -146,7 +146,7 @@ class TestIntegrations_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Integrations("testkey")
-            test_service.delete("nihil")
+            test_service.delete("voluptatem")
         responses.reset()
 
 

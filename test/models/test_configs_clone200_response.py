@@ -8,8 +8,8 @@ class TestConfigsClone200ResponseModel(unittest.TestCase):
 
     def test_configs_clone200_response(self):
         # Create ConfigsClone200Response class instance
-        test_model = ConfigsClone200Response(config={"eaque": 3})
-        self.assertEqual(test_model.config, {"eaque": 3})
+        test_model = ConfigsClone200Response(config={"placeat": 6})
+        self.assertEqual(test_model.config, {"placeat": 6})
 
 
 if __name__ == "__main__":
