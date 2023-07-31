@@ -15,7 +15,7 @@ pip install --upgrade doppler-sdk
 
 ```python
 from pprint import pprint
-from doppler-sdk import DopplerSDK
+from dopplersdk import DopplerSDK
 
 doppler = DopplerSDK()
 doppler.set_bearer_token("dp.xx.yyy")
