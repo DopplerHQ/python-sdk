@@ -1,12 +1,12 @@
 
 
-# DopplerSDK Python SDK 1.0.0
+# DopplerSDK Python SDK 1.0.1
 A Python SDK for DopplerSDK. 
 
 
 
-- API version: 1.0.0
-- SDK version: 1.0.0
+- API version: 1.0.1
+- SDK version: 1.0.1
 
 ## Table of Contents
 - [Requirements](#requirements)

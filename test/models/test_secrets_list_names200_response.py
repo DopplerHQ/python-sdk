@@ -10,8 +10,8 @@ class TestSecretsListNames200ResponseModel(unittest.TestCase):
 
     def test_secrets_list_names200_response(self):
         # Create SecretsListNames200Response class instance
-        test_model = SecretsListNames200Response(names=["soluta", "occaecati"])
-        self.assertEqual(test_model.names, ["soluta", "occaecati"])
+        test_model = SecretsListNames200Response(names=["dolore", "atque"])
+        self.assertEqual(test_model.names, ["dolore", "atque"])
 
 
 if __name__ == "__main__":

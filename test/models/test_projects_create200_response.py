@@ -8,8 +8,8 @@ class TestProjectsCreate200ResponseModel(unittest.TestCase):
 
     def test_projects_create200_response(self):
         # Create ProjectsCreate200Response class instance
-        test_model = ProjectsCreate200Response(project={"corrupti": 2})
-        self.assertEqual(test_model.project, {"corrupti": 2})
+        test_model = ProjectsCreate200Response(project={"sapiente": 7})
+        self.assertEqual(test_model.project, {"sapiente": 7})
 
 
 if __name__ == "__main__":

@@ -8,8 +8,8 @@ class TestConfigLogsGet200ResponseModel(unittest.TestCase):
 
     def test_config_logs_get200_response(self):
         # Create ConfigLogsGet200Response class instance
-        test_model = ConfigLogsGet200Response(log={"dicta": 7})
-        self.assertEqual(test_model.log, {"dicta": 7})
+        test_model = ConfigLogsGet200Response(log={"quo": 5})
+        self.assertEqual(test_model.log, {"quo": 5})
 
 
 if __name__ == "__main__":

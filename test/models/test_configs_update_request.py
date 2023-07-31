@@ -8,10 +8,12 @@ class TestConfigsUpdateRequestModel(unittest.TestCase):
 
     def test_configs_update_request(self):
         # Create ConfigsUpdateRequest class instance
-        test_model = ConfigsUpdateRequest(name="itaque", config="hic", project="optio")
-        self.assertEqual(test_model.name, "itaque")
-        self.assertEqual(test_model.config, "hic")
-        self.assertEqual(test_model.project, "optio")
+        test_model = ConfigsUpdateRequest(
+            name="dolores", config="minus", project="tempora"
+        )
+        self.assertEqual(test_model.name, "dolores")
+        self.assertEqual(test_model.config, "minus")
+        self.assertEqual(test_model.project, "tempora")
 
     def test_configs_update_request_required_fields_missing(self):
         # Assert ConfigsUpdateRequest class generation fails without required fields
