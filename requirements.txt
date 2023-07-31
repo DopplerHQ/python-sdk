@@ -1,0 +1,4 @@
+requests==2.31.0
+http-exceptions==0.2.10
+pytest==7.1.2
+responses==0.21.0

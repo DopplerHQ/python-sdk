@@ -1,0 +1,21 @@
+import unittest
+from src.dopplersdk.models.SecretsDownload200Response import SecretsDownload200Response
+
+
+class TestSecretsDownload200ResponseModel(unittest.TestCase):
+    def test_true(self):
+        self.assertTrue(True)
+
+    def test_secrets_download200_response(self):
+        # Create SecretsDownload200Response class instance
+        test_model = SecretsDownload200Response(
+            STRIPE="facilis", ALGOLIA="officiis", DATABASE="quae", USER="cum"
+        )
+        self.assertEqual(test_model.STRIPE, "facilis")
+        self.assertEqual(test_model.ALGOLIA, "officiis")
+        self.assertEqual(test_model.DATABASE, "quae")
+        self.assertEqual(test_model.USER, "cum")
+
+
+if __name__ == "__main__":
+    unittest.main()
