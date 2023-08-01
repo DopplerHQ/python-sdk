@@ -8,10 +8,12 @@ class TestConfigsCloneRequestModel(unittest.TestCase):
 
     def test_configs_clone_request(self):
         # Create ConfigsCloneRequest class instance
-        test_model = ConfigsCloneRequest(name="amet", config="natus", project="et")
-        self.assertEqual(test_model.name, "amet")
-        self.assertEqual(test_model.config, "natus")
-        self.assertEqual(test_model.project, "et")
+        test_model = ConfigsCloneRequest(
+            name="laboriosam", config="inventore", project="unde"
+        )
+        self.assertEqual(test_model.name, "laboriosam")
+        self.assertEqual(test_model.config, "inventore")
+        self.assertEqual(test_model.project, "unde")
 
     def test_configs_clone_request_required_fields_missing(self):
         # Assert ConfigsCloneRequest class generation fails without required fields

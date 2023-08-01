@@ -9,16 +9,16 @@ class TestServiceTokensCreateRequestModel(unittest.TestCase):
     def test_service_tokens_create_request(self):
         # Create ServiceTokensCreateRequest class instance
         test_model = ServiceTokensCreateRequest(
-            name="similique",
-            config="culpa",
-            project="quaerat",
-            expire_at="cumque",
+            name="earum",
+            config="officiis",
+            project="voluptates",
+            expire_at="similique",
             access="read",
         )
-        self.assertEqual(test_model.name, "similique")
-        self.assertEqual(test_model.config, "culpa")
-        self.assertEqual(test_model.project, "quaerat")
-        self.assertEqual(test_model.expire_at, "cumque")
+        self.assertEqual(test_model.name, "earum")
+        self.assertEqual(test_model.config, "officiis")
+        self.assertEqual(test_model.project, "voluptates")
+        self.assertEqual(test_model.expire_at, "similique")
         self.assertEqual(test_model.access, "read")
 
     def test_service_tokens_create_request_required_fields_missing(self):

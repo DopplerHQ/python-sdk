@@ -8,9 +8,9 @@ class TestEnvironmentsRenameRequestModel(unittest.TestCase):
 
     def test_environments_rename_request(self):
         # Create EnvironmentsRenameRequest class instance
-        test_model = EnvironmentsRenameRequest(name="ducimus", slug="esse")
-        self.assertEqual(test_model.name, "ducimus")
-        self.assertEqual(test_model.slug, "esse")
+        test_model = EnvironmentsRenameRequest(name="praesentium", slug="dolor")
+        self.assertEqual(test_model.name, "praesentium")
+        self.assertEqual(test_model.slug, "dolor")
 
 
 if __name__ == "__main__":

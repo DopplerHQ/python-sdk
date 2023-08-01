@@ -10,9 +10,9 @@ class TestSecretsUpdateNote200ResponseModel(unittest.TestCase):
 
     def test_secrets_update_note200_response(self):
         # Create SecretsUpdateNote200Response class instance
-        test_model = SecretsUpdateNote200Response(secret="minima", note="molestiae")
-        self.assertEqual(test_model.secret, "minima")
-        self.assertEqual(test_model.note, "molestiae")
+        test_model = SecretsUpdateNote200Response(secret="eveniet", note="fugiat")
+        self.assertEqual(test_model.secret, "eveniet")
+        self.assertEqual(test_model.note, "fugiat")
 
 
 if __name__ == "__main__":

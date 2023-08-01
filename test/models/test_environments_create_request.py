@@ -8,9 +8,9 @@ class TestEnvironmentsCreateRequestModel(unittest.TestCase):
 
     def test_environments_create_request(self):
         # Create EnvironmentsCreateRequest class instance
-        test_model = EnvironmentsCreateRequest(slug="ratione", name="voluptates")
-        self.assertEqual(test_model.slug, "ratione")
-        self.assertEqual(test_model.name, "voluptates")
+        test_model = EnvironmentsCreateRequest(slug="placeat", name="placeat")
+        self.assertEqual(test_model.slug, "placeat")
+        self.assertEqual(test_model.name, "placeat")
 
     def test_environments_create_request_required_fields_missing(self):
         # Assert EnvironmentsCreateRequest class generation fails without required fields
