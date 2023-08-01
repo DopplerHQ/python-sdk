@@ -8,9 +8,9 @@ class TestProjectsList200ResponseModel(unittest.TestCase):
 
     def test_projects_list200_response(self):
         # Create ProjectsList200Response class instance
-        test_model = ProjectsList200Response(page=4, projects=["laudantium", "dolores"])
-        self.assertEqual(test_model.page, 4)
-        self.assertEqual(test_model.projects, ["laudantium", "dolores"])
+        test_model = ProjectsList200Response(page=5, projects=["optio", "vitae"])
+        self.assertEqual(test_model.page, 5)
+        self.assertEqual(test_model.projects, ["optio", "vitae"])
 
 
 if __name__ == "__main__":

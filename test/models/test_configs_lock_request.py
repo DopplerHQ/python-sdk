@@ -8,9 +8,9 @@ class TestConfigsLockRequestModel(unittest.TestCase):
 
     def test_configs_lock_request(self):
         # Create ConfigsLockRequest class instance
-        test_model = ConfigsLockRequest(config="nulla", project="beatae")
-        self.assertEqual(test_model.config, "nulla")
-        self.assertEqual(test_model.project, "beatae")
+        test_model = ConfigsLockRequest(config="aliquid", project="quis")
+        self.assertEqual(test_model.config, "aliquid")
+        self.assertEqual(test_model.project, "quis")
 
     def test_configs_lock_request_required_fields_missing(self):
         # Assert ConfigsLockRequest class generation fails without required fields

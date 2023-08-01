@@ -10,8 +10,8 @@ class TestEnvironmentsRename200ResponseModel(unittest.TestCase):
 
     def test_environments_rename200_response(self):
         # Create EnvironmentsRename200Response class instance
-        test_model = EnvironmentsRename200Response(environment={"fugiat": 4})
-        self.assertEqual(test_model.environment, {"fugiat": 4})
+        test_model = EnvironmentsRename200Response(environment={"itaque": 3})
+        self.assertEqual(test_model.environment, {"itaque": 3})
 
 
 if __name__ == "__main__":

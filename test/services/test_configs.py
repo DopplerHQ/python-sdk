@@ -15,7 +15,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs", json={}, status=200)
         # call the method to test
         test_service = Configs("testkey")
-        response = test_service.list("sed", "praesentium", 2, 8)
+        response = test_service.list("quaerat", "beatae", 5, 5)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -34,7 +34,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
-            test_service.list("voluptatibus", "nemo", 6, 4)
+            test_service.list("minus", "blanditiis", 5, 8)
         responses.reset()
 
     @responses.activate
@@ -62,7 +62,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs/config", json={}, status=200)
         # call the method to test
         test_service = Configs("testkey")
-        response = test_service.get("sequi", "quibusdam")
+        response = test_service.get("aliquam", "cumque")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -81,7 +81,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs/config", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
-            test_service.get("ipsam", "repudiandae")
+            test_service.get("optio", "ipsam")
         responses.reset()
 
     @responses.activate

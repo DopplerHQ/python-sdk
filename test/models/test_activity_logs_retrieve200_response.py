@@ -10,8 +10,8 @@ class TestActivityLogsRetrieve200ResponseModel(unittest.TestCase):
 
     def test_activity_logs_retrieve200_response(self):
         # Create ActivityLogsRetrieve200Response class instance
-        test_model = ActivityLogsRetrieve200Response(log={"libero": 9})
-        self.assertEqual(test_model.log, {"libero": 9})
+        test_model = ActivityLogsRetrieve200Response(log={"itaque": 6})
+        self.assertEqual(test_model.log, {"itaque": 6})
 
 
 if __name__ == "__main__":

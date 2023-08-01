@@ -17,7 +17,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.list("consequuntur", "voluptatum", 6, 8)
+        response = test_service.list("alias", "iusto", 2, 8)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +40,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.list("velit", "iste", 5, 7)
+            test_service.list("numquam", "nihil", 6, 8)
         responses.reset()
 
     @responses.activate
@@ -51,7 +51,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.get("commodi", "quaerat", "earum")
+        response = test_service.get("molestias", "deleniti", "similique")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,7 +74,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.get("quidem", "hic", "perferendis")
+            test_service.get("quo", "praesentium", "architecto")
         responses.reset()
 
     @responses.activate
@@ -87,7 +87,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.rollback("ut", "aperiam", "iure")
+        response = test_service.rollback("soluta", "amet", "voluptas")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -114,7 +114,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.rollback("placeat", "nesciunt", "animi")
+            test_service.rollback("libero", "labore", "voluptatum")
         responses.reset()
 
 

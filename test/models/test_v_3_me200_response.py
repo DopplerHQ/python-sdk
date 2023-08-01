@@ -9,21 +9,21 @@ class TestV3Me200ResponseModel(unittest.TestCase):
     def test_v_3_me200_response(self):
         # Create V3Me200Response class instance
         test_model = V3Me200Response(
-            slug="qui",
-            name="nisi",
-            created_at="asperiores",
-            last_seen_at="ex",
-            type_="recusandae",
-            token_preview="ex",
-            workplace={"est": 1},
+            slug="libero",
+            name="occaecati",
+            created_at="voluptas",
+            last_seen_at="fugit",
+            type_="reiciendis",
+            token_preview="dolorem",
+            workplace={"commodi": 8},
         )
-        self.assertEqual(test_model.slug, "qui")
-        self.assertEqual(test_model.name, "nisi")
-        self.assertEqual(test_model.created_at, "asperiores")
-        self.assertEqual(test_model.last_seen_at, "ex")
-        self.assertEqual(test_model.type_, "recusandae")
-        self.assertEqual(test_model.token_preview, "ex")
-        self.assertEqual(test_model.workplace, {"est": 1})
+        self.assertEqual(test_model.slug, "libero")
+        self.assertEqual(test_model.name, "occaecati")
+        self.assertEqual(test_model.created_at, "voluptas")
+        self.assertEqual(test_model.last_seen_at, "fugit")
+        self.assertEqual(test_model.type_, "reiciendis")
+        self.assertEqual(test_model.token_preview, "dolorem")
+        self.assertEqual(test_model.workplace, {"commodi": 8})
 
 
 if __name__ == "__main__":

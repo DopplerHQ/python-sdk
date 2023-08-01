@@ -8,8 +8,8 @@ class TestSecretsUpdate200ResponseModel(unittest.TestCase):
 
     def test_secrets_update200_response(self):
         # Create SecretsUpdate200Response class instance
-        test_model = SecretsUpdate200Response(secrets={"perferendis": 6})
-        self.assertEqual(test_model.secrets, {"perferendis": 6})
+        test_model = SecretsUpdate200Response(secrets={"natus": 5})
+        self.assertEqual(test_model.secrets, {"natus": 5})
 
 
 if __name__ == "__main__":

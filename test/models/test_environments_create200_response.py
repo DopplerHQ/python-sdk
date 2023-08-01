@@ -10,8 +10,8 @@ class TestEnvironmentsCreate200ResponseModel(unittest.TestCase):
 
     def test_environments_create200_response(self):
         # Create EnvironmentsCreate200Response class instance
-        test_model = EnvironmentsCreate200Response(environment={"cum": 4})
-        self.assertEqual(test_model.environment, {"cum": 4})
+        test_model = EnvironmentsCreate200Response(environment={"beatae": 3})
+        self.assertEqual(test_model.environment, {"beatae": 3})
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ class TestSecrets_(unittest.TestCase):
         # call the method to test
         test_service = Secrets("testkey")
         response = test_service.list(
-            "veniam", "nam", "ducimus", True, 3, "architecto", True
+            "voluptatibus", "dolorem", "sapiente", True, 2, "atque", True
         )
         self.assertEqual(response, {})
         responses.reset(),
@@ -42,9 +42,7 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.list(
-                "excepturi", "pariatur", "natus", True, 9, "possimus", True
-            )
+            test_service.list("eaque", "fuga", "iusto", True, 9, "voluptate", True)
         responses.reset()
 
     @responses.activate
@@ -78,7 +76,7 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.get("Jennings", "deserunt", "enim")
+        response = test_service.get("Fabian", "et", "reiciendis")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -101,7 +99,7 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.get("Zoe", "facilis", "vitae")
+            test_service.get("Jannie", "animi", "repellat")
         responses.reset()
 
     @responses.activate
@@ -114,7 +112,7 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.download("omnis", "vitae", "json", "camel", True, 7)
+        response = test_service.download("natus", "excepturi", "json", "camel", True, 7)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -141,7 +139,7 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.download("illo", "reprehenderit", "json", "camel", True, 5)
+            test_service.download("reprehenderit", "fugiat", "json", "camel", True, 8)
         responses.reset()
 
     @responses.activate
@@ -154,7 +152,7 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.list_names("sapiente", "modi", True, True)
+        response = test_service.list_names("harum", "rerum", True, True)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -181,7 +179,7 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.list_names("laborum", "doloremque", True, True)
+            test_service.list_names("est", "dolore", True, True)
         responses.reset()
 
     @responses.activate
