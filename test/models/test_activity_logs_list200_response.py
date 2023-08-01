@@ -10,9 +10,9 @@ class TestActivityLogsList200ResponseModel(unittest.TestCase):
 
     def test_activity_logs_list200_response(self):
         # Create ActivityLogsList200Response class instance
-        test_model = ActivityLogsList200Response(page=4, logs=["dolores", "facere"])
-        self.assertEqual(test_model.page, 4)
-        self.assertEqual(test_model.logs, ["dolores", "facere"])
+        test_model = ActivityLogsList200Response(page=3, logs=["ipsa", "error"])
+        self.assertEqual(test_model.page, 3)
+        self.assertEqual(test_model.logs, ["ipsa", "error"])
 
 
 if __name__ == "__main__":

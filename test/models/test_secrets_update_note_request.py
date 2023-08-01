@@ -9,12 +9,12 @@ class TestSecretsUpdateNoteRequestModel(unittest.TestCase):
     def test_secrets_update_note_request(self):
         # Create SecretsUpdateNoteRequest class instance
         test_model = SecretsUpdateNoteRequest(
-            note="velit", secret="at", config="perspiciatis", project="ipsam"
+            note="non", secret="qui", config="sapiente", project="culpa"
         )
-        self.assertEqual(test_model.note, "velit")
-        self.assertEqual(test_model.secret, "at")
-        self.assertEqual(test_model.config, "perspiciatis")
-        self.assertEqual(test_model.project, "ipsam")
+        self.assertEqual(test_model.note, "non")
+        self.assertEqual(test_model.secret, "qui")
+        self.assertEqual(test_model.config, "sapiente")
+        self.assertEqual(test_model.project, "culpa")
 
     def test_secrets_update_note_request_required_fields_missing(self):
         # Assert SecretsUpdateNoteRequest class generation fails without required fields

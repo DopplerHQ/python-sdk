@@ -9,11 +9,11 @@ class TestConfigsCreateRequestModel(unittest.TestCase):
     def test_configs_create_request(self):
         # Create ConfigsCreateRequest class instance
         test_model = ConfigsCreateRequest(
-            name="unde", environment="unde", project="ipsum"
+            name="dolor", environment="mollitia", project="cum"
         )
-        self.assertEqual(test_model.name, "unde")
-        self.assertEqual(test_model.environment, "unde")
-        self.assertEqual(test_model.project, "ipsum")
+        self.assertEqual(test_model.name, "dolor")
+        self.assertEqual(test_model.environment, "mollitia")
+        self.assertEqual(test_model.project, "cum")
 
     def test_configs_create_request_required_fields_missing(self):
         # Assert ConfigsCreateRequest class generation fails without required fields

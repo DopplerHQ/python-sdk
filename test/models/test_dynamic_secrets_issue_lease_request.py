@@ -11,12 +11,12 @@ class TestDynamicSecretsIssueLeaseRequestModel(unittest.TestCase):
     def test_dynamic_secrets_issue_lease_request(self):
         # Create DynamicSecretsIssueLeaseRequest class instance
         test_model = DynamicSecretsIssueLeaseRequest(
-            ttl_sec=9, dynamic_secret="quos", config="veniam", project="sint"
+            ttl_sec=1, dynamic_secret="sed", config="laudantium", project="soluta"
         )
-        self.assertEqual(test_model.ttl_sec, 9)
-        self.assertEqual(test_model.dynamic_secret, "quos")
-        self.assertEqual(test_model.config, "veniam")
-        self.assertEqual(test_model.project, "sint")
+        self.assertEqual(test_model.ttl_sec, 1)
+        self.assertEqual(test_model.dynamic_secret, "sed")
+        self.assertEqual(test_model.config, "laudantium")
+        self.assertEqual(test_model.project, "soluta")
 
     def test_dynamic_secrets_issue_lease_request_required_fields_missing(self):
         # Assert DynamicSecretsIssueLeaseRequest class generation fails without required fields
