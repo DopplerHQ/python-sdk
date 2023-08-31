@@ -1,18 +1,15 @@
 from urllib.parse import quote
 from .base import BaseService
-from ..models.DynamicSecretsIssueLeaseRequest import (
-    DynamicSecretsIssueLeaseRequest as DynamicSecretsIssueLeaseRequestModel,
-)
-from ..models.DynamicSecretsRevokeLeaseRequest import (
-    DynamicSecretsRevokeLeaseRequest as DynamicSecretsRevokeLeaseRequestModel,
-)
-from ..models.DynamicSecretsRevokeLease200Response import (
-    DynamicSecretsRevokeLease200Response as DynamicSecretsRevokeLease200ResponseModel,
-)
+from ..models.IssueLeaseRequest import IssueLeaseRequest as IssueLeaseRequestModel
+from ..models.IssueLeaseResponse import IssueLeaseResponse as IssueLeaseResponseModel
+from ..models.RevokeLeaseRequest import RevokeLeaseRequest as RevokeLeaseRequestModel
+from ..models.RevokeLeaseResponse import RevokeLeaseResponse as RevokeLeaseResponseModel
 
 
 class DynamicSecrets(BaseService):
-    def issue_lease(self, request_input: DynamicSecretsIssueLeaseRequestModel = None):
+    def issue_lease(
+        self, request_input: IssueLeaseRequestModel = None
+    ) -> IssueLeaseResponseModel:
         """
         Issue Lease
         """
@@ -23,11 +20,13 @@ class DynamicSecrets(BaseService):
 
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
+        if res and isinstance(res, dict):
+            return IssueLeaseResponseModel(**res)
         return res
 
     def revoke_lease(
-        self, request_input: DynamicSecretsRevokeLeaseRequestModel = None
-    ) -> DynamicSecretsRevokeLease200ResponseModel:
+        self, request_input: RevokeLeaseRequestModel = None
+    ) -> RevokeLeaseResponseModel:
         """
         Revoke Lease
         """
@@ -39,5 +38,5 @@ class DynamicSecrets(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.delete(final_url, headers, True)
         if res and isinstance(res, dict):
-            return DynamicSecretsRevokeLease200ResponseModel(**res)
+            return RevokeLeaseResponseModel(**res)
         return res

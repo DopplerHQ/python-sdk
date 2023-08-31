@@ -3,7 +3,7 @@ import requests
 from http_exceptions import HTTPException, client_exceptions, server_exceptions
 from json import JSONDecodeError
 from .http_content_types import multipart_form_data_request
-from .utils import to_serialize
+from .utils import to_serialize, rename_reserved_keys, rename_to_reserved_keys
 
 
 class HTTPClient:
@@ -39,7 +39,7 @@ class HTTPClient:
                 The request's body
         """
         request_method = getattr(requests, method)
-        serialized_body = to_serialize(body_input)
+        serialized_body = rename_to_reserved_keys(to_serialize(body_input))
         if "Content-type" in headers:
             data_type, subtype = headers["Content-type"].split("/")
             if data_type == "multipart":
@@ -229,7 +229,7 @@ class HTTPClient:
         """
         if response.status_code >= 200 and response.status_code < 400:
             try:
-                return response.json()
+                return rename_reserved_keys(response.json())
             except JSONDecodeError:
                 return response
         else:

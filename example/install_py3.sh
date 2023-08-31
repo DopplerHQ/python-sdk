@@ -1,5 +1,5 @@
-python3 -m venv env
-source env/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 pip3 install build
 python3 -m build --outdir dist ../ 
-pip3 install dist/doppler_sdk-1.0.2-py3-none-any.whl
+pip3 install dist/doppler_sdk-1.1.0-py3-none-any.whl

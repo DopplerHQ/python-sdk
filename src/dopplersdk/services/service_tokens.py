@@ -1,18 +1,14 @@
 from urllib.parse import quote
 from .base import BaseService
-from ..models.ServiceTokensCreateRequest import (
-    ServiceTokensCreateRequest as ServiceTokensCreateRequestModel,
-)
-from ..models.ServiceTokensDeleteRequest import (
-    ServiceTokensDeleteRequest as ServiceTokensDeleteRequestModel,
-)
-from ..models.ServiceTokensDelete200Response import (
-    ServiceTokensDelete200Response as ServiceTokensDelete200ResponseModel,
-)
+from ..models.ListResponse import ListResponse as ListResponseModel
+from ..models.CreateRequest import CreateRequest as CreateRequestModel
+from ..models.CreateResponse import CreateResponse as CreateResponseModel
+from ..models.DeleteRequest import DeleteRequest as DeleteRequestModel
+from ..models.DeleteResponse import DeleteResponse as DeleteResponseModel
 
 
 class ServiceTokens(BaseService):
-    def list(self, config: str, project: str):
+    def list(self, config: str, project: str) -> ListResponseModel:
         """
         List
         Parameters:
@@ -29,17 +25,17 @@ class ServiceTokens(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        if config:
-            query_params.append(f"config={config}")
+        query_params.append(f"config={config}")
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
+        if res and isinstance(res, dict):
+            return ListResponseModel(**res)
         return res
 
-    def create(self, request_input: ServiceTokensCreateRequestModel = None):
+    def create(self, request_input: CreateRequestModel = None) -> CreateResponseModel:
         """
         Create
         """
@@ -50,11 +46,11 @@ class ServiceTokens(BaseService):
 
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
+        if res and isinstance(res, dict):
+            return CreateResponseModel(**res)
         return res
 
-    def delete(
-        self, request_input: ServiceTokensDeleteRequestModel = None
-    ) -> ServiceTokensDelete200ResponseModel:
+    def delete(self, request_input: DeleteRequestModel = None) -> DeleteResponseModel:
         """
         Delete
         """
@@ -66,5 +62,5 @@ class ServiceTokens(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.delete(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ServiceTokensDelete200ResponseModel(**res)
+            return DeleteResponseModel(**res)
         return res

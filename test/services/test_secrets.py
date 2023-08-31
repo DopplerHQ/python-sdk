@@ -17,9 +17,7 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.list(
-            "veniam", "nam", "ducimus", True, 3, "architecto", True
-        )
+        response = test_service.list("eos", "sunt", "eos", True, 3, "aut", True)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -42,9 +40,7 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.list(
-                "excepturi", "pariatur", "natus", True, 9, "possimus", True
-            )
+            test_service.list("iusto", "officiis", "ipsum", True, 6, "distinctio", True)
         responses.reset()
 
     @responses.activate
@@ -78,7 +74,7 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.get("Jennings", "deserunt", "enim")
+        response = test_service.get("Marshall", "a", "dolores")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -101,7 +97,41 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.get("Zoe", "facilis", "vitae")
+            test_service.get("Talon", "impedit", "temporibus")
+        responses.reset()
+
+    @responses.activate
+    def test_delete(self):
+        # Mock the API response
+        responses.delete(
+            "https://api.doppler.com/v3/configs/config/secret", json={}, status=200
+        )
+        # call the method to test
+        test_service = Secrets("testkey")
+        response = test_service.delete("Missouri", "occaecati", "ipsum")
+        self.assertEqual(response, {})
+        responses.reset(),
+
+    @responses.activate
+    def test_delete_required_fields_missing(self):
+        # Mock the API response
+        responses.delete(
+            "https://api.doppler.com/v3/configs/config/secret", json={}, status=202
+        )
+        with self.assertRaises(TypeError):
+            test_service = Secrets("testkey")
+            test_service.delete()
+        responses.reset(),
+
+    @responses.activate
+    def test_delete_error_on_non_200(self):
+        # Mock the API response
+        responses.delete(
+            "https://api.doppler.com/v3/configs/config/secret", json={}, status=404
+        )
+        with self.assertRaises(ClientException):
+            test_service = Secrets("testkey")
+            test_service.delete("Rubye", "non", "nisi")
         responses.reset()
 
     @responses.activate
@@ -114,7 +144,7 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.download("omnis", "vitae", "json", "camel", True, 7)
+        response = test_service.download("corrupti", "minima", "json", "camel", True, 5)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -141,11 +171,11 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.download("illo", "reprehenderit", "json", "camel", True, 5)
+            test_service.download("mollitia", "voluptas", "json", "camel", True, 9)
         responses.reset()
 
     @responses.activate
-    def test_list_names(self):
+    def test_names(self):
         # Mock the API response
         responses.get(
             "https://api.doppler.com/v3/configs/config/secrets/names",
@@ -154,12 +184,12 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.list_names("sapiente", "modi", True, True)
+        response = test_service.names("sed", "ab", True, True)
         self.assertEqual(response, {})
         responses.reset(),
 
     @responses.activate
-    def test_list_names_required_fields_missing(self):
+    def test_names_required_fields_missing(self):
         # Mock the API response
         responses.get(
             "https://api.doppler.com/v3/configs/config/secrets/names",
@@ -168,11 +198,11 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(TypeError):
             test_service = Secrets("testkey")
-            test_service.list_names()
+            test_service.names()
         responses.reset(),
 
     @responses.activate
-    def test_list_names_error_on_non_200(self):
+    def test_names_error_on_non_200(self):
         # Mock the API response
         responses.get(
             "https://api.doppler.com/v3/configs/config/secrets/names",
@@ -181,7 +211,7 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.list_names("laborum", "doloremque", True, True)
+            test_service.names("expedita", "impedit", True, True)
         responses.reset()
 
     @responses.activate
