@@ -1,26 +1,15 @@
 from urllib.parse import quote
 from .base import BaseService
-from ..models.SecretsUpdateRequest import (
-    SecretsUpdateRequest as SecretsUpdateRequestModel,
-)
-from ..models.SecretsUpdate200Response import (
-    SecretsUpdate200Response as SecretsUpdate200ResponseModel,
-)
-from ..models.SecretsGet200Response import (
-    SecretsGet200Response as SecretsGet200ResponseModel,
-)
-from ..models.SecretsDownload200Response import (
-    SecretsDownload200Response as SecretsDownload200ResponseModel,
-)
-from ..models.SecretsListNames200Response import (
-    SecretsListNames200Response as SecretsListNames200ResponseModel,
-)
-from ..models.SecretsUpdateNoteRequest import (
-    SecretsUpdateNoteRequest as SecretsUpdateNoteRequestModel,
-)
-from ..models.SecretsUpdateNote200Response import (
-    SecretsUpdateNote200Response as SecretsUpdateNote200ResponseModel,
-)
+from ..models.ListResponse import ListResponse as ListResponseModel
+from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
+from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
+from ..models.GetResponse import GetResponse as GetResponseModel
+from ..models.Format import Format as FormatModel
+from ..models.NameTransformer import NameTransformer as NameTransformerModel
+from ..models.DownloadResponse import DownloadResponse as DownloadResponseModel
+from ..models.NamesResponse import NamesResponse as NamesResponseModel
+from ..models.UpdateNoteRequest import UpdateNoteRequest as UpdateNoteRequestModel
+from ..models.UpdateNoteResponse import UpdateNoteResponse as UpdateNoteResponseModel
 
 
 class Secrets(BaseService):
@@ -33,7 +22,7 @@ class Secrets(BaseService):
         dynamic_secrets_ttl_sec: int = None,
         secrets: str = None,
         include_managed_secrets: bool = None,
-    ):
+    ) -> ListResponseModel:
         """
         List
         Parameters:
@@ -60,12 +49,10 @@ class Secrets(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        if config:
-            query_params.append(f"config={config}")
+        query_params.append(f"config={config}")
         headers["accepts"] = accepts
         if include_dynamic_secrets:
             query_params.append(f"include_dynamic_secrets={include_dynamic_secrets}")
@@ -77,11 +64,11 @@ class Secrets(BaseService):
             query_params.append(f"include_managed_secrets={include_managed_secrets}")
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
+        if res and isinstance(res, dict):
+            return ListResponseModel(**res)
         return res
 
-    def update(
-        self, request_input: SecretsUpdateRequestModel = None
-    ) -> SecretsUpdate200ResponseModel:
+    def update(self, request_input: UpdateRequestModel = None) -> UpdateResponseModel:
         """
         Update
         """
@@ -93,10 +80,10 @@ class Secrets(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return SecretsUpdate200ResponseModel(**res)
+            return UpdateResponseModel(**res)
         return res
 
-    def get(self, name: str, config: str, project: str) -> SecretsGet200ResponseModel:
+    def get(self, name: str, config: str, project: str) -> GetResponseModel:
         """
         Retrieve
         Parameters:
@@ -115,31 +102,58 @@ class Secrets(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        if config:
-            query_params.append(f"config={config}")
+        query_params.append(f"config={config}")
         if not name:
             raise ValueError("Parameter name is required, cannot be empty or blank.")
-        if name:
-            query_params.append(f"name={name}")
+        query_params.append(f"name={name}")
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return SecretsGet200ResponseModel(**res)
+            return GetResponseModel(**res)
+        return res
+
+    def delete(self, name: str, config: str, project: str):
+        """
+        Delete
+        Parameters:
+        ----------
+            project: str
+                Unique identifier for the project object.
+            config: str
+                Name of the config object.
+            name: str
+                Name of the secret.
+        """
+
+        url_endpoint = "/v3/configs/config/secret"
+        headers = {}
+        query_params = []
+        self._add_required_headers(headers)
+        if not project:
+            raise ValueError("Parameter project is required, cannot be empty or blank.")
+        query_params.append(f"project={project}")
+        if not config:
+            raise ValueError("Parameter config is required, cannot be empty or blank.")
+        query_params.append(f"config={config}")
+        if not name:
+            raise ValueError("Parameter name is required, cannot be empty or blank.")
+        query_params.append(f"name={name}")
+        final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
+        res = self._http.delete(final_url, headers, True)
         return res
 
     def download(
         self,
         config: str,
         project: str,
-        format: str = None,
-        name_transformer: str = None,
+        format: FormatModel = None,
+        name_transformer: NameTransformerModel = None,
         include_dynamic_secrets: bool = None,
         dynamic_secrets_ttl_sec: int = None,
-    ) -> SecretsDownload200ResponseModel:
+    ) -> DownloadResponseModel:
         """
         Download
         Parameters:
@@ -148,8 +162,8 @@ class Secrets(BaseService):
                 Unique identifier for the project object. Not required if using a Service Token.
             config: str
                 Name of the config object. Not required if using a Service Token.
-            format: str
-            name_transformer: str
+            format: Format
+            name_transformer: NameTransformer
                 Transform secret names to a different case
             include_dynamic_secrets: bool
                 Whether or not to issue leases and include dynamic secret values for the config
@@ -163,16 +177,18 @@ class Secrets(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        if config:
-            query_params.append(f"config={config}")
+        query_params.append(f"config={config}")
         if format:
-            query_params.append(f"format={format}")
+            validated_format = self._enum_matching(format, FormatModel.list(), "format")
+            query_params.append(f"format={validated_format}")
         if name_transformer:
-            query_params.append(f"name_transformer={name_transformer}")
+            validated_name_transformer = self._enum_matching(
+                name_transformer, NameTransformerModel.list(), "name_transformer"
+            )
+            query_params.append(f"name_transformer={validated_name_transformer}")
         if include_dynamic_secrets:
             query_params.append(f"include_dynamic_secrets={include_dynamic_secrets}")
         if dynamic_secrets_ttl_sec:
@@ -180,18 +196,18 @@ class Secrets(BaseService):
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return SecretsDownload200ResponseModel(**res)
+            return DownloadResponseModel(**res)
         return res
 
-    def list_names(
+    def names(
         self,
         config: str,
         project: str,
         include_dynamic_secrets: bool = None,
         include_managed_secrets: bool = None,
-    ) -> SecretsListNames200ResponseModel:
+    ) -> NamesResponseModel:
         """
-        List
+        List Names
         Parameters:
         ----------
             project: str
@@ -210,12 +226,10 @@ class Secrets(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        if config:
-            query_params.append(f"config={config}")
+        query_params.append(f"config={config}")
         if include_dynamic_secrets:
             query_params.append(f"include_dynamic_secrets={include_dynamic_secrets}")
         if include_managed_secrets:
@@ -223,14 +237,14 @@ class Secrets(BaseService):
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return SecretsListNames200ResponseModel(**res)
+            return NamesResponseModel(**res)
         return res
 
     def update_note(
-        self, request_input: SecretsUpdateNoteRequestModel = None
-    ) -> SecretsUpdateNote200ResponseModel:
+        self, request_input: UpdateNoteRequestModel = None
+    ) -> UpdateNoteResponseModel:
         """
-        Note
+        Update Note
         """
 
         url_endpoint = "/v3/configs/config/secrets/note"
@@ -240,5 +254,5 @@ class Secrets(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return SecretsUpdateNote200ResponseModel(**res)
+            return UpdateNoteResponseModel(**res)
         return res

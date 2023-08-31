@@ -34,3 +34,28 @@ def to_serialize(obj):
         else:
             result[key] = value
     return result
+
+
+response_mapper = {"type": "type_"}
+request_mapper = {"type_": "type"}
+
+
+def rename_keys(data, mapper):
+    if isinstance(data, dict):
+        new_data = {}
+        for key, value in data.items():
+            new_key = mapper[key] if key in mapper else key
+            new_data[new_key] = rename_keys(value, mapper)
+        return new_data
+    elif isinstance(data, list):
+        return [rename_keys(item, mapper) for item in data]
+    else:
+        return data
+
+
+def rename_reserved_keys(data):
+    return rename_keys(data, response_mapper)
+
+
+def rename_to_reserved_keys(data):
+    return rename_keys(data, request_mapper)

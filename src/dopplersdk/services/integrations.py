@@ -1,27 +1,16 @@
 from urllib.parse import quote
 from .base import BaseService
-from ..models.IntegrationsCreateRequest import (
-    IntegrationsCreateRequest as IntegrationsCreateRequestModel,
-)
-from ..models.IntegrationsCreate200Response import (
-    IntegrationsCreate200Response as IntegrationsCreate200ResponseModel,
-)
-from ..models.IntegrationsGet200Response import (
-    IntegrationsGet200Response as IntegrationsGet200ResponseModel,
-)
-from ..models.IntegrationsUpdateRequest import (
-    IntegrationsUpdateRequest as IntegrationsUpdateRequestModel,
-)
-from ..models.IntegrationsUpdate200Response import (
-    IntegrationsUpdate200Response as IntegrationsUpdate200ResponseModel,
-)
-from ..models.IntegrationsDelete200Response import (
-    IntegrationsDelete200Response as IntegrationsDelete200ResponseModel,
-)
+from ..models.ListResponse import ListResponse as ListResponseModel
+from ..models.CreateRequest import CreateRequest as CreateRequestModel
+from ..models.CreateResponse import CreateResponse as CreateResponseModel
+from ..models.GetResponse import GetResponse as GetResponseModel
+from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
+from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
+from ..models.DeleteResponse import DeleteResponse as DeleteResponseModel
 
 
 class Integrations(BaseService):
-    def list(self):
+    def list(self) -> ListResponseModel:
         """
         List
         """
@@ -32,11 +21,11 @@ class Integrations(BaseService):
 
         final_url = self._url_prefix + url_endpoint
         res = self._http.get(final_url, headers, True)
+        if res and isinstance(res, dict):
+            return ListResponseModel(**res)
         return res
 
-    def create(
-        self, request_input: IntegrationsCreateRequestModel = None
-    ) -> IntegrationsCreate200ResponseModel:
+    def create(self, request_input: CreateRequestModel = None) -> CreateResponseModel:
         """
         Create
         """
@@ -48,10 +37,10 @@ class Integrations(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return IntegrationsCreate200ResponseModel(**res)
+            return CreateResponseModel(**res)
         return res
 
-    def get(self, integration: str) -> IntegrationsGet200ResponseModel:
+    def get(self, integration: str) -> GetResponseModel:
         """
         Retrieve
         Parameters:
@@ -68,17 +57,16 @@ class Integrations(BaseService):
             raise ValueError(
                 "Parameter integration is required, cannot be empty or blank."
             )
-        if integration:
-            query_params.append(f"integration={integration}")
+        query_params.append(f"integration={integration}")
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return IntegrationsGet200ResponseModel(**res)
+            return GetResponseModel(**res)
         return res
 
     def update(
-        self, integration: str, request_input: IntegrationsUpdateRequestModel = None
-    ) -> IntegrationsUpdate200ResponseModel:
+        self, integration: str, request_input: UpdateRequestModel = None
+    ) -> UpdateResponseModel:
         """
         Update
         Parameters:
@@ -95,15 +83,14 @@ class Integrations(BaseService):
             raise ValueError(
                 "Parameter integration is required, cannot be empty or blank."
             )
-        if integration:
-            query_params.append(f"integration={integration}")
+        query_params.append(f"integration={integration}")
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.put(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return IntegrationsUpdate200ResponseModel(**res)
+            return UpdateResponseModel(**res)
         return res
 
-    def delete(self, integration: str) -> IntegrationsDelete200ResponseModel:
+    def delete(self, integration: str) -> DeleteResponseModel:
         """
         Delete
         Parameters:
@@ -120,10 +107,9 @@ class Integrations(BaseService):
             raise ValueError(
                 "Parameter integration is required, cannot be empty or blank."
             )
-        if integration:
-            query_params.append(f"integration={integration}")
+        query_params.append(f"integration={integration}")
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.delete(final_url, headers, True)
         if res and isinstance(res, dict):
-            return IntegrationsDelete200ResponseModel(**res)
+            return DeleteResponseModel(**res)
         return res

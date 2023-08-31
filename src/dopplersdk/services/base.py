@@ -93,6 +93,6 @@ class BaseService:
         headers: dict
             Headers dict to add auth headers to
         """
-        headers["User-Agent"] = "liblab/0.1.11 DopplerSDK/1.0.2 python/2.7"
+        headers["User-Agent"] = "liblab/0.1.16 DopplerSDK/1.1.0 python/2.7"
         headers["Authorization"] = f"Bearer {self._bearer_token}"
         return headers

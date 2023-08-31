@@ -1,20 +1,14 @@
 from urllib.parse import quote
 from .base import BaseService
-from ..models.ConfigLogsList200Response import (
-    ConfigLogsList200Response as ConfigLogsList200ResponseModel,
-)
-from ..models.ConfigLogsGet200Response import (
-    ConfigLogsGet200Response as ConfigLogsGet200ResponseModel,
-)
-from ..models.ConfigLogsRollback200Response import (
-    ConfigLogsRollback200Response as ConfigLogsRollback200ResponseModel,
-)
+from ..models.ListResponse import ListResponse as ListResponseModel
+from ..models.GetResponse import GetResponse as GetResponseModel
+from ..models.RollbackResponse import RollbackResponse as RollbackResponseModel
 
 
 class ConfigLogs(BaseService):
     def list(
         self, config: str, project: str, page: int = None, per_page: int = None
-    ) -> ConfigLogsList200ResponseModel:
+    ) -> ListResponseModel:
         """
         List
         Parameters:
@@ -35,12 +29,10 @@ class ConfigLogs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        if config:
-            query_params.append(f"config={config}")
+        query_params.append(f"config={config}")
         if page:
             query_params.append(f"page={page}")
         if per_page:
@@ -48,10 +40,10 @@ class ConfigLogs(BaseService):
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ConfigLogsList200ResponseModel(**res)
+            return ListResponseModel(**res)
         return res
 
-    def get(self, log: str, config: str, project: str) -> ConfigLogsGet200ResponseModel:
+    def get(self, log: str, config: str, project: str) -> GetResponseModel:
         """
         Retrieve
         Parameters:
@@ -70,25 +62,20 @@ class ConfigLogs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        if config:
-            query_params.append(f"config={config}")
+        query_params.append(f"config={config}")
         if not log:
             raise ValueError("Parameter log is required, cannot be empty or blank.")
-        if log:
-            query_params.append(f"log={log}")
+        query_params.append(f"log={log}")
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ConfigLogsGet200ResponseModel(**res)
+            return GetResponseModel(**res)
         return res
 
-    def rollback(
-        self, log: str, config: str, project: str
-    ) -> ConfigLogsRollback200ResponseModel:
+    def rollback(self, log: str, config: str, project: str) -> RollbackResponseModel:
         """
         Rollback
         Parameters:
@@ -107,18 +94,15 @@ class ConfigLogs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        if config:
-            query_params.append(f"config={config}")
+        query_params.append(f"config={config}")
         if not log:
             raise ValueError("Parameter log is required, cannot be empty or blank.")
-        if log:
-            query_params.append(f"log={log}")
+        query_params.append(f"log={log}")
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.post(final_url, headers, {}, True)
         if res and isinstance(res, dict):
-            return ConfigLogsRollback200ResponseModel(**res)
+            return RollbackResponseModel(**res)
         return res

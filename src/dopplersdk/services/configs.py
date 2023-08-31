@@ -1,43 +1,19 @@
 from urllib.parse import quote
 from .base import BaseService
-from ..models.ConfigsList200Response import (
-    ConfigsList200Response as ConfigsList200ResponseModel,
-)
-from ..models.ConfigsCreateRequest import (
-    ConfigsCreateRequest as ConfigsCreateRequestModel,
-)
-from ..models.ConfigsCreate200Response import (
-    ConfigsCreate200Response as ConfigsCreate200ResponseModel,
-)
-from ..models.ConfigsGet200Response import (
-    ConfigsGet200Response as ConfigsGet200ResponseModel,
-)
-from ..models.ConfigsUpdateRequest import (
-    ConfigsUpdateRequest as ConfigsUpdateRequestModel,
-)
-from ..models.ConfigsUpdate200Response import (
-    ConfigsUpdate200Response as ConfigsUpdate200ResponseModel,
-)
-from ..models.ConfigsDeleteRequest import (
-    ConfigsDeleteRequest as ConfigsDeleteRequestModel,
-)
-from ..models.ConfigsDelete200Response import (
-    ConfigsDelete200Response as ConfigsDelete200ResponseModel,
-)
-from ..models.ConfigsCloneRequest import ConfigsCloneRequest as ConfigsCloneRequestModel
-from ..models.ConfigsClone200Response import (
-    ConfigsClone200Response as ConfigsClone200ResponseModel,
-)
-from ..models.ConfigsLockRequest import ConfigsLockRequest as ConfigsLockRequestModel
-from ..models.ConfigsLock200Response import (
-    ConfigsLock200Response as ConfigsLock200ResponseModel,
-)
-from ..models.ConfigsUnlockRequest import (
-    ConfigsUnlockRequest as ConfigsUnlockRequestModel,
-)
-from ..models.ConfigsUnlock200Response import (
-    ConfigsUnlock200Response as ConfigsUnlock200ResponseModel,
-)
+from ..models.ListResponse import ListResponse as ListResponseModel
+from ..models.CreateRequest import CreateRequest as CreateRequestModel
+from ..models.CreateResponse import CreateResponse as CreateResponseModel
+from ..models.GetResponse import GetResponse as GetResponseModel
+from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
+from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
+from ..models.DeleteRequest import DeleteRequest as DeleteRequestModel
+from ..models.DeleteResponse import DeleteResponse as DeleteResponseModel
+from ..models.CloneRequest import CloneRequest as CloneRequestModel
+from ..models.CloneResponse import CloneResponse as CloneResponseModel
+from ..models.LockRequest import LockRequest as LockRequestModel
+from ..models.LockResponse import LockResponse as LockResponseModel
+from ..models.UnlockRequest import UnlockRequest as UnlockRequestModel
+from ..models.UnlockResponse import UnlockResponse as UnlockResponseModel
 
 
 class Configs(BaseService):
@@ -47,7 +23,7 @@ class Configs(BaseService):
         environment: str = None,
         page: int = None,
         per_page: int = None,
-    ) -> ConfigsList200ResponseModel:
+    ) -> ListResponseModel:
         """
         List
         Parameters:
@@ -68,8 +44,7 @@ class Configs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if environment:
             query_params.append(f"environment={environment}")
         if page:
@@ -79,12 +54,10 @@ class Configs(BaseService):
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ConfigsList200ResponseModel(**res)
+            return ListResponseModel(**res)
         return res
 
-    def create(
-        self, request_input: ConfigsCreateRequestModel = None
-    ) -> ConfigsCreate200ResponseModel:
+    def create(self, request_input: CreateRequestModel = None) -> CreateResponseModel:
         """
         Create
         """
@@ -96,10 +69,10 @@ class Configs(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return ConfigsCreate200ResponseModel(**res)
+            return CreateResponseModel(**res)
         return res
 
-    def get(self, config: str, project: str) -> ConfigsGet200ResponseModel:
+    def get(self, config: str, project: str) -> GetResponseModel:
         """
         Retrieve
         Parameters:
@@ -116,21 +89,17 @@ class Configs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        if project:
-            query_params.append(f"project={project}")
+        query_params.append(f"project={project}")
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        if config:
-            query_params.append(f"config={config}")
+        query_params.append(f"config={config}")
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ConfigsGet200ResponseModel(**res)
+            return GetResponseModel(**res)
         return res
 
-    def update(
-        self, request_input: ConfigsUpdateRequestModel = None
-    ) -> ConfigsUpdate200ResponseModel:
+    def update(self, request_input: UpdateRequestModel = None) -> UpdateResponseModel:
         """
         Update
         """
@@ -142,12 +111,10 @@ class Configs(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return ConfigsUpdate200ResponseModel(**res)
+            return UpdateResponseModel(**res)
         return res
 
-    def delete(
-        self, request_input: ConfigsDeleteRequestModel = None
-    ) -> ConfigsDelete200ResponseModel:
+    def delete(self, request_input: DeleteRequestModel = None) -> DeleteResponseModel:
         """
         Delete
         """
@@ -159,12 +126,10 @@ class Configs(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.delete(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ConfigsDelete200ResponseModel(**res)
+            return DeleteResponseModel(**res)
         return res
 
-    def clone(
-        self, request_input: ConfigsCloneRequestModel = None
-    ) -> ConfigsClone200ResponseModel:
+    def clone(self, request_input: CloneRequestModel = None) -> CloneResponseModel:
         """
         Clone
         """
@@ -176,12 +141,10 @@ class Configs(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return ConfigsClone200ResponseModel(**res)
+            return CloneResponseModel(**res)
         return res
 
-    def lock(
-        self, request_input: ConfigsLockRequestModel = None
-    ) -> ConfigsLock200ResponseModel:
+    def lock(self, request_input: LockRequestModel = None) -> LockResponseModel:
         """
         Lock
         """
@@ -193,12 +156,10 @@ class Configs(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return ConfigsLock200ResponseModel(**res)
+            return LockResponseModel(**res)
         return res
 
-    def unlock(
-        self, request_input: ConfigsUnlockRequestModel = None
-    ) -> ConfigsUnlock200ResponseModel:
+    def unlock(self, request_input: UnlockRequestModel = None) -> UnlockResponseModel:
         """
         Unlock
         """
@@ -210,5 +171,5 @@ class Configs(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return ConfigsUnlock200ResponseModel(**res)
+            return UnlockResponseModel(**res)
         return res
