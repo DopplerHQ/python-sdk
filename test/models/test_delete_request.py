@@ -8,8 +8,8 @@ class TestDeleteRequestModel(unittest.TestCase):
 
     def test_delete_request(self):
         # Create DeleteRequest class instance
-        test_model = DeleteRequest(ip="voluptates")
-        self.assertEqual(test_model.ip, "voluptates")
+        test_model = DeleteRequest(ip="porro")
+        self.assertEqual(test_model.ip, "porro")
 
     def test_delete_request_required_fields_missing(self):
         # Assert DeleteRequest class generation fails without required fields

@@ -17,7 +17,7 @@ class TestTrustedIps_(unittest.TestCase):
         )
         # call the method to test
         test_service = TrustedIps("testkey")
-        response = test_service.list("voluptates", "repellat")
+        response = test_service.list("aliquid", "praesentium")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +40,7 @@ class TestTrustedIps_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = TrustedIps("testkey")
-            test_service.list("assumenda", "illo")
+            test_service.list("nemo", "porro")
         responses.reset()
 
     @responses.activate
@@ -51,7 +51,7 @@ class TestTrustedIps_(unittest.TestCase):
         )
         # call the method to test
         test_service = TrustedIps("testkey")
-        response = test_service.add("deleniti", "earum", {})
+        response = test_service.add("culpa", "officiis", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,7 +74,7 @@ class TestTrustedIps_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = TrustedIps("testkey")
-            test_service.add("laudantium", "animi", {})
+            test_service.add("cumque", "laudantium", {})
         responses.reset()
 
     @responses.activate
@@ -85,7 +85,7 @@ class TestTrustedIps_(unittest.TestCase):
         )
         # call the method to test
         test_service = TrustedIps("testkey")
-        response = test_service.delete("eum", "nisi", {})
+        response = test_service.delete("consequuntur", "quas", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -108,7 +108,7 @@ class TestTrustedIps_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = TrustedIps("testkey")
-            test_service.delete("quibusdam", "assumenda", {})
+            test_service.delete("placeat", "aliquam", {})
         responses.reset()
 
 

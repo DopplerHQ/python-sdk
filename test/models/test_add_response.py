@@ -8,8 +8,8 @@ class TestAddResponseModel(unittest.TestCase):
 
     def test_add_response(self):
         # Create AddResponse class instance
-        test_model = AddResponse(member={"molestias": 8})
-        self.assertEqual(test_model.member, {"molestias": 8})
+        test_model = AddResponse(member={"aliquid": 7})
+        self.assertEqual(test_model.member, {"aliquid": 7})
 
 
 if __name__ == "__main__":

@@ -8,9 +8,9 @@ class TestAddMemberRequestModel(unittest.TestCase):
 
     def test_add_member_request(self):
         # Create AddMemberRequest class instance
-        test_model = AddMemberRequest(type_="workplace_user", slug="dolorem")
+        test_model = AddMemberRequest(type_="workplace_user", slug="blanditiis")
         self.assertEqual(test_model.type_, "workplace_user")
-        self.assertEqual(test_model.slug, "dolorem")
+        self.assertEqual(test_model.slug, "blanditiis")
 
     def test_add_member_request_required_fields_missing(self):
         # Assert AddMemberRequest class generation fails without required fields

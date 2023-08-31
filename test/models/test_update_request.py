@@ -8,9 +8,9 @@ class TestUpdateRequestModel(unittest.TestCase):
 
     def test_update_request(self):
         # Create UpdateRequest class instance
-        test_model = UpdateRequest(name="quaerat", default_project_role="mollitia")
-        self.assertEqual(test_model.name, "quaerat")
-        self.assertEqual(test_model.default_project_role, "mollitia")
+        test_model = UpdateRequest(name="asperiores", default_project_role="ducimus")
+        self.assertEqual(test_model.name, "asperiores")
+        self.assertEqual(test_model.default_project_role, "ducimus")
 
 
 if __name__ == "__main__":
