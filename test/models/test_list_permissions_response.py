@@ -8,8 +8,8 @@ class TestListPermissionsResponseModel(unittest.TestCase):
 
     def test_list_permissions_response(self):
         # Create ListPermissionsResponse class instance
-        test_model = ListPermissionsResponse(permissions=["voluptatem", "nihil"])
-        self.assertEqual(test_model.permissions, ["voluptatem", "nihil"])
+        test_model = ListPermissionsResponse(permissions=["libero", "officiis"])
+        self.assertEqual(test_model.permissions, ["libero", "officiis"])
 
 
 if __name__ == "__main__":

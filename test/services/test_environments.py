@@ -15,7 +15,7 @@ class TestEnvironments_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/environments", json={}, status=200)
         # call the method to test
         test_service = Environments("testkey")
-        response = test_service.list("nam")
+        response = test_service.list("culpa")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -34,7 +34,7 @@ class TestEnvironments_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/environments", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Environments("testkey")
-            test_service.list("reiciendis")
+            test_service.list("inventore")
         responses.reset()
 
     @responses.activate
@@ -43,7 +43,7 @@ class TestEnvironments_(unittest.TestCase):
         responses.post("https://api.doppler.com/v3/environments", json={}, status=200)
         # call the method to test
         test_service = Environments("testkey")
-        response = test_service.create("ducimus", {})
+        response = test_service.create("deleniti", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -62,7 +62,7 @@ class TestEnvironments_(unittest.TestCase):
         responses.post("https://api.doppler.com/v3/environments", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Environments("testkey")
-            test_service.create("placeat", {})
+            test_service.create("quia", {})
         responses.reset()
 
     @responses.activate
@@ -73,7 +73,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         # call the method to test
         test_service = Environments("testkey")
-        response = test_service.get("sit", "expedita")
+        response = test_service.get("aliquid", "est")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -96,7 +96,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Environments("testkey")
-            test_service.get("totam", "quo")
+            test_service.get("praesentium", "sequi")
         responses.reset()
 
     @responses.activate
@@ -107,7 +107,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         # call the method to test
         test_service = Environments("testkey")
-        response = test_service.rename("sed", "deserunt", {})
+        response = test_service.rename("blanditiis", "quae", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -130,7 +130,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Environments("testkey")
-            test_service.rename("labore", "temporibus", {})
+            test_service.rename("qui", "culpa", {})
         responses.reset()
 
     @responses.activate
@@ -141,7 +141,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         # call the method to test
         test_service = Environments("testkey")
-        response = test_service.delete("omnis", "iure")
+        response = test_service.delete("quod", "rerum")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -164,7 +164,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Environments("testkey")
-            test_service.delete("facere", "officia")
+            test_service.delete("commodi", "sit")
         responses.reset()
 
 

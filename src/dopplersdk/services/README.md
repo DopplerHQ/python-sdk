@@ -855,7 +855,7 @@ results = sdk.secrets.list(
 	config = 'CONFIG_NAME',
 	accepts = 'application/json',
 	include_dynamic_secrets = True,
-	dynamic_secrets_ttl_sec = 18119642,
+	dynamic_secrets_ttl_sec = 45202611,
 	secrets = 'secrets',
 	include_managed_secrets = True
 )
@@ -960,7 +960,7 @@ results = sdk.secrets.download(
 	project = 'project',
 	config = 'config',
 	format = 'json',
-	name_transformer = 'dotnet-env',
+	name_transformer = 'camel',
 	include_dynamic_secrets = True,
 	dynamic_secrets_ttl_sec = 1800
 )
@@ -1342,7 +1342,7 @@ request_body = {
 	'config': 'config',
 	'dynamic_secret': 'dynamic_secret',
 	'project': 'project',
-	'ttl_sec': 66643403
+	'ttl_sec': 96157308
 }
 results = sdk.dynamic_secrets.issue_lease(request_input = request_body)
 
@@ -1661,10 +1661,10 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 request_body = {
-	'environments': ["laboris","incididunt esse Duis aute aliquip"],
+	'environments': ["reprehenderit dolore","incididunt voluptate sed labore dolore"],
 	'role': 'role',
 	'slug': 'slug',
-	'type_': 'service_account'
+	'type_': 'group'
 }
 results = sdk.trusted_ips.add(
 	request_input = request_body,
@@ -2085,10 +2085,10 @@ DOPPLERSDK_BEARER_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
 request_body = {
-	'environments': ["cillum","occaecat ipsum consectetur amet"],
+	'environments': ["officia","adipisicing sit aliqua occaecat"],
 	'role': 'role',
 	'slug': 'slug',
-	'type_': 'workplace_user'
+	'type_': 'group'
 }
 results = sdk.project_members.add(
 	request_input = request_body,

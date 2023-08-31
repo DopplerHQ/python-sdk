@@ -8,8 +8,8 @@ class TestListResponseModel(unittest.TestCase):
 
     def test_list_response(self):
         # Create ListResponse class instance
-        test_model = ListResponse(groups=["nihil", "eveniet"])
-        self.assertEqual(test_model.groups, ["nihil", "eveniet"])
+        test_model = ListResponse(groups=["a", "asperiores"])
+        self.assertEqual(test_model.groups, ["a", "asperiores"])
 
 
 if __name__ == "__main__":
