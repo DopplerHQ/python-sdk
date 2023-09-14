@@ -1,16 +1,31 @@
 from urllib.parse import quote
+from ..net import query_serializer
 from .base import BaseService
-from ..models.ListResponse import ListResponse as ListResponseModel
-from ..models.CreateRequest import CreateRequest as CreateRequestModel
-from ..models.CreateResponse import CreateResponse as CreateResponseModel
-from ..models.GetResponse import GetResponse as GetResponseModel
-from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
-from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
-from ..models.DeleteResponse import DeleteResponse as DeleteResponseModel
+from ..models.IntegrationsListResponse import (
+    IntegrationsListResponse as IntegrationsListResponseModel,
+)
+from ..models.IntegrationsCreateRequest import (
+    IntegrationsCreateRequest as IntegrationsCreateRequestModel,
+)
+from ..models.IntegrationsCreateResponse import (
+    IntegrationsCreateResponse as IntegrationsCreateResponseModel,
+)
+from ..models.IntegrationsGetResponse import (
+    IntegrationsGetResponse as IntegrationsGetResponseModel,
+)
+from ..models.IntegrationsUpdateRequest import (
+    IntegrationsUpdateRequest as IntegrationsUpdateRequestModel,
+)
+from ..models.IntegrationsUpdateResponse import (
+    IntegrationsUpdateResponse as IntegrationsUpdateResponseModel,
+)
+from ..models.IntegrationsDeleteResponse import (
+    IntegrationsDeleteResponse as IntegrationsDeleteResponseModel,
+)
 
 
 class Integrations(BaseService):
-    def list(self) -> ListResponseModel:
+    def list(self) -> IntegrationsListResponseModel:
         """
         List
         """
@@ -22,10 +37,12 @@ class Integrations(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ListResponseModel(**res)
+            return IntegrationsListResponseModel(**res)
         return res
 
-    def create(self, request_input: CreateRequestModel = None) -> CreateResponseModel:
+    def create(
+        self, request_input: IntegrationsCreateRequestModel = None
+    ) -> IntegrationsCreateResponseModel:
         """
         Create
         """
@@ -37,10 +54,10 @@ class Integrations(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return CreateResponseModel(**res)
+            return IntegrationsCreateResponseModel(**res)
         return res
 
-    def get(self, integration: str) -> GetResponseModel:
+    def get(self, integration: str) -> IntegrationsGetResponseModel:
         """
         Retrieve
         Parameters:
@@ -57,16 +74,18 @@ class Integrations(BaseService):
             raise ValueError(
                 "Parameter integration is required, cannot be empty or blank."
             )
-        query_params.append(f"integration={integration}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "integration", integration)
+        )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return GetResponseModel(**res)
+            return IntegrationsGetResponseModel(**res)
         return res
 
     def update(
-        self, integration: str, request_input: UpdateRequestModel = None
-    ) -> UpdateResponseModel:
+        self, integration: str, request_input: IntegrationsUpdateRequestModel = None
+    ) -> IntegrationsUpdateResponseModel:
         """
         Update
         Parameters:
@@ -83,14 +102,16 @@ class Integrations(BaseService):
             raise ValueError(
                 "Parameter integration is required, cannot be empty or blank."
             )
-        query_params.append(f"integration={integration}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "integration", integration)
+        )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.put(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return UpdateResponseModel(**res)
+            return IntegrationsUpdateResponseModel(**res)
         return res
 
-    def delete(self, integration: str) -> DeleteResponseModel:
+    def delete(self, integration: str) -> IntegrationsDeleteResponseModel:
         """
         Delete
         Parameters:
@@ -107,9 +128,11 @@ class Integrations(BaseService):
             raise ValueError(
                 "Parameter integration is required, cannot be empty or blank."
             )
-        query_params.append(f"integration={integration}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "integration", integration)
+        )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.delete(final_url, headers, True)
         if res and isinstance(res, dict):
-            return DeleteResponseModel(**res)
+            return IntegrationsDeleteResponseModel(**res)
         return res

@@ -1,14 +1,19 @@
 from urllib.parse import quote
+from ..net import query_serializer
 from .base import BaseService
-from ..models.ListResponse import ListResponse as ListResponseModel
-from ..models.GetResponse import GetResponse as GetResponseModel
+from ..models.ConfigLogsListResponse import (
+    ConfigLogsListResponse as ConfigLogsListResponseModel,
+)
+from ..models.ConfigLogsGetResponse import (
+    ConfigLogsGetResponse as ConfigLogsGetResponseModel,
+)
 from ..models.RollbackResponse import RollbackResponse as RollbackResponseModel
 
 
 class ConfigLogs(BaseService):
     def list(
         self, config: str, project: str, page: int = None, per_page: int = None
-    ) -> ListResponseModel:
+    ) -> ConfigLogsListResponseModel:
         """
         List
         Parameters:
@@ -29,21 +34,29 @@ class ConfigLogs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        query_params.append(f"config={config}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
         if page:
-            query_params.append(f"page={page}")
+            query_params.append(
+                query_serializer.serialize_query("form", False, "page", page)
+            )
         if per_page:
-            query_params.append(f"per_page={per_page}")
+            query_params.append(
+                query_serializer.serialize_query("form", False, "per_page", per_page)
+            )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ListResponseModel(**res)
+            return ConfigLogsListResponseModel(**res)
         return res
 
-    def get(self, log: str, config: str, project: str) -> GetResponseModel:
+    def get(self, log: str, config: str, project: str) -> ConfigLogsGetResponseModel:
         """
         Retrieve
         Parameters:
@@ -62,17 +75,21 @@ class ConfigLogs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        query_params.append(f"config={config}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
         if not log:
             raise ValueError("Parameter log is required, cannot be empty or blank.")
-        query_params.append(f"log={log}")
+        query_params.append(query_serializer.serialize_query("form", False, "log", log))
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return GetResponseModel(**res)
+            return ConfigLogsGetResponseModel(**res)
         return res
 
     def rollback(self, log: str, config: str, project: str) -> RollbackResponseModel:
@@ -94,13 +111,17 @@ class ConfigLogs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        query_params.append(f"config={config}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
         if not log:
             raise ValueError("Parameter log is required, cannot be empty or blank.")
-        query_params.append(f"log={log}")
+        query_params.append(query_serializer.serialize_query("form", False, "log", log))
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.post(final_url, headers, {}, True)
         if res and isinstance(res, dict):

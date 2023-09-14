@@ -10,8 +10,7 @@ class Role(BaseModel):
         ----------
             identifier: str
         """
-        if identifier is not None:
-            self.identifier = identifier
+        self.identifier = identifier
 
 
 class Member(BaseModel):
@@ -34,16 +33,11 @@ class Member(BaseModel):
             environments: list of MemberEnvironments
             type_: str
         """
-        if slug is not None:
-            self.slug = slug
-        if role is not None:
-            self.role = role
-        if access_all_environments is not None:
-            self.access_all_environments = access_all_environments
-        if environments is not None:
-            self.environments = environments
-        if type_ is not None:
-            self.type_ = type_
+        self.slug = slug
+        self.role = role
+        self.access_all_environments = access_all_environments
+        self.environments = environments
+        self.type_ = type_
 
 
 class AddResponse(BaseModel):
@@ -54,5 +48,4 @@ class AddResponse(BaseModel):
         ----------
             member: Member
         """
-        if member is not None:
-            self.member = member
+        self.member = member

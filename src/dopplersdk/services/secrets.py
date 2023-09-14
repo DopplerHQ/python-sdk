@@ -1,9 +1,14 @@
 from urllib.parse import quote
+from ..net import query_serializer
 from .base import BaseService
-from ..models.ListResponse import ListResponse as ListResponseModel
-from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
-from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
-from ..models.GetResponse import GetResponse as GetResponseModel
+from ..models.SecretsListResponse import SecretsListResponse as SecretsListResponseModel
+from ..models.SecretsUpdateRequest import (
+    SecretsUpdateRequest as SecretsUpdateRequestModel,
+)
+from ..models.SecretsUpdateResponse import (
+    SecretsUpdateResponse as SecretsUpdateResponseModel,
+)
+from ..models.SecretsGetResponse import SecretsGetResponse as SecretsGetResponseModel
 from ..models.Format import Format as FormatModel
 from ..models.NameTransformer import NameTransformer as NameTransformerModel
 from ..models.DownloadResponse import DownloadResponse as DownloadResponseModel
@@ -22,7 +27,7 @@ class Secrets(BaseService):
         dynamic_secrets_ttl_sec: int = None,
         secrets: str = None,
         include_managed_secrets: bool = None,
-    ) -> ListResponseModel:
+    ) -> SecretsListResponseModel:
         """
         List
         Parameters:
@@ -49,26 +54,46 @@ class Secrets(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        query_params.append(f"config={config}")
-        headers["accepts"] = accepts
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
+        headers["accepts"] = query_serializer.serialize_header(False, accepts)
         if include_dynamic_secrets:
-            query_params.append(f"include_dynamic_secrets={include_dynamic_secrets}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "include_dynamic_secrets", include_dynamic_secrets
+                )
+            )
         if dynamic_secrets_ttl_sec:
-            query_params.append(f"dynamic_secrets_ttl_sec={dynamic_secrets_ttl_sec}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "dynamic_secrets_ttl_sec", dynamic_secrets_ttl_sec
+                )
+            )
         if secrets:
-            query_params.append(f"secrets={secrets}")
+            query_params.append(
+                query_serializer.serialize_query("form", False, "secrets", secrets)
+            )
         if include_managed_secrets:
-            query_params.append(f"include_managed_secrets={include_managed_secrets}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "include_managed_secrets", include_managed_secrets
+                )
+            )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ListResponseModel(**res)
+            return SecretsListResponseModel(**res)
         return res
 
-    def update(self, request_input: UpdateRequestModel = None) -> UpdateResponseModel:
+    def update(
+        self, request_input: SecretsUpdateRequestModel = None
+    ) -> SecretsUpdateResponseModel:
         """
         Update
         """
@@ -80,10 +105,10 @@ class Secrets(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return UpdateResponseModel(**res)
+            return SecretsUpdateResponseModel(**res)
         return res
 
-    def get(self, name: str, config: str, project: str) -> GetResponseModel:
+    def get(self, name: str, config: str, project: str) -> SecretsGetResponseModel:
         """
         Retrieve
         Parameters:
@@ -102,17 +127,23 @@ class Secrets(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        query_params.append(f"config={config}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
         if not name:
             raise ValueError("Parameter name is required, cannot be empty or blank.")
-        query_params.append(f"name={name}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "name", name)
+        )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return GetResponseModel(**res)
+            return SecretsGetResponseModel(**res)
         return res
 
     def delete(self, name: str, config: str, project: str):
@@ -134,13 +165,19 @@ class Secrets(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        query_params.append(f"config={config}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
         if not name:
             raise ValueError("Parameter name is required, cannot be empty or blank.")
-        query_params.append(f"name={name}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "name", name)
+        )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.delete(final_url, headers, True)
         return res
@@ -177,22 +214,42 @@ class Secrets(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        query_params.append(f"config={config}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
         if format:
             validated_format = self._enum_matching(format, FormatModel.list(), "format")
-            query_params.append(f"format={validated_format}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "format", validated_format
+                )
+            )
         if name_transformer:
             validated_name_transformer = self._enum_matching(
                 name_transformer, NameTransformerModel.list(), "name_transformer"
             )
-            query_params.append(f"name_transformer={validated_name_transformer}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "name_transformer", validated_name_transformer
+                )
+            )
         if include_dynamic_secrets:
-            query_params.append(f"include_dynamic_secrets={include_dynamic_secrets}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "include_dynamic_secrets", include_dynamic_secrets
+                )
+            )
         if dynamic_secrets_ttl_sec:
-            query_params.append(f"dynamic_secrets_ttl_sec={dynamic_secrets_ttl_sec}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "dynamic_secrets_ttl_sec", dynamic_secrets_ttl_sec
+                )
+            )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
@@ -226,14 +283,26 @@ class Secrets(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        query_params.append(f"config={config}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
         if include_dynamic_secrets:
-            query_params.append(f"include_dynamic_secrets={include_dynamic_secrets}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "include_dynamic_secrets", include_dynamic_secrets
+                )
+            )
         if include_managed_secrets:
-            query_params.append(f"include_managed_secrets={include_managed_secrets}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "include_managed_secrets", include_managed_secrets
+                )
+            )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):

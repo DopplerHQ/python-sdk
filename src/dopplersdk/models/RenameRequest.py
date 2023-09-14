@@ -12,7 +12,5 @@ class RenameRequest(BaseModel):
             slug: str
                 Desired slug
         """
-        if name is not None:
-            self.name = name
-        if slug is not None:
-            self.slug = slug
+        self.name = name
+        self.slug = slug

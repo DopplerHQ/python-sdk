@@ -10,5 +10,4 @@ class ListPermissionsResponse(BaseModel):
         ----------
             permissions: list of ListPermissionsResponsePermissions
         """
-        if permissions is not None:
-            self.permissions = permissions
+        self.permissions = permissions

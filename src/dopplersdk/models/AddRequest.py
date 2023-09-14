@@ -36,7 +36,5 @@ class AddRequest(BaseModel):
         """
         self.type_ = self._enum_matching(type_, Type.list(), "type_")
         self.slug = slug
-        if role is not None:
-            self.role = role
-        if environments is not None:
-            self.environments = environments
+        self.role = role
+        self.environments = environments

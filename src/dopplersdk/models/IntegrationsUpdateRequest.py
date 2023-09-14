@@ -12,7 +12,5 @@ class IntegrationsUpdateRequest(BaseModel):
             data: str
                 The new authentication data for the integration
         """
-        if name is not None:
-            self.name = name
-        if data is not None:
-            self.data = data
+        self.name = name
+        self.data = data

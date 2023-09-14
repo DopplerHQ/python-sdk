@@ -2,16 +2,18 @@ from .base import BaseModel
 
 
 class UpdateRequest(BaseModel):
-    def __init__(self, name: str = None, default_project_role: str = None, **kwargs):
+    def __init__(self, name: str, project: str, description: str = None, **kwargs):
         """
         Initialize UpdateRequest
         Parameters:
         ----------
             name: str
-            default_project_role: str
-                Identifier of the project role
+                Name of the project.
+            project: str
+                Unique identifier for the project object.
+            description: str
+                Description of the project.
         """
-        if name is not None:
-            self.name = name
-        if default_project_role is not None:
-            self.default_project_role = default_project_role
+        self.name = name
+        self.project = project
+        self.description = description

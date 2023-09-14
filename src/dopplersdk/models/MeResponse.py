@@ -10,10 +10,8 @@ class Workplace(BaseModel):
             slug: str
             name: str
         """
-        if slug is not None:
-            self.slug = slug
-        if name is not None:
-            self.name = name
+        self.slug = slug
+        self.name = name
 
 
 class MeResponse(BaseModel):
@@ -40,17 +38,10 @@ class MeResponse(BaseModel):
             workplace: Workplace
             type_: str
         """
-        if slug is not None:
-            self.slug = slug
-        if name is not None:
-            self.name = name
-        if created_at is not None:
-            self.created_at = created_at
-        if last_seen_at is not None:
-            self.last_seen_at = last_seen_at
-        if token_preview is not None:
-            self.token_preview = token_preview
-        if workplace is not None:
-            self.workplace = workplace
-        if type_ is not None:
-            self.type_ = type_
+        self.slug = slug
+        self.name = name
+        self.created_at = created_at
+        self.last_seen_at = last_seen_at
+        self.token_preview = token_preview
+        self.workplace = workplace
+        self.type_ = type_

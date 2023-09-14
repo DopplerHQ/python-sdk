@@ -1,12 +1,23 @@
 from urllib.parse import quote
+from ..net import query_serializer
 from .base import BaseService
-from ..models.ListResponse import ListResponse as ListResponseModel
-from ..models.CreateRequest import CreateRequest as CreateRequestModel
-from ..models.CreateResponse import CreateResponse as CreateResponseModel
-from ..models.GetResponse import GetResponse as GetResponseModel
-from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
-from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
-from ..models.DeleteRequest import DeleteRequest as DeleteRequestModel
+from ..models.ConfigsListResponse import ConfigsListResponse as ConfigsListResponseModel
+from ..models.ConfigsCreateRequest import (
+    ConfigsCreateRequest as ConfigsCreateRequestModel,
+)
+from ..models.ConfigsCreateResponse import (
+    ConfigsCreateResponse as ConfigsCreateResponseModel,
+)
+from ..models.ConfigsGetResponse import ConfigsGetResponse as ConfigsGetResponseModel
+from ..models.ConfigsUpdateRequest import (
+    ConfigsUpdateRequest as ConfigsUpdateRequestModel,
+)
+from ..models.ConfigsUpdateResponse import (
+    ConfigsUpdateResponse as ConfigsUpdateResponseModel,
+)
+from ..models.ConfigsDeleteRequest import (
+    ConfigsDeleteRequest as ConfigsDeleteRequestModel,
+)
 from ..models.DeleteResponse import DeleteResponse as DeleteResponseModel
 from ..models.CloneRequest import CloneRequest as CloneRequestModel
 from ..models.CloneResponse import CloneResponse as CloneResponseModel
@@ -14,6 +25,16 @@ from ..models.LockRequest import LockRequest as LockRequestModel
 from ..models.LockResponse import LockResponse as LockResponseModel
 from ..models.UnlockRequest import UnlockRequest as UnlockRequestModel
 from ..models.UnlockResponse import UnlockResponse as UnlockResponseModel
+from ..models.ListTrustedIpsResponse import (
+    ListTrustedIpsResponse as ListTrustedIpsResponseModel,
+)
+from ..models.AddTrustedIpRequest import AddTrustedIpRequest as AddTrustedIpRequestModel
+from ..models.AddTrustedIpResponse import (
+    AddTrustedIpResponse as AddTrustedIpResponseModel,
+)
+from ..models.DeleteTrustedIpRequest import (
+    DeleteTrustedIpRequest as DeleteTrustedIpRequestModel,
+)
 
 
 class Configs(BaseService):
@@ -23,7 +44,7 @@ class Configs(BaseService):
         environment: str = None,
         page: int = None,
         per_page: int = None,
-    ) -> ListResponseModel:
+    ) -> ConfigsListResponseModel:
         """
         List
         Parameters:
@@ -44,20 +65,32 @@ class Configs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if environment:
-            query_params.append(f"environment={environment}")
+            query_params.append(
+                query_serializer.serialize_query(
+                    "form", False, "environment", environment
+                )
+            )
         if page:
-            query_params.append(f"page={page}")
+            query_params.append(
+                query_serializer.serialize_query("form", False, "page", page)
+            )
         if per_page:
-            query_params.append(f"per_page={per_page}")
+            query_params.append(
+                query_serializer.serialize_query("form", False, "per_page", per_page)
+            )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ListResponseModel(**res)
+            return ConfigsListResponseModel(**res)
         return res
 
-    def create(self, request_input: CreateRequestModel = None) -> CreateResponseModel:
+    def create(
+        self, request_input: ConfigsCreateRequestModel = None
+    ) -> ConfigsCreateResponseModel:
         """
         Create
         """
@@ -69,10 +102,10 @@ class Configs(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return CreateResponseModel(**res)
+            return ConfigsCreateResponseModel(**res)
         return res
 
-    def get(self, config: str, project: str) -> GetResponseModel:
+    def get(self, config: str, project: str) -> ConfigsGetResponseModel:
         """
         Retrieve
         Parameters:
@@ -89,17 +122,23 @@ class Configs(BaseService):
         self._add_required_headers(headers)
         if not project:
             raise ValueError("Parameter project is required, cannot be empty or blank.")
-        query_params.append(f"project={project}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
         if not config:
             raise ValueError("Parameter config is required, cannot be empty or blank.")
-        query_params.append(f"config={config}")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return GetResponseModel(**res)
+            return ConfigsGetResponseModel(**res)
         return res
 
-    def update(self, request_input: UpdateRequestModel = None) -> UpdateResponseModel:
+    def update(
+        self, request_input: ConfigsUpdateRequestModel = None
+    ) -> ConfigsUpdateResponseModel:
         """
         Update
         """
@@ -111,10 +150,12 @@ class Configs(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return UpdateResponseModel(**res)
+            return ConfigsUpdateResponseModel(**res)
         return res
 
-    def delete(self, request_input: DeleteRequestModel = None) -> DeleteResponseModel:
+    def delete(
+        self, request_input: ConfigsDeleteRequestModel = None
+    ) -> DeleteResponseModel:
         """
         Delete
         """
@@ -172,4 +213,98 @@ class Configs(BaseService):
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
             return UnlockResponseModel(**res)
+        return res
+
+    def list_trusted_ips(
+        self, config: str, project: str
+    ) -> ListTrustedIpsResponseModel:
+        """
+        List
+        Parameters:
+        ----------
+            project: str
+            config: str
+        """
+
+        url_endpoint = "/v3/configs/config/trusted_ips"
+        headers = {}
+        query_params = []
+        self._add_required_headers(headers)
+        if not project:
+            raise ValueError("Parameter project is required, cannot be empty or blank.")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
+        if not config:
+            raise ValueError("Parameter config is required, cannot be empty or blank.")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
+        final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
+        res = self._http.get(final_url, headers, True)
+        if res and isinstance(res, dict):
+            return ListTrustedIpsResponseModel(**res)
+        return res
+
+    def add_trusted_ip(
+        self, config: str, project: str, request_input: AddTrustedIpRequestModel = None
+    ) -> AddTrustedIpResponseModel:
+        """
+        Add
+        Parameters:
+        ----------
+            project: str
+            config: str
+        """
+
+        url_endpoint = "/v3/configs/config/trusted_ips"
+        headers = {"Content-type": "application/json"}
+        query_params = []
+        self._add_required_headers(headers)
+        if not project:
+            raise ValueError("Parameter project is required, cannot be empty or blank.")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
+        if not config:
+            raise ValueError("Parameter config is required, cannot be empty or blank.")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
+        final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
+        res = self._http.post(final_url, headers, request_input, True)
+        if res and isinstance(res, dict):
+            return AddTrustedIpResponseModel(**res)
+        return res
+
+    def delete_trusted_ip(
+        self,
+        config: str,
+        project: str,
+        request_input: DeleteTrustedIpRequestModel = None,
+    ):
+        """
+        Delete
+        Parameters:
+        ----------
+            project: str
+            config: str
+        """
+
+        url_endpoint = "/v3/configs/config/trusted_ips"
+        headers = {"Content-type": "application/json"}
+        query_params = []
+        self._add_required_headers(headers)
+        if not project:
+            raise ValueError("Parameter project is required, cannot be empty or blank.")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "project", project)
+        )
+        if not config:
+            raise ValueError("Parameter config is required, cannot be empty or blank.")
+        query_params.append(
+            query_serializer.serialize_query("form", False, "config", config)
+        )
+        final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
+        res = self._http.delete(final_url, headers, True)
         return res

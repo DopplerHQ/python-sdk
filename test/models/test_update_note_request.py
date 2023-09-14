@@ -9,12 +9,12 @@ class TestUpdateNoteRequestModel(unittest.TestCase):
     def test_update_note_request(self):
         # Create UpdateNoteRequest class instance
         test_model = UpdateNoteRequest(
-            note="quae", secret="animi", config="amet", project="quaerat"
+            note="atque", secret="beatae", config="quidem", project="blanditiis"
         )
-        self.assertEqual(test_model.note, "quae")
-        self.assertEqual(test_model.secret, "animi")
-        self.assertEqual(test_model.config, "amet")
-        self.assertEqual(test_model.project, "quaerat")
+        self.assertEqual(test_model.note, "atque")
+        self.assertEqual(test_model.secret, "beatae")
+        self.assertEqual(test_model.config, "quidem")
+        self.assertEqual(test_model.project, "blanditiis")
 
     def test_update_note_request_required_fields_missing(self):
         # Assert UpdateNoteRequest class generation fails without required fields

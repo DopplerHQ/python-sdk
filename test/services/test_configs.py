@@ -15,7 +15,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs", json={}, status=200)
         # call the method to test
         test_service = Configs("testkey")
-        response = test_service.list("harum", "praesentium", 2, 9)
+        response = test_service.list("qui", "odit", 4, 1)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -34,7 +34,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
-            test_service.list("excepturi", "laborum", 6, 6)
+            test_service.list("error", "dolore", 4, 8)
         responses.reset()
 
     @responses.activate
@@ -62,7 +62,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs/config", json={}, status=200)
         # call the method to test
         test_service = Configs("testkey")
-        response = test_service.get("accusamus", "ipsa")
+        response = test_service.get("ut", "accusamus")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -81,7 +81,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs/config", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
-            test_service.get("repudiandae", "commodi")
+            test_service.get("excepturi", "cum")
         responses.reset()
 
     @responses.activate
@@ -193,6 +193,108 @@ class TestConfigs_(unittest.TestCase):
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
             test_service.unlock({})
+        responses.reset()
+
+    @responses.activate
+    def test_list_trusted_ips(self):
+        # Mock the API response
+        responses.get(
+            "https://api.doppler.com/v3/configs/config/trusted_ips", json={}, status=200
+        )
+        # call the method to test
+        test_service = Configs("testkey")
+        response = test_service.list_trusted_ips("perferendis", "explicabo")
+        self.assertEqual(response, {})
+        responses.reset(),
+
+    @responses.activate
+    def test_list_trusted_ips_required_fields_missing(self):
+        # Mock the API response
+        responses.get(
+            "https://api.doppler.com/v3/configs/config/trusted_ips", json={}, status=202
+        )
+        with self.assertRaises(TypeError):
+            test_service = Configs("testkey")
+            test_service.list_trusted_ips()
+        responses.reset(),
+
+    @responses.activate
+    def test_list_trusted_ips_error_on_non_200(self):
+        # Mock the API response
+        responses.get(
+            "https://api.doppler.com/v3/configs/config/trusted_ips", json={}, status=404
+        )
+        with self.assertRaises(ClientException):
+            test_service = Configs("testkey")
+            test_service.list_trusted_ips("ipsam", "illo")
+        responses.reset()
+
+    @responses.activate
+    def test_add_trusted_ip(self):
+        # Mock the API response
+        responses.post(
+            "https://api.doppler.com/v3/configs/config/trusted_ips", json={}, status=200
+        )
+        # call the method to test
+        test_service = Configs("testkey")
+        response = test_service.add_trusted_ip("numquam", "atque", {})
+        self.assertEqual(response, {})
+        responses.reset(),
+
+    @responses.activate
+    def test_add_trusted_ip_required_fields_missing(self):
+        # Mock the API response
+        responses.post(
+            "https://api.doppler.com/v3/configs/config/trusted_ips", json={}, status=202
+        )
+        with self.assertRaises(TypeError):
+            test_service = Configs("testkey")
+            test_service.add_trusted_ip()
+        responses.reset(),
+
+    @responses.activate
+    def test_add_trusted_ip_error_on_non_200(self):
+        # Mock the API response
+        responses.post(
+            "https://api.doppler.com/v3/configs/config/trusted_ips", json={}, status=404
+        )
+        with self.assertRaises(ClientException):
+            test_service = Configs("testkey")
+            test_service.add_trusted_ip("ex", "quisquam", {})
+        responses.reset()
+
+    @responses.activate
+    def test_delete_trusted_ip(self):
+        # Mock the API response
+        responses.delete(
+            "https://api.doppler.com/v3/configs/config/trusted_ips", json={}, status=200
+        )
+        # call the method to test
+        test_service = Configs("testkey")
+        response = test_service.delete_trusted_ip("dolorum", "ullam", {})
+        self.assertEqual(response, {})
+        responses.reset(),
+
+    @responses.activate
+    def test_delete_trusted_ip_required_fields_missing(self):
+        # Mock the API response
+        responses.delete(
+            "https://api.doppler.com/v3/configs/config/trusted_ips", json={}, status=202
+        )
+        with self.assertRaises(TypeError):
+            test_service = Configs("testkey")
+            test_service.delete_trusted_ip()
+        responses.reset(),
+
+    @responses.activate
+    def test_delete_trusted_ip_error_on_non_200(self):
+        # Mock the API response
+        responses.delete(
+            "https://api.doppler.com/v3/configs/config/trusted_ips", json={}, status=404
+        )
+        with self.assertRaises(ClientException):
+            test_service = Configs("testkey")
+            test_service.delete_trusted_ip("iusto", "quam", {})
         responses.reset()
 
 

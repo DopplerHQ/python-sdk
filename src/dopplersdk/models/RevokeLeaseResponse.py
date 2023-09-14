@@ -9,5 +9,4 @@ class RevokeLeaseResponse(BaseModel):
         ----------
             success: bool
         """
-        if success is not None:
-            self.success = success
+        self.success = success

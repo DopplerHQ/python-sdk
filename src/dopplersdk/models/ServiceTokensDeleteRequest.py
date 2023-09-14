@@ -20,7 +20,5 @@ class ServiceTokensDeleteRequest(BaseModel):
         """
         self.config = config
         self.project = project
-        if slug is not None:
-            self.slug = slug
-        if token is not None:
-            self.token = token
+        self.slug = slug
+        self.token = token

@@ -1,17 +1,22 @@
 from urllib.parse import quote
+from ..net import query_serializer
 from .base import BaseService
-from ..models.ListResponse import ListResponse as ListResponseModel
-from ..models.CreateRequest import CreateRequest as CreateRequestModel
-from ..models.CreateResponse import CreateResponse as CreateResponseModel
-from ..models.GetResponse import GetResponse as GetResponseModel
-from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
-from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
+from ..models.GroupsListResponse import GroupsListResponse as GroupsListResponseModel
+from ..models.GroupsCreateRequest import GroupsCreateRequest as GroupsCreateRequestModel
+from ..models.GroupsCreateResponse import (
+    GroupsCreateResponse as GroupsCreateResponseModel,
+)
+from ..models.GroupsGetResponse import GroupsGetResponse as GroupsGetResponseModel
+from ..models.GroupsUpdateRequest import GroupsUpdateRequest as GroupsUpdateRequestModel
+from ..models.GroupsUpdateResponse import (
+    GroupsUpdateResponse as GroupsUpdateResponseModel,
+)
 from ..models.AddMemberRequest import AddMemberRequest as AddMemberRequestModel
-from ..models.Type import Type as TypeModel
+from ..models.GroupsType import GroupsType as GroupsTypeModel
 
 
 class Groups(BaseService):
-    def list(self, page: int = None, per_page: int = None) -> ListResponseModel:
+    def list(self, page: int = None, per_page: int = None) -> GroupsListResponseModel:
         """
         List
         Parameters:
@@ -25,18 +30,24 @@ class Groups(BaseService):
         query_params = []
         self._add_required_headers(headers)
         if page:
-            query_params.append(f"page={page}")
+            query_params.append(
+                query_serializer.serialize_query("form", False, "page", page)
+            )
         if per_page:
-            query_params.append(f"per_page={per_page}")
+            query_params.append(
+                query_serializer.serialize_query("form", False, "per_page", per_page)
+            )
         final_url = self._url_prefix + url_endpoint
         if len(query_params) > 0:
             final_url += "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ListResponseModel(**res)
+            return GroupsListResponseModel(**res)
         return res
 
-    def create(self, request_input: CreateRequestModel = None) -> CreateResponseModel:
+    def create(
+        self, request_input: GroupsCreateRequestModel = None
+    ) -> GroupsCreateResponseModel:
         """
         Create
         """
@@ -48,10 +59,10 @@ class Groups(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return CreateResponseModel(**res)
+            return GroupsCreateResponseModel(**res)
         return res
 
-    def get(self, slug: str) -> GetResponseModel:
+    def get(self, slug: str) -> GroupsGetResponseModel:
         """
         Retrieve
         Parameters:
@@ -65,16 +76,19 @@ class Groups(BaseService):
         self._add_required_headers(headers)
         if not slug:
             raise ValueError("Parameter slug is required, cannot be empty or blank.")
-        url_endpoint = url_endpoint.replace("{slug}", quote(str(slug)))
+        url_endpoint = url_endpoint.replace(
+            "{slug}",
+            quote(str(query_serializer.serialize_path("simple", False, slug, None))),
+        )
         final_url = self._url_prefix + url_endpoint
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return GetResponseModel(**res)
+            return GroupsGetResponseModel(**res)
         return res
 
     def update(
-        self, slug: str, request_input: UpdateRequestModel = None
-    ) -> UpdateResponseModel:
+        self, slug: str, request_input: GroupsUpdateRequestModel = None
+    ) -> GroupsUpdateResponseModel:
         """
         Update
         Parameters:
@@ -88,11 +102,14 @@ class Groups(BaseService):
         self._add_required_headers(headers)
         if not slug:
             raise ValueError("Parameter slug is required, cannot be empty or blank.")
-        url_endpoint = url_endpoint.replace("{slug}", quote(str(slug)))
+        url_endpoint = url_endpoint.replace(
+            "{slug}",
+            quote(str(query_serializer.serialize_path("simple", False, slug, None))),
+        )
         final_url = self._url_prefix + url_endpoint
         res = self._http.patch(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return UpdateResponseModel(**res)
+            return GroupsUpdateResponseModel(**res)
         return res
 
     def delete(self, slug: str):
@@ -109,7 +126,10 @@ class Groups(BaseService):
         self._add_required_headers(headers)
         if not slug:
             raise ValueError("Parameter slug is required, cannot be empty or blank.")
-        url_endpoint = url_endpoint.replace("{slug}", quote(str(slug)))
+        url_endpoint = url_endpoint.replace(
+            "{slug}",
+            quote(str(query_serializer.serialize_path("simple", False, slug, None))),
+        )
         final_url = self._url_prefix + url_endpoint
         res = self._http.delete(final_url, headers, True)
         return res
@@ -128,19 +148,22 @@ class Groups(BaseService):
         self._add_required_headers(headers)
         if not slug:
             raise ValueError("Parameter slug is required, cannot be empty or blank.")
-        url_endpoint = url_endpoint.replace("{slug}", quote(str(slug)))
+        url_endpoint = url_endpoint.replace(
+            "{slug}",
+            quote(str(query_serializer.serialize_path("simple", False, slug, None))),
+        )
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         return res
 
-    def delete_member(self, member_slug: str, type_: TypeModel, slug: str):
+    def delete_member(self, member_slug: str, type_: GroupsTypeModel, slug: str):
         """
         Delete Member
         Parameters:
         ----------
             slug: str
                 The group's slug
-            type: Type
+            type: GroupsType
             member_slug: str
                 The member's slug
         """
@@ -150,16 +173,33 @@ class Groups(BaseService):
         self._add_required_headers(headers)
         if not slug:
             raise ValueError("Parameter slug is required, cannot be empty or blank.")
-        url_endpoint = url_endpoint.replace("{slug}", quote(str(slug)))
+        url_endpoint = url_endpoint.replace(
+            "{slug}",
+            quote(str(query_serializer.serialize_path("simple", False, slug, None))),
+        )
         if not type_:
             raise ValueError("Parameter type_ is required, cannot be empty or blank.")
-        validated_type_ = self._enum_matching(type_, TypeModel.list(), "type_")
-        url_endpoint = url_endpoint.replace("{type_}", quote(str(validated_type_)))
+        validated_type_ = self._enum_matching(type_, GroupsTypeModel.list(), "type_")
+        url_endpoint = url_endpoint.replace(
+            "{type_}",
+            quote(
+                str(
+                    query_serializer.serialize_path(
+                        "simple", False, validated_type_, None
+                    )
+                )
+            ),
+        )
         if not member_slug:
             raise ValueError(
                 "Parameter member_slug is required, cannot be empty or blank."
             )
-        url_endpoint = url_endpoint.replace("{member_slug}", quote(str(member_slug)))
+        url_endpoint = url_endpoint.replace(
+            "{member_slug}",
+            quote(
+                str(query_serializer.serialize_path("simple", False, member_slug, None))
+            ),
+        )
         final_url = self._url_prefix + url_endpoint
         res = self._http.delete(final_url, headers, True)
         return res

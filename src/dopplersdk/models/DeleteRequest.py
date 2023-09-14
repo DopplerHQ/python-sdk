@@ -2,12 +2,12 @@ from .base import BaseModel
 
 
 class DeleteRequest(BaseModel):
-    def __init__(self, ip: str, **kwargs):
+    def __init__(self, project: str, **kwargs):
         """
         Initialize DeleteRequest
         Parameters:
         ----------
-            ip: str
-                An IP address or CIDR range
+            project: str
+                Unique identifier for the project object.
         """
-        self.ip = ip
+        self.project = project

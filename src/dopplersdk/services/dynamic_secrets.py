@@ -1,4 +1,5 @@
 from urllib.parse import quote
+
 from .base import BaseService
 from ..models.IssueLeaseRequest import IssueLeaseRequest as IssueLeaseRequestModel
 from ..models.IssueLeaseResponse import IssueLeaseResponse as IssueLeaseResponseModel

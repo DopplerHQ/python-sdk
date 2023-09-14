@@ -2,53 +2,43 @@ from .base import BaseModel
 from typing import List
 
 
-class DefaultProjectRole(BaseModel):
-    def __init__(self, identifier: str = None, **kwargs):
-        """
-        Initialize DefaultProjectRole
-        Parameters:
-        ----------
-            identifier: str
-        """
-        if identifier is not None:
-            self.identifier = identifier
-
-
-class ListResponseGroups(BaseModel):
+class ListResponseProjects(BaseModel):
     def __init__(
         self,
-        name: str = None,
+        id: str = None,
         slug: str = None,
+        name: str = None,
+        description: str = None,
         created_at: str = None,
-        default_project_role: DefaultProjectRole = None,
         **kwargs,
     ):
         """
-        Initialize ListResponseGroups
+        Initialize ListResponseProjects
         Parameters:
         ----------
-            name: str
+            id: str
             slug: str
+            name: str
+            description: str
             created_at: str
-            default_project_role: DefaultProjectRole
         """
-        if name is not None:
-            self.name = name
-        if slug is not None:
-            self.slug = slug
-        if created_at is not None:
-            self.created_at = created_at
-        if default_project_role is not None:
-            self.default_project_role = default_project_role
+        self.id = id
+        self.slug = slug
+        self.name = name
+        self.description = description
+        self.created_at = created_at
 
 
 class ListResponse(BaseModel):
-    def __init__(self, groups: List[ListResponseGroups] = None, **kwargs):
+    def __init__(
+        self, page: int = None, projects: List[ListResponseProjects] = None, **kwargs
+    ):
         """
         Initialize ListResponse
         Parameters:
         ----------
-            groups: list of ListResponseGroups
+            page: int
+            projects: list of ListResponseProjects
         """
-        if groups is not None:
-            self.groups = groups
+        self.page = page
+        self.projects = projects

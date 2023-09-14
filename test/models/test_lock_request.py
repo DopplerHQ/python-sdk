@@ -8,9 +8,9 @@ class TestLockRequestModel(unittest.TestCase):
 
     def test_lock_request(self):
         # Create LockRequest class instance
-        test_model = LockRequest(config="atque", project="magni")
-        self.assertEqual(test_model.config, "atque")
-        self.assertEqual(test_model.project, "magni")
+        test_model = LockRequest(config="eligendi", project="error")
+        self.assertEqual(test_model.config, "eligendi")
+        self.assertEqual(test_model.project, "error")
 
     def test_lock_request_required_fields_missing(self):
         # Assert LockRequest class generation fails without required fields
