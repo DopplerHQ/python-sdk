@@ -21,11 +21,7 @@ class IssueLeaseResponse(BaseModel):
             expires_at: str
             value: Value
         """
-        if success is not None:
-            self.success = success
-        if id is not None:
-            self.id = id
-        if expires_at is not None:
-            self.expires_at = expires_at
-        if value is not None:
-            self.value = value
+        self.success = success
+        self.id = id
+        self.expires_at = expires_at
+        self.value = value

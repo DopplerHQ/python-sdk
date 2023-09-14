@@ -42,7 +42,7 @@ class ServiceTokensCreateRequest(BaseModel):
         self.name = name
         self.config = config
         self.project = project
-        if expire_at is not None:
-            self.expire_at = expire_at
-        if access is not None:
-            self.access = self._enum_matching(access, Access.list(), "access")
+        self.expire_at = expire_at
+        self.access = (
+            self._enum_matching(access, Access.list(), "access") if access else None
+        )

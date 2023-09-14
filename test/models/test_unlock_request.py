@@ -8,9 +8,9 @@ class TestUnlockRequestModel(unittest.TestCase):
 
     def test_unlock_request(self):
         # Create UnlockRequest class instance
-        test_model = UnlockRequest(config="molestiae", project="eveniet")
-        self.assertEqual(test_model.config, "molestiae")
-        self.assertEqual(test_model.project, "eveniet")
+        test_model = UnlockRequest(config="autem", project="voluptates")
+        self.assertEqual(test_model.config, "autem")
+        self.assertEqual(test_model.project, "voluptates")
 
     def test_unlock_request_required_fields_missing(self):
         # Assert UnlockRequest class generation fails without required fields

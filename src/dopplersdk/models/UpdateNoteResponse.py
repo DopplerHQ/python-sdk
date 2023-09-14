@@ -10,7 +10,5 @@ class UpdateNoteResponse(BaseModel):
             secret: str
             note: str
         """
-        if secret is not None:
-            self.secret = secret
-        if note is not None:
-            self.note = note
+        self.secret = secret
+        self.note = note

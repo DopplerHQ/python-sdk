@@ -9,10 +9,10 @@ class TestSyncsCreateRequestModel(unittest.TestCase):
     def test_syncs_create_request(self):
         # Create SyncsCreateRequest class instance
         test_model = SyncsCreateRequest(
-            data={"unde": 5}, integration="modi", import_option="none"
+            data={"quas": 5}, integration="iusto", import_option="none"
         )
-        self.assertEqual(test_model.data, {"unde": 5})
-        self.assertEqual(test_model.integration, "modi")
+        self.assertEqual(test_model.data, {"quas": 5})
+        self.assertEqual(test_model.integration, "iusto")
         self.assertEqual(test_model.import_option, "none")
 
     def test_syncs_create_request_required_fields_missing(self):

@@ -1,16 +1,25 @@
 from urllib.parse import quote
+from ..net import query_serializer
 from .base import BaseService
-from ..models.ListResponse import ListResponse as ListResponseModel
-from ..models.CreateResponse import CreateResponse as CreateResponseModel
+from ..models.WorkplaceRolesListResponse import (
+    WorkplaceRolesListResponse as WorkplaceRolesListResponseModel,
+)
+from ..models.WorkplaceRolesCreateResponse import (
+    WorkplaceRolesCreateResponse as WorkplaceRolesCreateResponseModel,
+)
 from ..models.ListPermissionsResponse import (
     ListPermissionsResponse as ListPermissionsResponseModel,
 )
-from ..models.GetResponse import GetResponse as GetResponseModel
-from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
+from ..models.WorkplaceRolesGetResponse import (
+    WorkplaceRolesGetResponse as WorkplaceRolesGetResponseModel,
+)
+from ..models.WorkplaceRolesUpdateResponse import (
+    WorkplaceRolesUpdateResponse as WorkplaceRolesUpdateResponseModel,
+)
 
 
 class WorkplaceRoles(BaseService):
-    def list(self) -> ListResponseModel:
+    def list(self) -> WorkplaceRolesListResponseModel:
         """
         List
         """
@@ -22,10 +31,10 @@ class WorkplaceRoles(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ListResponseModel(**res)
+            return WorkplaceRolesListResponseModel(**res)
         return res
 
-    def create(self) -> CreateResponseModel:
+    def create(self) -> WorkplaceRolesCreateResponseModel:
         """
         Create
         """
@@ -37,7 +46,7 @@ class WorkplaceRoles(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, {}, True)
         if res and isinstance(res, dict):
-            return CreateResponseModel(**res)
+            return WorkplaceRolesCreateResponseModel(**res)
         return res
 
     def list_permissions(self) -> ListPermissionsResponseModel:
@@ -55,7 +64,7 @@ class WorkplaceRoles(BaseService):
             return ListPermissionsResponseModel(**res)
         return res
 
-    def get(self, role: str) -> GetResponseModel:
+    def get(self, role: str) -> WorkplaceRolesGetResponseModel:
         """
         Retrieve
         Parameters:
@@ -69,14 +78,17 @@ class WorkplaceRoles(BaseService):
         self._add_required_headers(headers)
         if not role:
             raise ValueError("Parameter role is required, cannot be empty or blank.")
-        url_endpoint = url_endpoint.replace("{role}", quote(str(role)))
+        url_endpoint = url_endpoint.replace(
+            "{role}",
+            quote(str(query_serializer.serialize_path("simple", False, role, None))),
+        )
         final_url = self._url_prefix + url_endpoint
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return GetResponseModel(**res)
+            return WorkplaceRolesGetResponseModel(**res)
         return res
 
-    def update(self, role: str) -> UpdateResponseModel:
+    def update(self, role: str) -> WorkplaceRolesUpdateResponseModel:
         """
         Update
         Parameters:
@@ -90,11 +102,14 @@ class WorkplaceRoles(BaseService):
         self._add_required_headers(headers)
         if not role:
             raise ValueError("Parameter role is required, cannot be empty or blank.")
-        url_endpoint = url_endpoint.replace("{role}", quote(str(role)))
+        url_endpoint = url_endpoint.replace(
+            "{role}",
+            quote(str(query_serializer.serialize_path("simple", False, role, None))),
+        )
         final_url = self._url_prefix + url_endpoint
         res = self._http.patch(final_url, headers, {}, True)
         if res and isinstance(res, dict):
-            return UpdateResponseModel(**res)
+            return WorkplaceRolesUpdateResponseModel(**res)
         return res
 
     def delete(self, role: str):
@@ -111,7 +126,10 @@ class WorkplaceRoles(BaseService):
         self._add_required_headers(headers)
         if not role:
             raise ValueError("Parameter role is required, cannot be empty or blank.")
-        url_endpoint = url_endpoint.replace("{role}", quote(str(role)))
+        url_endpoint = url_endpoint.replace(
+            "{role}",
+            quote(str(query_serializer.serialize_path("simple", False, role, None))),
+        )
         final_url = self._url_prefix + url_endpoint
         res = self._http.delete(final_url, headers, True)
         return res

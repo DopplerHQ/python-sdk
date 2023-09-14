@@ -1,14 +1,10 @@
 from .base import BaseModel
 from enum import Enum
 
-
-class Data(BaseModel):
-    """
-    Configuration data for the sync
-    """
-
-    def __init__(self, **kwargs):
-        pass
+"""
+Configuration data for the sync
+"""
+Data = dict
 
 
 class ImportOption(Enum):
@@ -41,7 +37,8 @@ class SyncsCreateRequest(BaseModel):
         """
         self.data = data
         self.integration = integration
-        if import_option is not None:
-            self.import_option = self._enum_matching(
-                import_option, ImportOption.list(), "import_option"
-            )
+        self.import_option = (
+            self._enum_matching(import_option, ImportOption.list(), "import_option")
+            if import_option
+            else None
+        )

@@ -19,11 +19,7 @@ class DownloadResponse(BaseModel):
             DATABASE: str
             USER: str
         """
-        if STRIPE is not None:
-            self.STRIPE = STRIPE
-        if ALGOLIA is not None:
-            self.ALGOLIA = ALGOLIA
-        if DATABASE is not None:
-            self.DATABASE = DATABASE
-        if USER is not None:
-            self.USER = USER
+        self.STRIPE = STRIPE
+        self.ALGOLIA = ALGOLIA
+        self.DATABASE = DATABASE
+        self.USER = USER

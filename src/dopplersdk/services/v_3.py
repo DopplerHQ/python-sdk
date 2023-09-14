@@ -1,4 +1,5 @@
 from urllib.parse import quote
+
 from .base import BaseService
 from ..models.MeResponse import MeResponse as MeResponseModel
 

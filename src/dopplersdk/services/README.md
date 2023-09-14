@@ -24,8 +24,6 @@ A list of all services and services methods.
 
     - [Syncs](#syncs)
 
-    - [TrustedIps](#trustedips)
-
     - [WorkplaceRoles](#workplaceroles)
 
     - [ProjectRoles](#projectroles)
@@ -74,6 +72,9 @@ A list of all services and services methods.
 | [clone](#clone) | Clone |
 | [lock](#lock) | Lock |
 | [unlock](#unlock) | Unlock |
+| [add_trusted_ip](#add_trusted_ip) | Add |
+| [list_trusted_ips](#list_trusted_ips) | List |
+| [delete_trusted_ip](#delete_trusted_ip) | Delete |
 
 
 ## Secrets
@@ -147,15 +148,6 @@ A list of all services and services methods.
 | :-------- | :----------| 
 | [create](#create) | Create |
 | [get](#get) | Retrieve |
-| [delete](#delete) | Delete |
-
-
-## TrustedIps
-
-| Method    | Description|
-| :-------- | :----------| 
-| [add](#add) | Add |
-| [list](#list) | List |
 | [delete](#delete) | Delete |
 
 
@@ -248,12 +240,13 @@ Update
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'description': 'PROJECT_DESCRIPTION',
+	'name': 'PROJECT_NEW_NAME',
+	'project': 'PROJECT_NAME'
 }
 results = sdk.projects.update(request_input = request_body)
 
@@ -279,9 +272,9 @@ Retrieve
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.projects.get(project = 'PROJECT_NAME')
 
 pprint(vars(results))
@@ -306,10 +299,10 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
-request_body = {'ip': 'ip'}
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+request_body = {'project': 'PROJECT_NAME'}
 results = sdk.projects.delete(request_input = request_body)
 
 pprint(vars(results))
@@ -334,12 +327,12 @@ Create
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'description': 'PROJECT_DESCRIPTION',
+	'name': 'PROJECT_NAME'
 }
 results = sdk.projects.create(request_input = request_body)
 
@@ -366,9 +359,9 @@ List
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.projects.list(
 	page = 1,
 	per_page = 20
@@ -388,22 +381,22 @@ Create
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
 | project | str | Required | The project's name |
-| request_input | [CreateRequest](/src/dopplersdk/models/README.md#createrequest) | Optional | Request body. |
+| request_input | [EnvironmentsCreateRequest](/src/dopplersdk/models/README.md#environmentscreaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[CreateResponse](/src/dopplersdk/models/README.md#createresponse) 
+[EnvironmentsCreateResponse](/src/dopplersdk/models/README.md#environmentscreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'name': 'name',
+	'slug': 'slug'
 }
 results = sdk.environments.create(
 	request_input = request_body,
@@ -426,15 +419,15 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[EnvironmentsListResponse](/src/dopplersdk/models/README.md#environmentslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.environments.list(project = 'project')
 
 pprint(vars(results))
@@ -454,15 +447,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[EnvironmentsGetResponse](/src/dopplersdk/models/README.md#environmentsgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.environments.get(
 	project = 'project',
 	environment = 'environment'
@@ -491,9 +484,9 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.environments.delete(
 	project = 'project',
 	environment = 'environment'
@@ -523,9 +516,9 @@ Rename
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'name': 'name',
 	'slug': 'slug'
@@ -549,22 +542,23 @@ Create
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [CreateRequest](/src/dopplersdk/models/README.md#createrequest) | Optional | Request body. |
+| request_input | [ConfigsCreateRequest](/src/dopplersdk/models/README.md#configscreaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[CreateResponse](/src/dopplersdk/models/README.md#createresponse) 
+[ConfigsCreateResponse](/src/dopplersdk/models/README.md#configscreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'environment': 'ENVIRONMENT_ID',
+	'name': 'CONFIG_NAME',
+	'project': 'PROJECT_NAME'
 }
 results = sdk.configs.create(request_input = request_body)
 
@@ -587,15 +581,15 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[ConfigsListResponse](/src/dopplersdk/models/README.md#configslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.configs.list(
 	project = 'project',
 	environment = 'Environment slug',
@@ -615,22 +609,23 @@ Update
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [UpdateRequest](/src/dopplersdk/models/README.md#updaterequest) | Optional | Request body. |
+| request_input | [ConfigsUpdateRequest](/src/dopplersdk/models/README.md#configsupdaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
+[ConfigsUpdateResponse](/src/dopplersdk/models/README.md#configsupdateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'config': 'CONFIG_NAME',
+	'name': 'CONFIG_NEW_NAME',
+	'project': 'PROJECT_NAME'
 }
 results = sdk.configs.update(request_input = request_body)
 
@@ -651,15 +646,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[ConfigsGetResponse](/src/dopplersdk/models/README.md#configsgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.configs.get(
 	project = 'PROJECT_NAME',
 	config = 'CONFIG_NAME'
@@ -677,7 +672,7 @@ Delete
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [DeleteRequest](/src/dopplersdk/models/README.md#deleterequest) | Optional | Request body. |
+| request_input | [ConfigsDeleteRequest](/src/dopplersdk/models/README.md#configsdeleterequest) | Optional | Request body. |
 
 **Return Type**
 
@@ -687,10 +682,13 @@ Delete
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
-request_body = {'ip': 'ip'}
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+request_body = {
+	'config': 'CONFIG_NAME',
+	'project': 'PROJECT_NAME'
+}
 results = sdk.configs.delete(request_input = request_body)
 
 pprint(vars(results))
@@ -715,9 +713,9 @@ Clone
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'config': 'CONFIG_NAME',
 	'name': 'NEW_CONFIG_NAME',
@@ -747,9 +745,9 @@ Lock
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'config': 'CONFIG_NAME',
 	'project': 'PROJECT_NAME'
@@ -778,14 +776,113 @@ Unlock
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'config': 'CONFIG_NAME',
 	'project': 'PROJECT_NAME'
 }
 results = sdk.configs.unlock(request_input = request_body)
+
+pprint(vars(results))
+
+```
+
+### **add_trusted_ip**
+Add
+- HTTP Method: POST
+- Endpoint: /v3/configs/config/trusted_ips
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required |  |
+| config | str | Required |  |
+| request_input | [AddTrustedIpRequest](/src/dopplersdk/models/README.md#addtrustediprequest) | Optional | Request body. |
+
+**Return Type**
+
+[AddTrustedIpResponse](/src/dopplersdk/models/README.md#addtrustedipresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+request_body = {'ip': 'ip'}
+results = sdk.configs.add_trusted_ip(
+	request_input = request_body,
+	project = 'project',
+	config = 'config'
+)
+
+pprint(vars(results))
+
+```
+
+### **list_trusted_ips**
+List
+- HTTP Method: GET
+- Endpoint: /v3/configs/config/trusted_ips
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required |  |
+| config | str | Required |  |
+
+**Return Type**
+
+[ListTrustedIpsResponse](/src/dopplersdk/models/README.md#listtrustedipsresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.configs.list_trusted_ips(
+	project = 'project',
+	config = 'config'
+)
+
+pprint(vars(results))
+
+```
+
+### **delete_trusted_ip**
+Delete
+- HTTP Method: DELETE
+- Endpoint: /v3/configs/config/trusted_ips
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required |  |
+| config | str | Required |  |
+| request_input | [DeleteTrustedIpRequest](/src/dopplersdk/models/README.md#deletetrustediprequest) | Optional | Request body. |
+
+**Return Type**
+
+Returns a dict object.
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+request_body = {'ip': 'ip'}
+results = sdk.configs.delete_trusted_ip(
+	request_input = request_body,
+	project = 'project',
+	config = 'config'
+)
 
 pprint(vars(results))
 
@@ -800,22 +897,23 @@ Update
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [UpdateRequest](/src/dopplersdk/models/README.md#updaterequest) | Optional | Request body. |
+| request_input | [SecretsUpdateRequest](/src/dopplersdk/models/README.md#secretsupdaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
+[SecretsUpdateResponse](/src/dopplersdk/models/README.md#secretsupdateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'config': 'CONFIG_NAME',
+	'project': 'PROJECT_NAME',
+	'secrets': {"ALGOLIA":"N9TOPUCTO","DATABASE":"${USER}@aws.dynamodb.com:9876","STRIPE":"sk_test_9YxLnoLDdvOPn2dfjBVPB"}
 }
 results = sdk.secrets.update(request_input = request_body)
 
@@ -841,21 +939,21 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[SecretsListResponse](/src/dopplersdk/models/README.md#secretslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.secrets.list(
 	project = 'PROJECT_NAME',
 	config = 'CONFIG_NAME',
 	accepts = 'application/json',
 	include_dynamic_secrets = True,
-	dynamic_secrets_ttl_sec = 45202611,
+	dynamic_secrets_ttl_sec = 12719258,
 	secrets = 'secrets',
 	include_managed_secrets = True
 )
@@ -878,15 +976,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[SecretsGetResponse](/src/dopplersdk/models/README.md#secretsgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.secrets.get(
 	project = 'PROJECT_NAME',
 	config = 'CONFIG_NAME',
@@ -917,9 +1015,9 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.secrets.delete(
 	project = 'PROJECT_NAME',
 	config = 'CONFIG_NAME',
@@ -953,14 +1051,14 @@ Download
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.secrets.download(
 	project = 'project',
 	config = 'config',
 	format = 'json',
-	name_transformer = 'camel',
+	name_transformer = 'upper-camel',
 	include_dynamic_secrets = True,
 	dynamic_secrets_ttl_sec = 1800
 )
@@ -990,9 +1088,9 @@ List Names
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.secrets.names(
 	project = 'PROJECT_NAME',
 	config = 'CONFIG_NAME',
@@ -1022,9 +1120,9 @@ Update Note
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'config': 'CONFIG_NAME',
 	'note': 'note',
@@ -1053,15 +1151,15 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[ConfigLogsListResponse](/src/dopplersdk/models/README.md#configlogslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.config_logs.list(
 	project = 'PROJECT_NAME',
 	config = 'CONFIG_NAME',
@@ -1087,15 +1185,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[ConfigLogsGetResponse](/src/dopplersdk/models/README.md#configlogsgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.config_logs.get(
 	project = 'PROJECT_NAME',
 	config = 'CONFIG_NAME',
@@ -1126,9 +1224,9 @@ Rollback
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.config_logs.rollback(
 	project = 'PROJECT_NAME',
 	config = 'CONFIG_NAME',
@@ -1157,9 +1255,9 @@ This method has no parameters.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.v_3.me()
 
 pprint(vars(results))
@@ -1180,15 +1278,15 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[ActivityLogsListResponse](/src/dopplersdk/models/README.md#activitylogslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.activity_logs.list(
 	page = '1',
 	per_page = 20
@@ -1216,9 +1314,9 @@ Retrieve
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.activity_logs.retrieve(log = 'LOG_ID')
 
 pprint(vars(results))
@@ -1234,22 +1332,25 @@ Create
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [CreateRequest](/src/dopplersdk/models/README.md#createrequest) | Optional | Request body. |
+| request_input | [ServiceTokensCreateRequest](/src/dopplersdk/models/README.md#servicetokenscreaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[CreateResponse](/src/dopplersdk/models/README.md#createresponse) 
+[ServiceTokensCreateResponse](/src/dopplersdk/models/README.md#servicetokenscreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'access': 'read',
+	'config': 'CONFIG_NAME',
+	'expire_at': '1899-01-16T08:37:05.0Z',
+	'name': 'TOKEN_NAME',
+	'project': 'PROJECT_NAME'
 }
 results = sdk.service_tokens.create(request_input = request_body)
 
@@ -1270,15 +1371,15 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[ServiceTokensListResponse](/src/dopplersdk/models/README.md#servicetokenslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.service_tokens.list(
 	project = 'PROJECT_NAME',
 	config = 'CONFIG_NAME'
@@ -1296,7 +1397,7 @@ Delete
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [DeleteRequest](/src/dopplersdk/models/README.md#deleterequest) | Optional | Request body. |
+| request_input | [ServiceTokensDeleteRequest](/src/dopplersdk/models/README.md#servicetokensdeleterequest) | Optional | Request body. |
 
 **Return Type**
 
@@ -1306,10 +1407,15 @@ Delete
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
-request_body = {'ip': 'ip'}
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+request_body = {
+	'config': 'CONFIG_NAME',
+	'project': 'PROJECT_NAME',
+	'slug': 'TOKEN_SLUG',
+	'token': 'TOKEN_VALUE'
+}
 results = sdk.service_tokens.delete(request_input = request_body)
 
 pprint(vars(results))
@@ -1335,14 +1441,14 @@ Issue Lease
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'config': 'config',
 	'dynamic_secret': 'dynamic_secret',
 	'project': 'project',
-	'ttl_sec': 96157308
+	'ttl_sec': 89517057
 }
 results = sdk.dynamic_secrets.issue_lease(request_input = request_body)
 
@@ -1368,9 +1474,9 @@ Revoke Lease
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'config': 'config',
 	'dynamic_secret': 'dynamic_secret',
@@ -1392,22 +1498,23 @@ Create
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [CreateRequest](/src/dopplersdk/models/README.md#createrequest) | Optional | Request body. |
+| request_input | [IntegrationsCreateRequest](/src/dopplersdk/models/README.md#integrationscreaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[CreateResponse](/src/dopplersdk/models/README.md#createresponse) 
+[IntegrationsCreateResponse](/src/dopplersdk/models/README.md#integrationscreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'data': {},
+	'name': 'name',
+	'type_': 'type'
 }
 results = sdk.integrations.create(request_input = request_body)
 
@@ -1426,15 +1533,15 @@ This method has no parameters.
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[IntegrationsListResponse](/src/dopplersdk/models/README.md#integrationslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.integrations.list()
 
 pprint(vars(results))
@@ -1453,15 +1560,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[IntegrationsGetResponse](/src/dopplersdk/models/README.md#integrationsgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.integrations.get(integration = 'integration')
 
 pprint(vars(results))
@@ -1480,15 +1587,15 @@ Delete
 
 **Return Type**
 
-[DeleteResponse](/src/dopplersdk/models/README.md#deleteresponse) 
+[IntegrationsDeleteResponse](/src/dopplersdk/models/README.md#integrationsdeleteresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.integrations.delete(integration = 'integration')
 
 pprint(vars(results))
@@ -1504,21 +1611,21 @@ Update
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
 | integration | str | Required | The slug of the integration to update |
-| request_input | [UpdateRequest](/src/dopplersdk/models/README.md#updaterequest) | Optional | Request body. |
+| request_input | [IntegrationsUpdateRequest](/src/dopplersdk/models/README.md#integrationsupdaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
+[IntegrationsUpdateResponse](/src/dopplersdk/models/README.md#integrationsupdateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
+	'data': 'data',
 	'name': 'name'
 }
 results = sdk.integrations.update(
@@ -1541,22 +1648,23 @@ Create
 | :-------- | :----------| :----------| :----------| 
 | project | str | Required | The project slug |
 | config | str | Required | The config slug |
-| request_input | [CreateRequest](/src/dopplersdk/models/README.md#createrequest) | Optional | Request body. |
+| request_input | [SyncsCreateRequest](/src/dopplersdk/models/README.md#syncscreaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[CreateResponse](/src/dopplersdk/models/README.md#createresponse) 
+[SyncsCreateResponse](/src/dopplersdk/models/README.md#syncscreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'data': {},
+	'import_option': 'none',
+	'integration': 'integration'
 }
 results = sdk.syncs.create(
 	request_input = request_body,
@@ -1582,15 +1690,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[SyncsGetResponse](/src/dopplersdk/models/README.md#syncsgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.syncs.get(
 	project = 'project',
 	config = 'config',
@@ -1616,125 +1724,20 @@ Delete
 
 **Return Type**
 
-[DeleteResponse](/src/dopplersdk/models/README.md#deleteresponse) 
+[SyncsDeleteResponse](/src/dopplersdk/models/README.md#syncsdeleteresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.syncs.delete(
 	project = 'project',
 	config = 'config',
 	sync = 'sync',
 	delete_from_target = True
-)
-
-pprint(vars(results))
-
-```
-
-
-### **add**
-Add
-- HTTP Method: POST
-- Endpoint: /v3/configs/config/trusted_ips
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required |  |
-| config | str | Required |  |
-| request_input | [AddRequest](/src/dopplersdk/models/README.md#addrequest) | Optional | Request body. |
-
-**Return Type**
-
-[AddResponse](/src/dopplersdk/models/README.md#addresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
-request_body = {
-	'environments': ["reprehenderit dolore","incididunt voluptate sed labore dolore"],
-	'role': 'role',
-	'slug': 'slug',
-	'type_': 'group'
-}
-results = sdk.trusted_ips.add(
-	request_input = request_body,
-	project = 'project',
-	config = 'config'
-)
-
-pprint(vars(results))
-
-```
-
-### **list**
-List
-- HTTP Method: GET
-- Endpoint: /v3/configs/config/trusted_ips
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required |  |
-| config | str | Required |  |
-
-**Return Type**
-
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
-results = sdk.trusted_ips.list(
-	project = 'project',
-	config = 'config'
-)
-
-pprint(vars(results))
-
-```
-
-### **delete**
-Delete
-- HTTP Method: DELETE
-- Endpoint: /v3/configs/config/trusted_ips
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required |  |
-| config | str | Required |  |
-| request_input | [DeleteRequest](/src/dopplersdk/models/README.md#deleterequest) | Optional | Request body. |
-
-**Return Type**
-
-Returns a dict object.
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
-request_body = {'ip': 'ip'}
-results = sdk.trusted_ips.delete(
-	request_input = request_body,
-	project = 'project',
-	config = 'config'
 )
 
 pprint(vars(results))
@@ -1753,15 +1756,15 @@ This method has no parameters.
 
 **Return Type**
 
-[CreateResponse](/src/dopplersdk/models/README.md#createresponse) 
+[WorkplaceRolesCreateResponse](/src/dopplersdk/models/README.md#workplacerolescreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.workplace_roles.create()
 
 pprint(vars(results))
@@ -1779,15 +1782,15 @@ This method has no parameters.
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[WorkplaceRolesListResponse](/src/dopplersdk/models/README.md#workplaceroleslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.workplace_roles.list()
 
 pprint(vars(results))
@@ -1811,9 +1814,9 @@ This method has no parameters.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.workplace_roles.list_permissions()
 
 pprint(vars(results))
@@ -1832,15 +1835,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[WorkplaceRolesGetResponse](/src/dopplersdk/models/README.md#workplacerolesgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.workplace_roles.get(role = 'role')
 
 pprint(vars(results))
@@ -1859,15 +1862,15 @@ Update
 
 **Return Type**
 
-[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
+[WorkplaceRolesUpdateResponse](/src/dopplersdk/models/README.md#workplacerolesupdateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.workplace_roles.update(role = 'role')
 
 pprint(vars(results))
@@ -1892,9 +1895,9 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.workplace_roles.delete(role = 'role')
 
 pprint(vars(results))
@@ -1913,15 +1916,15 @@ This method has no parameters.
 
 **Return Type**
 
-[CreateResponse](/src/dopplersdk/models/README.md#createresponse) 
+[ProjectRolesCreateResponse](/src/dopplersdk/models/README.md#projectrolescreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_roles.create()
 
 pprint(vars(results))
@@ -1939,15 +1942,15 @@ This method has no parameters.
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[ProjectRolesListResponse](/src/dopplersdk/models/README.md#projectroleslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_roles.list()
 
 pprint(vars(results))
@@ -1966,15 +1969,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[ProjectRolesGetResponse](/src/dopplersdk/models/README.md#projectrolesgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_roles.get(role = 'role')
 
 pprint(vars(results))
@@ -1993,15 +1996,15 @@ Update
 
 **Return Type**
 
-[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
+[ProjectRolesUpdateResponse](/src/dopplersdk/models/README.md#projectrolesupdateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_roles.update(role = 'role')
 
 pprint(vars(results))
@@ -2026,9 +2029,9 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_roles.delete(role = 'role')
 
 pprint(vars(results))
@@ -2046,15 +2049,15 @@ This method has no parameters.
 
 **Return Type**
 
-[ListPermissionsResponse](/src/dopplersdk/models/README.md#listpermissionsresponse) 
+[ProjectRolesListPermissionsResponse](/src/dopplersdk/models/README.md#projectroleslistpermissionsresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_roles.list_permissions()
 
 pprint(vars(results))
@@ -2081,11 +2084,11 @@ Add
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'environments': ["officia","adipisicing sit aliqua occaecat"],
+	'environments': ["incididunt dolor nulla dolore in","adipisicing veniam irure"],
 	'role': 'role',
 	'slug': 'slug',
 	'type_': 'group'
@@ -2113,15 +2116,15 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[ProjectMembersListResponse](/src/dopplersdk/models/README.md#projectmemberslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_members.list(
 	project = 'project',
 	page = 1,
@@ -2146,18 +2149,18 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[ProjectMembersGetResponse](/src/dopplersdk/models/README.md#projectmembersgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_members.get(
 	project = 'project',
-	type = 'workplace_user',
+	type = 'service_account',
 	slug = 'slug'
 )
 
@@ -2176,22 +2179,22 @@ Update
 | type | [Type](/src/dopplersdk/models/README.md#type) | Required |  |
 | slug | str | Required | Member's slug |
 | project | str | Required | Project slug |
-| request_input | [UpdateRequest](/src/dopplersdk/models/README.md#updaterequest) | Optional | Request body. |
+| request_input | [ProjectMembersUpdateRequest](/src/dopplersdk/models/README.md#projectmembersupdaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
+[ProjectMembersUpdateResponse](/src/dopplersdk/models/README.md#projectmembersupdateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'environments': ["amet Duis incididunt Lorem","esse Excepteur"],
+	'role': 'role'
 }
 results = sdk.project_members.update(
 	request_input = request_body,
@@ -2224,11 +2227,11 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_members.delete(
-	type = 'workplace_user',
+	type = 'group',
 	slug = 'slug',
 	project = 'project'
 )
@@ -2251,15 +2254,15 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[InvitesListResponse](/src/dopplersdk/models/README.md#inviteslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.invites.list(
 	page = 1,
 	per_page = 20
@@ -2278,22 +2281,22 @@ Create
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [CreateRequest](/src/dopplersdk/models/README.md#createrequest) | Optional | Request body. |
+| request_input | [ServiceAccountsCreateRequest](/src/dopplersdk/models/README.md#serviceaccountscreaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[CreateResponse](/src/dopplersdk/models/README.md#createresponse) 
+[ServiceAccountsCreateResponse](/src/dopplersdk/models/README.md#serviceaccountscreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'name': 'name',
+	'workplace_role': {"identifier":"identifier","permissions":["fugiat Lorem elit aliqua","anim deserunt Duis ut laboris"]}
 }
 results = sdk.service_accounts.create(request_input = request_body)
 
@@ -2314,15 +2317,15 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[ServiceAccountsListResponse](/src/dopplersdk/models/README.md#serviceaccountslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.service_accounts.list(
 	page = 1,
 	per_page = 20
@@ -2344,15 +2347,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[ServiceAccountsGetResponse](/src/dopplersdk/models/README.md#serviceaccountsgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.service_accounts.get(slug = 'slug')
 
 pprint(vars(results))
@@ -2368,22 +2371,22 @@ Update
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
 | slug | str | Required | Slug of the service account |
-| request_input | [UpdateRequest](/src/dopplersdk/models/README.md#updaterequest) | Optional | Request body. |
+| request_input | [ServiceAccountsUpdateRequest](/src/dopplersdk/models/README.md#serviceaccountsupdaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
+[ServiceAccountsUpdateResponse](/src/dopplersdk/models/README.md#serviceaccountsupdateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'default_project_role': 'default_project_role',
-	'name': 'name'
+	'name': 'name',
+	'workplace_role': {"identifier":"identifier","permissions":["exercitation cupidatat ullamco","est ut laborum et"]}
 }
 results = sdk.service_accounts.update(
 	request_input = request_body,
@@ -2412,9 +2415,9 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.service_accounts.delete(slug = 'slug')
 
 pprint(vars(results))
@@ -2430,19 +2433,19 @@ Create
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [CreateRequest](/src/dopplersdk/models/README.md#createrequest) | Optional | Request body. |
+| request_input | [GroupsCreateRequest](/src/dopplersdk/models/README.md#groupscreaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[CreateResponse](/src/dopplersdk/models/README.md#createresponse) 
+[GroupsCreateResponse](/src/dopplersdk/models/README.md#groupscreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'default_project_role': 'default_project_role',
 	'name': 'name'
@@ -2466,15 +2469,15 @@ List
 
 **Return Type**
 
-[ListResponse](/src/dopplersdk/models/README.md#listresponse) 
+[GroupsListResponse](/src/dopplersdk/models/README.md#groupslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.groups.list(
 	page = 1,
 	per_page = 20
@@ -2496,15 +2499,15 @@ Retrieve
 
 **Return Type**
 
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+[GroupsGetResponse](/src/dopplersdk/models/README.md#groupsgetresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.groups.get(slug = 'slug')
 
 pprint(vars(results))
@@ -2520,19 +2523,19 @@ Update
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
 | slug | str | Required | The group's slug |
-| request_input | [UpdateRequest](/src/dopplersdk/models/README.md#updaterequest) | Optional | Request body. |
+| request_input | [GroupsUpdateRequest](/src/dopplersdk/models/README.md#groupsupdaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
+[GroupsUpdateResponse](/src/dopplersdk/models/README.md#groupsupdateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'default_project_role': 'default_project_role',
 	'name': 'name'
@@ -2564,9 +2567,9 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.groups.delete(slug = 'slug')
 
 pprint(vars(results))
@@ -2592,9 +2595,9 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'slug': 'slug',
 	'type_': 'workplace_user'
@@ -2617,7 +2620,7 @@ Delete Member
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
 | slug | str | Required | The group's slug |
-| type | [Type](/src/dopplersdk/models/README.md#type) | Required |  |
+| type | [GroupsType](/src/dopplersdk/models/README.md#groupstype) | Required |  |
 | member_slug | str | Required | The member's slug |
 
 **Return Type**
@@ -2628,9 +2631,9 @@ Returns a dict object.
 ```Python
 from pprint import pprint
 from dopplersdk import DopplerSDK
-DOPPLERSDK_BEARER_TOKEN = ''  
+DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
-sdk.set_bearer_token(DOPPLERSDK_BEARER_TOKEN)
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.groups.delete_member(
 	slug = 'slug',
 	type = 'workplace_user',

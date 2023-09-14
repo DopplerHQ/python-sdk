@@ -10,5 +10,4 @@ class NamesResponse(BaseModel):
         ----------
             names: list of NamesResponseNames
         """
-        if names is not None:
-            self.names = names
+        self.names = names

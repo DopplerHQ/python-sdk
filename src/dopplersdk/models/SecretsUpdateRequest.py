@@ -18,10 +18,8 @@ class Secrets(BaseModel):
             DATABASE: str
         """
         self.STRIPE = STRIPE
-        if ALGOLIA is not None:
-            self.ALGOLIA = ALGOLIA
-        if DATABASE is not None:
-            self.DATABASE = DATABASE
+        self.ALGOLIA = ALGOLIA
+        self.DATABASE = DATABASE
 
 
 class SecretsUpdateRequest(BaseModel):

@@ -21,16 +21,11 @@ class Environment(BaseModel):
             created_at: str
             project: str
         """
-        if id is not None:
-            self.id = id
-        if name is not None:
-            self.name = name
-        if initial_fetch_at is not None:
-            self.initial_fetch_at = initial_fetch_at
-        if created_at is not None:
-            self.created_at = created_at
-        if project is not None:
-            self.project = project
+        self.id = id
+        self.name = name
+        self.initial_fetch_at = initial_fetch_at
+        self.created_at = created_at
+        self.project = project
 
 
 class RenameResponse(BaseModel):
@@ -41,5 +36,4 @@ class RenameResponse(BaseModel):
         ----------
             environment: Environment
         """
-        if environment is not None:
-            self.environment = environment
+        self.environment = environment

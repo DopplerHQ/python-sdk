@@ -17,7 +17,6 @@ from .services.service_tokens import ServiceTokens
 from .services.dynamic_secrets import DynamicSecrets
 from .services.integrations import Integrations
 from .services.syncs import Syncs
-from .services.trusted_ips import TrustedIps
 from .services.workplace_roles import WorkplaceRoles
 from .services.project_roles import ProjectRoles
 from .services.project_members import ProjectMembers
@@ -43,7 +42,6 @@ class DopplerSDK:
     dynamic_secrets : DynamicSecrets
     integrations : Integrations
     syncs : Syncs
-    trusted_ips : TrustedIps
     workplace_roles : WorkplaceRoles
     project_roles : ProjectRoles
     project_members : ProjectMembers
@@ -53,42 +51,43 @@ class DopplerSDK:
 
     Methods
     -------
-    set_bearer_token(bearer_token)
-        Set the bearer token
+    set_url(url: str)
+        Sets the end URL
+    set_access_token(access_token)
+        Set the access token
     """
 
-    def __init__(self, bearer_token="", environment=Environment.DEFAULT) -> None:
+    def __init__(self, access_token="", environment=Environment.DEFAULT) -> None:
         """
         Initializes the DopplerSDK SDK class.
         Parameters
         ----------
         environment: str
             The environment that the SDK is accessing
-        bearer_token : str
-            The bearer token
+        access_token : str
+            The access token
         """
-        self.projects = Projects(bearer_token)
-        self.environments = Environments(bearer_token)
-        self.configs = Configs(bearer_token)
-        self.secrets = Secrets(bearer_token)
-        self.config_logs = ConfigLogs(bearer_token)
-        self.v_3 = V3(bearer_token)
-        self.activity_logs = ActivityLogs(bearer_token)
-        self.service_tokens = ServiceTokens(bearer_token)
-        self.dynamic_secrets = DynamicSecrets(bearer_token)
-        self.integrations = Integrations(bearer_token)
-        self.syncs = Syncs(bearer_token)
-        self.trusted_ips = TrustedIps(bearer_token)
-        self.workplace_roles = WorkplaceRoles(bearer_token)
-        self.project_roles = ProjectRoles(bearer_token)
-        self.project_members = ProjectMembers(bearer_token)
-        self.invites = Invites(bearer_token)
-        self.service_accounts = ServiceAccounts(bearer_token)
-        self.groups = Groups(bearer_token)
+        self.projects = Projects(access_token)
+        self.environments = Environments(access_token)
+        self.configs = Configs(access_token)
+        self.secrets = Secrets(access_token)
+        self.config_logs = ConfigLogs(access_token)
+        self.v_3 = V3(access_token)
+        self.activity_logs = ActivityLogs(access_token)
+        self.service_tokens = ServiceTokens(access_token)
+        self.dynamic_secrets = DynamicSecrets(access_token)
+        self.integrations = Integrations(access_token)
+        self.syncs = Syncs(access_token)
+        self.workplace_roles = WorkplaceRoles(access_token)
+        self.project_roles = ProjectRoles(access_token)
+        self.project_members = ProjectMembers(access_token)
+        self.invites = Invites(access_token)
+        self.service_accounts = ServiceAccounts(access_token)
+        self.groups = Groups(access_token)
 
-        self.__set_url(environment.value)
+        self.set_url(environment.value)
 
-    def __set_url(self, url: str) -> None:
+    def set_url(self, url: str) -> None:
         """
         Sets the end URL
 
@@ -108,7 +107,6 @@ class DopplerSDK:
         self.dynamic_secrets.set_url(url)
         self.integrations.set_url(url)
         self.syncs.set_url(url)
-        self.trusted_ips.set_url(url)
         self.workplace_roles.set_url(url)
         self.project_roles.set_url(url)
         self.project_members.set_url(url)
@@ -116,30 +114,29 @@ class DopplerSDK:
         self.service_accounts.set_url(url)
         self.groups.set_url(url)
 
-    def set_bearer_token(self, token: str) -> None:
+    def set_access_token(self, token: str) -> None:
         """
-        Sets bearer token key
+        Sets auth token key
 
         Parameters
         ----------
         token: string
-            Bearer token value
+            Auth token value
         """
-        self.projects.set_bearer_token(token)
-        self.environments.set_bearer_token(token)
-        self.configs.set_bearer_token(token)
-        self.secrets.set_bearer_token(token)
-        self.config_logs.set_bearer_token(token)
-        self.v_3.set_bearer_token(token)
-        self.activity_logs.set_bearer_token(token)
-        self.service_tokens.set_bearer_token(token)
-        self.dynamic_secrets.set_bearer_token(token)
-        self.integrations.set_bearer_token(token)
-        self.syncs.set_bearer_token(token)
-        self.trusted_ips.set_bearer_token(token)
-        self.workplace_roles.set_bearer_token(token)
-        self.project_roles.set_bearer_token(token)
-        self.project_members.set_bearer_token(token)
-        self.invites.set_bearer_token(token)
-        self.service_accounts.set_bearer_token(token)
-        self.groups.set_bearer_token(token)
+        self.projects.set_access_token(token)
+        self.environments.set_access_token(token)
+        self.configs.set_access_token(token)
+        self.secrets.set_access_token(token)
+        self.config_logs.set_access_token(token)
+        self.v_3.set_access_token(token)
+        self.activity_logs.set_access_token(token)
+        self.service_tokens.set_access_token(token)
+        self.dynamic_secrets.set_access_token(token)
+        self.integrations.set_access_token(token)
+        self.syncs.set_access_token(token)
+        self.workplace_roles.set_access_token(token)
+        self.project_roles.set_access_token(token)
+        self.project_members.set_access_token(token)
+        self.invites.set_access_token(token)
+        self.service_accounts.set_access_token(token)
+        self.groups.set_access_token(token)

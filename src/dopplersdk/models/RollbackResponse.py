@@ -11,10 +11,8 @@ class LogDiff(BaseModel):
             name: str
             removed: str
         """
-        if name is not None:
-            self.name = name
-        if removed is not None:
-            self.removed = removed
+        self.name = name
+        self.removed = removed
 
 
 class User(BaseModel):
@@ -35,14 +33,10 @@ class User(BaseModel):
             username: str
             profile_image_url: str
         """
-        if email is not None:
-            self.email = email
-        if name is not None:
-            self.name = name
-        if username is not None:
-            self.username = username
-        if profile_image_url is not None:
-            self.profile_image_url = profile_image_url
+        self.email = email
+        self.name = name
+        self.username = username
+        self.profile_image_url = profile_image_url
 
 
 class Log(BaseModel):
@@ -75,26 +69,16 @@ class Log(BaseModel):
             project: str
             user: User
         """
-        if id is not None:
-            self.id = id
-        if text is not None:
-            self.text = text
-        if html is not None:
-            self.html = html
-        if diff is not None:
-            self.diff = diff
-        if rollback is not None:
-            self.rollback = rollback
-        if created_at is not None:
-            self.created_at = created_at
-        if config is not None:
-            self.config = config
-        if environment is not None:
-            self.environment = environment
-        if project is not None:
-            self.project = project
-        if user is not None:
-            self.user = user
+        self.id = id
+        self.text = text
+        self.html = html
+        self.diff = diff
+        self.rollback = rollback
+        self.created_at = created_at
+        self.config = config
+        self.environment = environment
+        self.project = project
+        self.user = user
 
 
 class RollbackResponse(BaseModel):
@@ -105,5 +89,4 @@ class RollbackResponse(BaseModel):
         ----------
             log: Log
         """
-        if log is not None:
-            self.log = log
+        self.log = log

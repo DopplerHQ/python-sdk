@@ -22,7 +22,7 @@ class BaseService:
 
     Methods
     -------
-    set_bearer_token(token: str) -> None:
+    set_access_token(token: str) -> None:
         Sets bearer token key
     def _add_required_headers(headers: dict):
         Request authorization headers
@@ -34,16 +34,16 @@ class BaseService:
 
     _http = HTTPClient(None)
 
-    def __init__(self, bearer_token: str = "") -> None:
+    def __init__(self, access_token: str = "") -> None:
         """
         Initialize client
 
         Parameters:
         ----------
-            bearer_token : str
-                A bearer access token
+           access_token : str
+                A Access access token
         """
-        self._bearer_token = bearer_token
+        self._access_token = access_token
 
     def _pattern_matching(cls, value: str, pattern: str, variable_name: str):
         if re.match(r"{}".format(pattern), value):
@@ -73,16 +73,16 @@ class BaseService:
         """
         self._url_prefix = url
 
-    def set_bearer_token(self, token: str) -> None:
+    def set_access_token(self, token: str) -> None:
         """
-        Sets bearer token key
+        Sets access token key
 
         Parameters
         ----------
         token: string
-            Bearer token value
+            Access token value
         """
-        self._bearer_token = token
+        self._access_token = token
 
     def _add_required_headers(self, headers: dict):
         """
@@ -93,6 +93,6 @@ class BaseService:
         headers: dict
             Headers dict to add auth headers to
         """
-        headers["User-Agent"] = "liblab/0.1.16 DopplerSDK/1.1.1 python/2.7"
-        headers["Authorization"] = f"Bearer {self._bearer_token}"
+        headers["User-Agent"] = "liblab/0.1.17 DopplerSDK/1.1.2 python/2.7"
+        headers["Authorization"] = f"Bearer {self._access_token}"
         return headers
