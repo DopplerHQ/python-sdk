@@ -7,14 +7,16 @@ Class:
 """
 from .net.environment import Environment
 from .services.projects import Projects
-from .services.environments import Environments
-from .services.configs import Configs
 from .services.secrets import Secrets
 from .services.config_logs import ConfigLogs
-from .services.v_3 import V3
+from .services.environments import Environments
+from .services.configs import Configs
 from .services.activity_logs import ActivityLogs
+from .services.workplace import Workplace
 from .services.service_tokens import ServiceTokens
+from .services.audit import Audit
 from .services.dynamic_secrets import DynamicSecrets
+from .services.auth import Auth
 from .services.integrations import Integrations
 from .services.syncs import Syncs
 from .services.workplace_roles import WorkplaceRoles
@@ -23,6 +25,7 @@ from .services.project_members import ProjectMembers
 from .services.invites import Invites
 from .services.service_accounts import ServiceAccounts
 from .services.groups import Groups
+from .services.users import Users
 
 
 class DopplerSDK:
@@ -32,14 +35,16 @@ class DopplerSDK:
     Attributes
     ----------
     projects : Projects
-    environments : Environments
-    configs : Configs
     secrets : Secrets
     config_logs : ConfigLogs
-    v_3 : V3
+    environments : Environments
+    configs : Configs
     activity_logs : ActivityLogs
+    workplace : Workplace
     service_tokens : ServiceTokens
+    audit : Audit
     dynamic_secrets : DynamicSecrets
+    auth : Auth
     integrations : Integrations
     syncs : Syncs
     workplace_roles : WorkplaceRoles
@@ -48,6 +53,7 @@ class DopplerSDK:
     invites : Invites
     service_accounts : ServiceAccounts
     groups : Groups
+    users : Users
 
     Methods
     -------
@@ -68,14 +74,16 @@ class DopplerSDK:
             The access token
         """
         self.projects = Projects(access_token)
-        self.environments = Environments(access_token)
-        self.configs = Configs(access_token)
         self.secrets = Secrets(access_token)
         self.config_logs = ConfigLogs(access_token)
-        self.v_3 = V3(access_token)
+        self.environments = Environments(access_token)
+        self.configs = Configs(access_token)
         self.activity_logs = ActivityLogs(access_token)
+        self.workplace = Workplace(access_token)
         self.service_tokens = ServiceTokens(access_token)
+        self.audit = Audit(access_token)
         self.dynamic_secrets = DynamicSecrets(access_token)
+        self.auth = Auth(access_token)
         self.integrations = Integrations(access_token)
         self.syncs = Syncs(access_token)
         self.workplace_roles = WorkplaceRoles(access_token)
@@ -84,6 +92,7 @@ class DopplerSDK:
         self.invites = Invites(access_token)
         self.service_accounts = ServiceAccounts(access_token)
         self.groups = Groups(access_token)
+        self.users = Users(access_token)
 
         self.set_url(environment.value)
 
@@ -97,14 +106,16 @@ class DopplerSDK:
                 The end URL
         """
         self.projects.set_url(url)
-        self.environments.set_url(url)
-        self.configs.set_url(url)
         self.secrets.set_url(url)
         self.config_logs.set_url(url)
-        self.v_3.set_url(url)
+        self.environments.set_url(url)
+        self.configs.set_url(url)
         self.activity_logs.set_url(url)
+        self.workplace.set_url(url)
         self.service_tokens.set_url(url)
+        self.audit.set_url(url)
         self.dynamic_secrets.set_url(url)
+        self.auth.set_url(url)
         self.integrations.set_url(url)
         self.syncs.set_url(url)
         self.workplace_roles.set_url(url)
@@ -113,6 +124,7 @@ class DopplerSDK:
         self.invites.set_url(url)
         self.service_accounts.set_url(url)
         self.groups.set_url(url)
+        self.users.set_url(url)
 
     def set_access_token(self, token: str) -> None:
         """
@@ -124,14 +136,16 @@ class DopplerSDK:
             Auth token value
         """
         self.projects.set_access_token(token)
-        self.environments.set_access_token(token)
-        self.configs.set_access_token(token)
         self.secrets.set_access_token(token)
         self.config_logs.set_access_token(token)
-        self.v_3.set_access_token(token)
+        self.environments.set_access_token(token)
+        self.configs.set_access_token(token)
         self.activity_logs.set_access_token(token)
+        self.workplace.set_access_token(token)
         self.service_tokens.set_access_token(token)
+        self.audit.set_access_token(token)
         self.dynamic_secrets.set_access_token(token)
+        self.auth.set_access_token(token)
         self.integrations.set_access_token(token)
         self.syncs.set_access_token(token)
         self.workplace_roles.set_access_token(token)
@@ -140,3 +154,4 @@ class DopplerSDK:
         self.invites.set_access_token(token)
         self.service_accounts.set_access_token(token)
         self.groups.set_access_token(token)
+        self.users.set_access_token(token)

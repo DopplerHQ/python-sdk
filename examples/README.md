@@ -5,7 +5,7 @@ A basic example of how to use the doppler-sdk package.
 
 If `doppler-sdk` is published to pypi:
 ```sh
-pip install doppler-sdk==1.1.2
+pip install doppler-sdk==1.2.0
 ```
 
 In the event `doppler-sdk` is not published to pypi, you can install it locally by running the following command in the example folder:

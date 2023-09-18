@@ -1,36 +1,84 @@
 from .base import BaseModel
 
 
-class Project(BaseModel):
+class Stripe(BaseModel):
+    def __init__(
+        self, raw: str = None, computed: str = None, note: str = None, **kwargs
+    ):
+        """
+        Initialize Stripe
+        Parameters:
+        ----------
+            raw: str
+            computed: str
+            note: str
+        """
+        self.raw = raw
+        self.computed = computed
+        self.note = note
+
+
+class Algolia(BaseModel):
+    def __init__(
+        self, raw: str = None, computed: str = None, note: str = None, **kwargs
+    ):
+        """
+        Initialize Algolia
+        Parameters:
+        ----------
+            raw: str
+            computed: str
+            note: str
+        """
+        self.raw = raw
+        self.computed = computed
+        self.note = note
+
+
+class Database(BaseModel):
+    def __init__(
+        self, raw: str = None, computed: str = None, note: str = None, **kwargs
+    ):
+        """
+        Initialize Database
+        Parameters:
+        ----------
+            raw: str
+            computed: str
+            note: str
+        """
+        self.raw = raw
+        self.computed = computed
+        self.note = note
+
+
+class Secrets(BaseModel):
     def __init__(
         self,
-        id: str = None,
-        name: str = None,
-        description: str = None,
-        created_at: str = None,
+        STRIPE: Stripe = None,
+        ALGOLIA: Algolia = None,
+        DATABASE: Database = None,
         **kwargs,
     ):
         """
-        Initialize Project
+        Initialize Secrets
         Parameters:
         ----------
-            id: str
-            name: str
-            description: str
-            created_at: str
+            STRIPE: Stripe
+            ALGOLIA: Algolia
+            DATABASE: Database
         """
-        self.id = id
-        self.name = name
-        self.description = description
-        self.created_at = created_at
+        self.STRIPE = STRIPE
+        self.ALGOLIA = ALGOLIA
+        self.DATABASE = DATABASE
 
 
 class UpdateResponse(BaseModel):
-    def __init__(self, project: Project = None, **kwargs):
+    def __init__(self, secrets: Secrets = None, **kwargs):
         """
         Initialize UpdateResponse
         Parameters:
         ----------
-            project: Project
+            secrets: Secrets
         """
-        self.project = project
+        self.secrets = secrets
