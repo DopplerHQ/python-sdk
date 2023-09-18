@@ -8,8 +8,8 @@ class TestRenameResponseModel(unittest.TestCase):
 
     def test_rename_response(self):
         # Create RenameResponse class instance
-        test_model = RenameResponse(environment={"officia": 6})
-        self.assertEqual(test_model.environment, {"officia": 6})
+        test_model = RenameResponse(environment={"perspiciatis": 1})
+        self.assertEqual(test_model.environment, {"perspiciatis": 1})
 
 
 if __name__ == "__main__":

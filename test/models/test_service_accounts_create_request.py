@@ -10,11 +10,9 @@ class TestServiceAccountsCreateRequestModel(unittest.TestCase):
 
     def test_service_accounts_create_request(self):
         # Create ServiceAccountsCreateRequest class instance
-        test_model = ServiceAccountsCreateRequest(
-            name="ducimus", workplace_role={"eum": 3}
-        )
-        self.assertEqual(test_model.name, "ducimus")
-        self.assertEqual(test_model.workplace_role, {"eum": 3})
+        test_model = ServiceAccountsCreateRequest(name="a", workplace_role={"sed": 7})
+        self.assertEqual(test_model.name, "a")
+        self.assertEqual(test_model.workplace_role, {"sed": 7})
 
 
 if __name__ == "__main__":

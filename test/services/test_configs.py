@@ -15,7 +15,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs", json={}, status=200)
         # call the method to test
         test_service = Configs("testkey")
-        response = test_service.list("qui", "odit", 4, 1)
+        response = test_service.list("sit", "officia", 9, 4)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -34,7 +34,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
-            test_service.list("error", "dolore", 4, 8)
+            test_service.list("nobis", "porro", 6, 5)
         responses.reset()
 
     @responses.activate
@@ -62,7 +62,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs/config", json={}, status=200)
         # call the method to test
         test_service = Configs("testkey")
-        response = test_service.get("ut", "accusamus")
+        response = test_service.get("nam", "quam")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -81,7 +81,7 @@ class TestConfigs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/configs/config", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
-            test_service.get("excepturi", "cum")
+            test_service.get("autem", "aut")
         responses.reset()
 
     @responses.activate
@@ -203,7 +203,7 @@ class TestConfigs_(unittest.TestCase):
         )
         # call the method to test
         test_service = Configs("testkey")
-        response = test_service.list_trusted_ips("perferendis", "explicabo")
+        response = test_service.list_trusted_ips("amet", "minima")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -226,7 +226,7 @@ class TestConfigs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
-            test_service.list_trusted_ips("ipsam", "illo")
+            test_service.list_trusted_ips("est", "quisquam")
         responses.reset()
 
     @responses.activate
@@ -237,7 +237,7 @@ class TestConfigs_(unittest.TestCase):
         )
         # call the method to test
         test_service = Configs("testkey")
-        response = test_service.add_trusted_ip("numquam", "atque", {})
+        response = test_service.add_trusted_ip("dolorum", "possimus", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -260,7 +260,7 @@ class TestConfigs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
-            test_service.add_trusted_ip("ex", "quisquam", {})
+            test_service.add_trusted_ip("tempora", "ipsa", {})
         responses.reset()
 
     @responses.activate
@@ -271,7 +271,7 @@ class TestConfigs_(unittest.TestCase):
         )
         # call the method to test
         test_service = Configs("testkey")
-        response = test_service.delete_trusted_ip("dolorum", "ullam", {})
+        response = test_service.delete_trusted_ip("sed", "expedita", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -294,7 +294,7 @@ class TestConfigs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Configs("testkey")
-            test_service.delete_trusted_ip("iusto", "quam", {})
+            test_service.delete_trusted_ip("maxime", "ab", {})
         responses.reset()
 
 

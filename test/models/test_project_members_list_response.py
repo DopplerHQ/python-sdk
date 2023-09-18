@@ -8,8 +8,8 @@ class TestProjectMembersListResponseModel(unittest.TestCase):
 
     def test_project_members_list_response(self):
         # Create ProjectMembersListResponse class instance
-        test_model = ProjectMembersListResponse(members=["animi", "fugit"])
-        self.assertEqual(test_model.members, ["animi", "fugit"])
+        test_model = ProjectMembersListResponse(members=["iusto", "perferendis"])
+        self.assertEqual(test_model.members, ["iusto", "perferendis"])
 
 
 if __name__ == "__main__":

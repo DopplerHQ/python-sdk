@@ -5,32 +5,35 @@ A list of all models.
 - [NameTransformer](#nametransformer)
 - [Type](#type)
 - [GroupsType](#groupstype)
-- [GetResponse](#getresponse)
-- [UpdateResponse](#updateresponse)
 - [ListResponse](#listresponse)
 - [CreateResponse](#createresponse)
-- [EnvironmentsListResponse](#environmentslistresponse)
-- [EnvironmentsCreateResponse](#environmentscreateresponse)
+- [SecretsListResponse](#secretslistresponse)
+- [UpdateResponse](#updateresponse)
+- [ConfigLogsListResponse](#configlogslistresponse)
+- [GetResponse](#getresponse)
+- [EnvironmentsGetResponse](#environmentsgetresponse)
+- [RenameResponse](#renameresponse)
+- [ProjectsGetResponse](#projectsgetresponse)
+- [ProjectsUpdateResponse](#projectsupdateresponse)
 - [ConfigsListResponse](#configslistresponse)
 - [ConfigsCreateResponse](#configscreateresponse)
 - [ConfigsGetResponse](#configsgetresponse)
 - [ConfigsUpdateResponse](#configsupdateresponse)
 - [DeleteResponse](#deleteresponse)
-- [EnvironmentsGetResponse](#environmentsgetresponse)
-- [RenameResponse](#renameresponse)
-- [SecretsListResponse](#secretslistresponse)
-- [SecretsUpdateResponse](#secretsupdateresponse)
-- [ConfigLogsListResponse](#configlogslistresponse)
-- [ConfigLogsGetResponse](#configlogsgetresponse)
-- [ActivityLogsListResponse](#activitylogslistresponse)
-- [RetrieveResponse](#retrieveresponse)
-- [SecretsGetResponse](#secretsgetresponse)
+- [EnvironmentsListResponse](#environmentslistresponse)
+- [EnvironmentsCreateResponse](#environmentscreateresponse)
 - [RollbackResponse](#rollbackresponse)
+- [RetrieveResponse](#retrieveresponse)
+- [WorkplaceGetResponse](#workplacegetresponse)
+- [WorkplaceUpdateResponse](#workplaceupdateresponse)
+- [ActivityLogsListResponse](#activitylogslistresponse)
+- [SecretsGetResponse](#secretsgetresponse)
 - [ServiceTokensListResponse](#servicetokenslistresponse)
 - [ServiceTokensCreateResponse](#servicetokenscreateresponse)
 - [CloneResponse](#cloneresponse)
 - [LockResponse](#lockresponse)
 - [UnlockResponse](#unlockresponse)
+- [GetUserResponse](#getuserresponse)
 - [DownloadResponse](#downloadresponse)
 - [IssueLeaseResponse](#issueleaseresponse)
 - [RevokeLeaseResponse](#revokeleaseresponse)
@@ -70,15 +73,18 @@ A list of all models.
 - [GroupsCreateResponse](#groupscreateresponse)
 - [GroupsGetResponse](#groupsgetresponse)
 - [GroupsUpdateResponse](#groupsupdateresponse)
-- [UpdateRequest](#updaterequest)
-- [DeleteRequest](#deleterequest)
+- [UsersListResponse](#userslistresponse)
+- [UsersGetResponse](#usersgetresponse)
 - [CreateRequest](#createrequest)
-- [EnvironmentsCreateRequest](#environmentscreaterequest)
+- [UpdateRequest](#updaterequest)
+- [RenameRequest](#renamerequest)
+- [ProjectsUpdateRequest](#projectsupdaterequest)
+- [DeleteRequest](#deleterequest)
 - [ConfigsCreateRequest](#configscreaterequest)
 - [ConfigsUpdateRequest](#configsupdaterequest)
 - [ConfigsDeleteRequest](#configsdeleterequest)
-- [RenameRequest](#renamerequest)
-- [SecretsUpdateRequest](#secretsupdaterequest)
+- [EnvironmentsCreateRequest](#environmentscreaterequest)
+- [WorkplaceUpdateRequest](#workplaceupdaterequest)
 - [ServiceTokensCreateRequest](#servicetokenscreaterequest)
 - [ServiceTokensDeleteRequest](#servicetokensdeleterequest)
 - [CloneRequest](#clonerequest)
@@ -86,6 +92,7 @@ A list of all models.
 - [UnlockRequest](#unlockrequest)
 - [IssueLeaseRequest](#issueleaserequest)
 - [RevokeLeaseRequest](#revokeleaserequest)
+- [RevokeRequest](#revokerequest)
 - [UpdateNoteRequest](#updatenoterequest)
 - [IntegrationsCreateRequest](#integrationscreaterequest)
 - [IntegrationsUpdateRequest](#integrationsupdaterequest)
@@ -108,17 +115,25 @@ A list of all models.
 
 ## GroupsType
 
-## GetResponse
-
-## UpdateResponse
-
 ## ListResponse
 
 ## CreateResponse
 
-## EnvironmentsListResponse
+## SecretsListResponse
 
-## EnvironmentsCreateResponse
+## UpdateResponse
+
+## ConfigLogsListResponse
+
+## GetResponse
+
+## EnvironmentsGetResponse
+
+## RenameResponse
+
+## ProjectsGetResponse
+
+## ProjectsUpdateResponse
 
 ## ConfigsListResponse
 
@@ -130,25 +145,21 @@ A list of all models.
 
 ## DeleteResponse
 
-## EnvironmentsGetResponse
+## EnvironmentsListResponse
 
-## RenameResponse
+## EnvironmentsCreateResponse
 
-## SecretsListResponse
-
-## SecretsUpdateResponse
-
-## ConfigLogsListResponse
-
-## ConfigLogsGetResponse
-
-## ActivityLogsListResponse
+## RollbackResponse
 
 ## RetrieveResponse
 
-## SecretsGetResponse
+## WorkplaceGetResponse
 
-## RollbackResponse
+## WorkplaceUpdateResponse
+
+## ActivityLogsListResponse
+
+## SecretsGetResponse
 
 ## ServiceTokensListResponse
 
@@ -159,6 +170,8 @@ A list of all models.
 ## LockResponse
 
 ## UnlockResponse
+
+## GetUserResponse
 
 ## DownloadResponse
 
@@ -238,13 +251,19 @@ A list of all models.
 
 ## GroupsUpdateResponse
 
-## UpdateRequest
+## UsersListResponse
 
-## DeleteRequest
+## UsersGetResponse
 
 ## CreateRequest
 
-## EnvironmentsCreateRequest
+## UpdateRequest
+
+## RenameRequest
+
+## ProjectsUpdateRequest
+
+## DeleteRequest
 
 ## ConfigsCreateRequest
 
@@ -252,9 +271,9 @@ A list of all models.
 
 ## ConfigsDeleteRequest
 
-## RenameRequest
+## EnvironmentsCreateRequest
 
-## SecretsUpdateRequest
+## WorkplaceUpdateRequest
 
 ## ServiceTokensCreateRequest
 
@@ -269,6 +288,8 @@ A list of all models.
 ## IssueLeaseRequest
 
 ## RevokeLeaseRequest
+
+## RevokeRequest
 
 ## UpdateNoteRequest
 

@@ -8,8 +8,8 @@ class TestGetResponseModel(unittest.TestCase):
 
     def test_get_response(self):
         # Create GetResponse class instance
-        test_model = GetResponse(project={"voluptate": 2})
-        self.assertEqual(test_model.project, {"voluptate": 2})
+        test_model = GetResponse(log={"necessitatibus": 4})
+        self.assertEqual(test_model.log, {"necessitatibus": 4})
 
 
 if __name__ == "__main__":
