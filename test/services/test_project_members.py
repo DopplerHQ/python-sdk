@@ -17,7 +17,7 @@ class TestProjectMembers_(unittest.TestCase):
         )
         # call the method to test
         test_service = ProjectMembers("testkey")
-        response = test_service.list("ut", 4, 5)
+        response = test_service.list("corrupti", 2, 2)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +40,7 @@ class TestProjectMembers_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ProjectMembers("testkey")
-            test_service.list("temporibus", 1, 6)
+            test_service.list("doloribus", 5, 5)
         responses.reset()
 
     @responses.activate
@@ -51,7 +51,7 @@ class TestProjectMembers_(unittest.TestCase):
         )
         # call the method to test
         test_service = ProjectMembers("testkey")
-        response = test_service.add("accusamus", {})
+        response = test_service.add("ex", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,20 +74,20 @@ class TestProjectMembers_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ProjectMembers("testkey")
-            test_service.add("ipsa", {})
+            test_service.add("molestiae", {})
         responses.reset()
 
     @responses.activate
     def test_get(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/officiis",
+            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/inventore",
             json={},
             status=200,
         )
         # call the method to test
         test_service = ProjectMembers("testkey")
-        response = test_service.get("officiis", "workplace_user", "beatae")
+        response = test_service.get("inventore", "workplace_user", "asperiores")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -95,7 +95,7 @@ class TestProjectMembers_(unittest.TestCase):
     def test_get_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/esse",
+            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/corrupti",
             json={},
             status=202,
         )
@@ -108,26 +108,26 @@ class TestProjectMembers_(unittest.TestCase):
     def test_get_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/quidem",
+            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/vero",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = ProjectMembers("testkey")
-            test_service.get("quidem", "workplace_user", "reiciendis")
+            test_service.get("vero", "workplace_user", "sapiente")
         responses.reset()
 
     @responses.activate
     def test_update(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/tempore",
+            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/voluptas",
             json={},
             status=200,
         )
         # call the method to test
         test_service = ProjectMembers("testkey")
-        response = test_service.update("corporis", "tempore", "workplace_user", {})
+        response = test_service.update("quia", "voluptas", "workplace_user", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -135,7 +135,7 @@ class TestProjectMembers_(unittest.TestCase):
     def test_update_required_fields_missing(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/fuga",
+            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/nesciunt",
             json={},
             status=202,
         )
@@ -148,26 +148,26 @@ class TestProjectMembers_(unittest.TestCase):
     def test_update_error_on_non_200(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/eaque",
+            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/ut",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = ProjectMembers("testkey")
-            test_service.update("ab", "eaque", "workplace_user", {})
+            test_service.update("velit", "ut", "workplace_user", {})
         responses.reset()
 
     @responses.activate
     def test_delete(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/rerum",
+            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/a",
             json={},
             status=200,
         )
         # call the method to test
         test_service = ProjectMembers("testkey")
-        response = test_service.delete("laborum", "rerum", "workplace_user")
+        response = test_service.delete("quas", "a", "workplace_user")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -175,7 +175,7 @@ class TestProjectMembers_(unittest.TestCase):
     def test_delete_required_fields_missing(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/odio",
+            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/omnis",
             json={},
             status=202,
         )
@@ -188,13 +188,13 @@ class TestProjectMembers_(unittest.TestCase):
     def test_delete_error_on_non_200(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/esse",
+            "https://api.doppler.com/v3/projects/project/members/member/workplace_user/ipsa",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = ProjectMembers("testkey")
-            test_service.delete("totam", "esse", "workplace_user")
+            test_service.delete("fugiat", "ipsa", "workplace_user")
         responses.reset()
 
 

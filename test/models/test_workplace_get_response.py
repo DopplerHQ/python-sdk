@@ -8,8 +8,8 @@ class TestWorkplaceGetResponseModel(unittest.TestCase):
 
     def test_workplace_get_response(self):
         # Create WorkplaceGetResponse class instance
-        test_model = WorkplaceGetResponse(workplace={"suscipit": 6})
-        self.assertEqual(test_model.workplace, {"suscipit": 6})
+        test_model = WorkplaceGetResponse(workplace={"qui": 9})
+        self.assertEqual(test_model.workplace, {"qui": 9})
 
 
 if __name__ == "__main__":

@@ -9,12 +9,12 @@ class TestIssueLeaseResponseModel(unittest.TestCase):
     def test_issue_lease_response(self):
         # Create IssueLeaseResponse class instance
         test_model = IssueLeaseResponse(
-            success=True, id="porro", expires_at="possimus", value={"iusto": 6}
+            success=True, id="natus", expires_at="odio", value={"sed": 9}
         )
         self.assertEqual(test_model.success, True)
-        self.assertEqual(test_model.id, "porro")
-        self.assertEqual(test_model.expires_at, "possimus")
-        self.assertEqual(test_model.value, {"iusto": 6})
+        self.assertEqual(test_model.id, "natus")
+        self.assertEqual(test_model.expires_at, "odio")
+        self.assertEqual(test_model.value, {"sed": 9})
 
 
 if __name__ == "__main__":

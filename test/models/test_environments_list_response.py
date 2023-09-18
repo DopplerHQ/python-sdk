@@ -9,10 +9,10 @@ class TestEnvironmentsListResponseModel(unittest.TestCase):
     def test_environments_list_response(self):
         # Create EnvironmentsListResponse class instance
         test_model = EnvironmentsListResponse(
-            environments=["repellendus", "impedit"], page=4
+            environments=["tempore", "exercitationem"], page=1
         )
-        self.assertEqual(test_model.environments, ["repellendus", "impedit"])
-        self.assertEqual(test_model.page, 4)
+        self.assertEqual(test_model.environments, ["tempore", "exercitationem"])
+        self.assertEqual(test_model.page, 1)
 
 
 if __name__ == "__main__":

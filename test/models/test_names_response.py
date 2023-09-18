@@ -8,8 +8,8 @@ class TestNamesResponseModel(unittest.TestCase):
 
     def test_names_response(self):
         # Create NamesResponse class instance
-        test_model = NamesResponse(names=["commodi", "impedit"])
-        self.assertEqual(test_model.names, ["commodi", "impedit"])
+        test_model = NamesResponse(names=["tenetur", "atque"])
+        self.assertEqual(test_model.names, ["tenetur", "atque"])
 
 
 if __name__ == "__main__":

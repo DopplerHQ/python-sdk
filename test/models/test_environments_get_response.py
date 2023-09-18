@@ -8,8 +8,8 @@ class TestEnvironmentsGetResponseModel(unittest.TestCase):
 
     def test_environments_get_response(self):
         # Create EnvironmentsGetResponse class instance
-        test_model = EnvironmentsGetResponse(environment={"assumenda": 9})
-        self.assertEqual(test_model.environment, {"assumenda": 9})
+        test_model = EnvironmentsGetResponse(environment={"aut": 1})
+        self.assertEqual(test_model.environment, {"aut": 1})
 
 
 if __name__ == "__main__":

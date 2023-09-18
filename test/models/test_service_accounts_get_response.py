@@ -8,8 +8,8 @@ class TestServiceAccountsGetResponseModel(unittest.TestCase):
 
     def test_service_accounts_get_response(self):
         # Create ServiceAccountsGetResponse class instance
-        test_model = ServiceAccountsGetResponse(service_account={"ipsum": 7})
-        self.assertEqual(test_model.service_account, {"ipsum": 7})
+        test_model = ServiceAccountsGetResponse(service_account={"sint": 1})
+        self.assertEqual(test_model.service_account, {"sint": 1})
 
 
 if __name__ == "__main__":

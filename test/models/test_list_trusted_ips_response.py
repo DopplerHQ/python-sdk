@@ -8,8 +8,8 @@ class TestListTrustedIpsResponseModel(unittest.TestCase):
 
     def test_list_trusted_ips_response(self):
         # Create ListTrustedIpsResponse class instance
-        test_model = ListTrustedIpsResponse(ips=["nihil", "ad"])
-        self.assertEqual(test_model.ips, ["nihil", "ad"])
+        test_model = ListTrustedIpsResponse(ips=["deleniti", "a"])
+        self.assertEqual(test_model.ips, ["deleniti", "a"])
 
 
 if __name__ == "__main__":

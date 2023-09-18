@@ -9,11 +9,11 @@ class TestWorkplaceUpdateRequestModel(unittest.TestCase):
     def test_workplace_update_request(self):
         # Create WorkplaceUpdateRequest class instance
         test_model = WorkplaceUpdateRequest(
-            name="quis", billing_email="voluptatum", security_email="quasi"
+            name="reprehenderit", billing_email="quam", security_email="deserunt"
         )
-        self.assertEqual(test_model.name, "quis")
-        self.assertEqual(test_model.billing_email, "voluptatum")
-        self.assertEqual(test_model.security_email, "quasi")
+        self.assertEqual(test_model.name, "reprehenderit")
+        self.assertEqual(test_model.billing_email, "quam")
+        self.assertEqual(test_model.security_email, "deserunt")
 
 
 if __name__ == "__main__":

@@ -8,8 +8,8 @@ class TestSecretsListResponseModel(unittest.TestCase):
 
     def test_secrets_list_response(self):
         # Create SecretsListResponse class instance
-        test_model = SecretsListResponse(secrets={"ipsum": 4})
-        self.assertEqual(test_model.secrets, {"ipsum": 4})
+        test_model = SecretsListResponse(secrets={"quaerat": 3})
+        self.assertEqual(test_model.secrets, {"quaerat": 3})
 
 
 if __name__ == "__main__":
