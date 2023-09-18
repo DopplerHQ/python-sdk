@@ -1,19 +1,40 @@
 from .base import BaseModel
 
 
+class Secrets(BaseModel):
+    """
+    Object of secrets you would like to save to the config. Try it with the sample secrets below:
+    """
+
+    def __init__(
+        self, STRIPE: str, ALGOLIA: str = None, DATABASE: str = None, **kwargs
+    ):
+        """
+        Initialize Secrets
+        Parameters:
+        ----------
+            STRIPE: str
+            ALGOLIA: str
+            DATABASE: str
+        """
+        self.STRIPE = STRIPE
+        self.ALGOLIA = ALGOLIA
+        self.DATABASE = DATABASE
+
+
 class UpdateRequest(BaseModel):
-    def __init__(self, name: str, project: str, description: str = None, **kwargs):
+    def __init__(self, secrets: Secrets, config: str, project: str, **kwargs):
         """
         Initialize UpdateRequest
         Parameters:
         ----------
-            name: str
-                Name of the project.
+            secrets: Secrets
+                Object of secrets you would like to save to the config. Try it with the sample secrets below:
+            config: str
+                Name of the config object.
             project: str
                 Unique identifier for the project object.
-            description: str
-                Description of the project.
         """
-        self.name = name
+        self.secrets = secrets
+        self.config = config
         self.project = project
-        self.description = description

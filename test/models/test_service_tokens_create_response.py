@@ -11,25 +11,25 @@ class TestServiceTokensCreateResponseModel(unittest.TestCase):
     def test_service_tokens_create_response(self):
         # Create ServiceTokensCreateResponse class instance
         test_model = ServiceTokensCreateResponse(
-            name="nobis",
-            slug="ducimus",
-            created_at="animi",
-            key="reprehenderit",
-            config="sequi",
-            environment="explicabo",
-            project="amet",
+            name="voluptatum",
+            slug="repellat",
+            created_at="consectetur",
+            key="neque",
+            config="inventore",
+            environment="commodi",
+            project="magni",
             expires_at="foo",
-            access="illum",
+            access="laborum",
         )
-        self.assertEqual(test_model.name, "nobis")
-        self.assertEqual(test_model.slug, "ducimus")
-        self.assertEqual(test_model.created_at, "animi")
-        self.assertEqual(test_model.key, "reprehenderit")
-        self.assertEqual(test_model.config, "sequi")
-        self.assertEqual(test_model.environment, "explicabo")
-        self.assertEqual(test_model.project, "amet")
+        self.assertEqual(test_model.name, "voluptatum")
+        self.assertEqual(test_model.slug, "repellat")
+        self.assertEqual(test_model.created_at, "consectetur")
+        self.assertEqual(test_model.key, "neque")
+        self.assertEqual(test_model.config, "inventore")
+        self.assertEqual(test_model.environment, "commodi")
+        self.assertEqual(test_model.project, "magni")
         self.assertEqual(test_model.expires_at, "foo")
-        self.assertEqual(test_model.access, "illum")
+        self.assertEqual(test_model.access, "laborum")
 
 
 if __name__ == "__main__":

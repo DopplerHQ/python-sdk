@@ -8,8 +8,8 @@ class TestWorkplaceRolesListResponseModel(unittest.TestCase):
 
     def test_workplace_roles_list_response(self):
         # Create WorkplaceRolesListResponse class instance
-        test_model = WorkplaceRolesListResponse(roles=["dolor", "hic"])
-        self.assertEqual(test_model.roles, ["dolor", "hic"])
+        test_model = WorkplaceRolesListResponse(roles=["ipsam", "fuga"])
+        self.assertEqual(test_model.roles, ["ipsam", "fuga"])
 
 
 if __name__ == "__main__":

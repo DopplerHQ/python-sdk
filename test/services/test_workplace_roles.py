@@ -78,11 +78,13 @@ class TestWorkplaceRoles_(unittest.TestCase):
     def test_get(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/roles/role/sed", json={}, status=200
+            "https://api.doppler.com/v3/workplace/roles/role/impedit",
+            json={},
+            status=200,
         )
         # call the method to test
         test_service = WorkplaceRoles("testkey")
-        response = test_service.get("sed")
+        response = test_service.get("impedit")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -90,7 +92,7 @@ class TestWorkplaceRoles_(unittest.TestCase):
     def test_get_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/roles/role/dolores",
+            "https://api.doppler.com/v3/workplace/roles/role/debitis",
             json={},
             status=202,
         )
@@ -103,26 +105,26 @@ class TestWorkplaceRoles_(unittest.TestCase):
     def test_get_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/roles/role/similique",
+            "https://api.doppler.com/v3/workplace/roles/role/mollitia",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = WorkplaceRoles("testkey")
-            test_service.get("similique")
+            test_service.get("mollitia")
         responses.reset()
 
     @responses.activate
     def test_update(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/roles/role/explicabo",
+            "https://api.doppler.com/v3/workplace/roles/role/minima",
             json={},
             status=200,
         )
         # call the method to test
         test_service = WorkplaceRoles("testkey")
-        response = test_service.update("explicabo")
+        response = test_service.update("minima")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -130,9 +132,7 @@ class TestWorkplaceRoles_(unittest.TestCase):
     def test_update_required_fields_missing(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/roles/role/eligendi",
-            json={},
-            status=202,
+            "https://api.doppler.com/v3/workplace/roles/role/nihil", json={}, status=202
         )
         with self.assertRaises(TypeError):
             test_service = WorkplaceRoles("testkey")
@@ -143,26 +143,24 @@ class TestWorkplaceRoles_(unittest.TestCase):
     def test_update_error_on_non_200(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/roles/role/magnam",
-            json={},
-            status=404,
+            "https://api.doppler.com/v3/workplace/roles/role/iure", json={}, status=404
         )
         with self.assertRaises(ClientException):
             test_service = WorkplaceRoles("testkey")
-            test_service.update("magnam")
+            test_service.update("iure")
         responses.reset()
 
     @responses.activate
     def test_delete(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/roles/role/deserunt",
+            "https://api.doppler.com/v3/workplace/roles/role/libero",
             json={},
             status=200,
         )
         # call the method to test
         test_service = WorkplaceRoles("testkey")
-        response = test_service.delete("deserunt")
+        response = test_service.delete("libero")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -170,7 +168,7 @@ class TestWorkplaceRoles_(unittest.TestCase):
     def test_delete_required_fields_missing(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/roles/role/sapiente",
+            "https://api.doppler.com/v3/workplace/roles/role/cupiditate",
             json={},
             status=202,
         )
@@ -183,13 +181,11 @@ class TestWorkplaceRoles_(unittest.TestCase):
     def test_delete_error_on_non_200(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/roles/role/libero",
-            json={},
-            status=404,
+            "https://api.doppler.com/v3/workplace/roles/role/ea", json={}, status=404
         )
         with self.assertRaises(ClientException):
             test_service = WorkplaceRoles("testkey")
-            test_service.delete("libero")
+            test_service.delete("ea")
         responses.reset()
 
 

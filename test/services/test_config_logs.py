@@ -17,7 +17,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.list("dolorem", "voluptatum", 8, 4)
+        response = test_service.list("quisquam", "ad", 5, 7)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +40,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.list("enim", "exercitationem", 8, 9)
+            test_service.list("ut", "minima", 4, 1)
         responses.reset()
 
     @responses.activate
@@ -51,7 +51,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.get("fuga", "amet", "odit")
+        response = test_service.get("in", "distinctio", "et")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,7 +74,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.get("sunt", "repellendus", "explicabo")
+            test_service.get("iusto", "unde", "ab")
         responses.reset()
 
     @responses.activate
@@ -87,7 +87,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.rollback("unde", "laborum", "magnam")
+        response = test_service.rollback("distinctio", "perspiciatis", "deserunt")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -114,7 +114,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.rollback("atque", "eveniet", "quas")
+            test_service.rollback("cumque", "quod", "et")
         responses.reset()
 
 

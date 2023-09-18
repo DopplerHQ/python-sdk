@@ -8,11 +8,9 @@ class TestConfigLogsListResponseModel(unittest.TestCase):
 
     def test_config_logs_list_response(self):
         # Create ConfigLogsListResponse class instance
-        test_model = ConfigLogsListResponse(
-            page=5, logs=["reprehenderit", "cupiditate"]
-        )
-        self.assertEqual(test_model.page, 5)
-        self.assertEqual(test_model.logs, ["reprehenderit", "cupiditate"])
+        test_model = ConfigLogsListResponse(page=4, logs=["id", "sequi"])
+        self.assertEqual(test_model.page, 4)
+        self.assertEqual(test_model.logs, ["id", "sequi"])
 
 
 if __name__ == "__main__":
