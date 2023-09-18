@@ -8,10 +8,10 @@ class TestCloneRequestModel(unittest.TestCase):
 
     def test_clone_request(self):
         # Create CloneRequest class instance
-        test_model = CloneRequest(name="nam", config="nihil", project="eligendi")
-        self.assertEqual(test_model.name, "nam")
-        self.assertEqual(test_model.config, "nihil")
-        self.assertEqual(test_model.project, "eligendi")
+        test_model = CloneRequest(name="reiciendis", config="laborum", project="eius")
+        self.assertEqual(test_model.name, "reiciendis")
+        self.assertEqual(test_model.config, "laborum")
+        self.assertEqual(test_model.project, "eius")
 
     def test_clone_request_required_fields_missing(self):
         # Assert CloneRequest class generation fails without required fields

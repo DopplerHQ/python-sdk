@@ -8,8 +8,8 @@ class TestServiceTokensListResponseModel(unittest.TestCase):
 
     def test_service_tokens_list_response(self):
         # Create ServiceTokensListResponse class instance
-        test_model = ServiceTokensListResponse(tokens=["esse", "magnam"])
-        self.assertEqual(test_model.tokens, ["esse", "magnam"])
+        test_model = ServiceTokensListResponse(tokens=["fugit", "perferendis"])
+        self.assertEqual(test_model.tokens, ["fugit", "perferendis"])
 
 
 if __name__ == "__main__":

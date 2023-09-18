@@ -17,7 +17,7 @@ class TestGroups_(unittest.TestCase):
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.list(7, 6)
+        response = test_service.list(3, 5)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -29,7 +29,7 @@ class TestGroups_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.list(5, 9)
+            test_service.list(6, 2)
         responses.reset()
 
     @responses.activate
@@ -59,13 +59,13 @@ class TestGroups_(unittest.TestCase):
     def test_get(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/groups/group/neque",
+            "https://api.doppler.com/v3/workplace/groups/group/asperiores",
             json={},
             status=200,
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.get("neque")
+        response = test_service.get("asperiores")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -73,9 +73,7 @@ class TestGroups_(unittest.TestCase):
     def test_get_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/groups/group/maxime",
-            json={},
-            status=202,
+            "https://api.doppler.com/v3/workplace/groups/group/sed", json={}, status=202
         )
         with self.assertRaises(TypeError):
             test_service = Groups("testkey")
@@ -86,24 +84,26 @@ class TestGroups_(unittest.TestCase):
     def test_get_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/groups/group/aut", json={}, status=404
+            "https://api.doppler.com/v3/workplace/groups/group/repellendus",
+            json={},
+            status=404,
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.get("aut")
+            test_service.get("repellendus")
         responses.reset()
 
     @responses.activate
     def test_update(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/groups/group/eveniet",
+            "https://api.doppler.com/v3/workplace/groups/group/magnam",
             json={},
             status=200,
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.update("eveniet", {})
+        response = test_service.update("magnam", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -111,7 +111,7 @@ class TestGroups_(unittest.TestCase):
     def test_update_required_fields_missing(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/groups/group/consequuntur",
+            "https://api.doppler.com/v3/workplace/groups/group/laboriosam",
             json={},
             status=202,
         )
@@ -124,26 +124,26 @@ class TestGroups_(unittest.TestCase):
     def test_update_error_on_non_200(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/groups/group/nulla",
+            "https://api.doppler.com/v3/workplace/groups/group/numquam",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.update("nulla", {})
+            test_service.update("numquam", {})
         responses.reset()
 
     @responses.activate
     def test_delete(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/doloremque",
+            "https://api.doppler.com/v3/workplace/groups/group/amet",
             json={},
             status=200,
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.delete("doloremque")
+        response = test_service.delete("amet")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -151,7 +151,9 @@ class TestGroups_(unittest.TestCase):
     def test_delete_required_fields_missing(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/eos", json={}, status=202
+            "https://api.doppler.com/v3/workplace/groups/group/adipisci",
+            json={},
+            status=202,
         )
         with self.assertRaises(TypeError):
             test_service = Groups("testkey")
@@ -162,26 +164,26 @@ class TestGroups_(unittest.TestCase):
     def test_delete_error_on_non_200(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/similique",
+            "https://api.doppler.com/v3/workplace/groups/group/odit",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.delete("similique")
+            test_service.delete("odit")
         responses.reset()
 
     @responses.activate
     def test_add_member(self):
         # Mock the API response
         responses.post(
-            "https://api.doppler.com/v3/workplace/groups/group/tempore/members",
+            "https://api.doppler.com/v3/workplace/groups/group/ab/members",
             json={},
             status=200,
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.add_member("tempore", {})
+        response = test_service.add_member("ab", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -189,7 +191,7 @@ class TestGroups_(unittest.TestCase):
     def test_add_member_required_fields_missing(self):
         # Mock the API response
         responses.post(
-            "https://api.doppler.com/v3/workplace/groups/group/ea/members",
+            "https://api.doppler.com/v3/workplace/groups/group/esse/members",
             json={},
             status=202,
         )
@@ -202,26 +204,26 @@ class TestGroups_(unittest.TestCase):
     def test_add_member_error_on_non_200(self):
         # Mock the API response
         responses.post(
-            "https://api.doppler.com/v3/workplace/groups/group/eveniet/members",
+            "https://api.doppler.com/v3/workplace/groups/group/dolores/members",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.add_member("eveniet", {})
+            test_service.add_member("dolores", {})
         responses.reset()
 
     @responses.activate
     def test_delete_member(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/sunt/members/workplace_user/beatae",
+            "https://api.doppler.com/v3/workplace/groups/group/libero/members/workplace_user/repellendus",
             json={},
             status=200,
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.delete_member("beatae", "workplace_user", "sunt")
+        response = test_service.delete_member("repellendus", "workplace_user", "libero")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -229,7 +231,7 @@ class TestGroups_(unittest.TestCase):
     def test_delete_member_required_fields_missing(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/necessitatibus/members/workplace_user/maiores",
+            "https://api.doppler.com/v3/workplace/groups/group/dicta/members/workplace_user/a",
             json={},
             status=202,
         )
@@ -242,13 +244,13 @@ class TestGroups_(unittest.TestCase):
     def test_delete_member_error_on_non_200(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/assumenda/members/workplace_user/nam",
+            "https://api.doppler.com/v3/workplace/groups/group/fugiat/members/workplace_user/quos",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.delete_member("nam", "workplace_user", "assumenda")
+            test_service.delete_member("quos", "workplace_user", "fugiat")
         responses.reset()
 
 

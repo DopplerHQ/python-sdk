@@ -8,9 +8,9 @@ class TestIntegrationsUpdateRequestModel(unittest.TestCase):
 
     def test_integrations_update_request(self):
         # Create IntegrationsUpdateRequest class instance
-        test_model = IntegrationsUpdateRequest(name="quis", data="reiciendis")
-        self.assertEqual(test_model.name, "quis")
-        self.assertEqual(test_model.data, "reiciendis")
+        test_model = IntegrationsUpdateRequest(name="deserunt", data="debitis")
+        self.assertEqual(test_model.name, "deserunt")
+        self.assertEqual(test_model.data, "debitis")
 
 
 if __name__ == "__main__":

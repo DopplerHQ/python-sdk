@@ -8,9 +8,9 @@ class TestRenameRequestModel(unittest.TestCase):
 
     def test_rename_request(self):
         # Create RenameRequest class instance
-        test_model = RenameRequest(name="aut", slug="aperiam")
-        self.assertEqual(test_model.name, "aut")
-        self.assertEqual(test_model.slug, "aperiam")
+        test_model = RenameRequest(name="provident", slug="at")
+        self.assertEqual(test_model.name, "provident")
+        self.assertEqual(test_model.slug, "at")
 
 
 if __name__ == "__main__":

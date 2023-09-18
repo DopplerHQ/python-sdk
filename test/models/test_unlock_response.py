@@ -8,8 +8,8 @@ class TestUnlockResponseModel(unittest.TestCase):
 
     def test_unlock_response(self):
         # Create UnlockResponse class instance
-        test_model = UnlockResponse(config={"soluta": 3})
-        self.assertEqual(test_model.config, {"soluta": 3})
+        test_model = UnlockResponse(config={"ducimus": 6})
+        self.assertEqual(test_model.config, {"ducimus": 6})
 
 
 if __name__ == "__main__":

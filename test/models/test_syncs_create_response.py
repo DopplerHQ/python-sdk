@@ -8,8 +8,8 @@ class TestSyncsCreateResponseModel(unittest.TestCase):
 
     def test_syncs_create_response(self):
         # Create SyncsCreateResponse class instance
-        test_model = SyncsCreateResponse(sync={"excepturi": 9})
-        self.assertEqual(test_model.sync, {"excepturi": 9})
+        test_model = SyncsCreateResponse(sync={"ipsum": 1})
+        self.assertEqual(test_model.sync, {"ipsum": 1})
 
 
 if __name__ == "__main__":

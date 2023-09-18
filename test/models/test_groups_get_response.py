@@ -8,8 +8,8 @@ class TestGroupsGetResponseModel(unittest.TestCase):
 
     def test_groups_get_response(self):
         # Create GroupsGetResponse class instance
-        test_model = GroupsGetResponse(group={"tempora": 4})
-        self.assertEqual(test_model.group, {"tempora": 4})
+        test_model = GroupsGetResponse(group={"maxime": 1})
+        self.assertEqual(test_model.group, {"maxime": 1})
 
 
 if __name__ == "__main__":

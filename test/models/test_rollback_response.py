@@ -8,8 +8,8 @@ class TestRollbackResponseModel(unittest.TestCase):
 
     def test_rollback_response(self):
         # Create RollbackResponse class instance
-        test_model = RollbackResponse(log={"laboriosam": 3})
-        self.assertEqual(test_model.log, {"laboriosam": 3})
+        test_model = RollbackResponse(log={"cupiditate": 1})
+        self.assertEqual(test_model.log, {"cupiditate": 1})
 
 
 if __name__ == "__main__":

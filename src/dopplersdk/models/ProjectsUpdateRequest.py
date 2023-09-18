@@ -16,5 +16,4 @@ class ProjectsUpdateRequest(BaseModel):
         """
         self.name = name
         self.project = project
-        if description is not None:
-            self.description = description
+        self.description = description
