@@ -9,9 +9,9 @@ class TestIntegrationsListResponseModel(unittest.TestCase):
     def test_integrations_list_response(self):
         # Create IntegrationsListResponse class instance
         test_model = IntegrationsListResponse(
-            integrations=["optio", "porro"], success=True
+            integrations=["architecto", "quasi"], success=True
         )
-        self.assertEqual(test_model.integrations, ["optio", "porro"])
+        self.assertEqual(test_model.integrations, ["architecto", "quasi"])
         self.assertEqual(test_model.success, True)
 
 

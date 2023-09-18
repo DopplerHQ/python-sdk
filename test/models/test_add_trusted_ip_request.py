@@ -8,8 +8,8 @@ class TestAddTrustedIpRequestModel(unittest.TestCase):
 
     def test_add_trusted_ip_request(self):
         # Create AddTrustedIpRequest class instance
-        test_model = AddTrustedIpRequest(ip="recusandae")
-        self.assertEqual(test_model.ip, "recusandae")
+        test_model = AddTrustedIpRequest(ip="distinctio")
+        self.assertEqual(test_model.ip, "distinctio")
 
     def test_add_trusted_ip_request_required_fields_missing(self):
         # Assert AddTrustedIpRequest class generation fails without required fields

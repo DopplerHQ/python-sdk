@@ -9,21 +9,21 @@ class TestMeResponseModel(unittest.TestCase):
     def test_me_response(self):
         # Create MeResponse class instance
         test_model = MeResponse(
-            slug="quasi",
-            name="doloremque",
-            created_at="consequatur",
-            last_seen_at="quaerat",
-            token_preview="totam",
-            workplace={"quibusdam": 7},
-            type_="praesentium",
+            slug="veritatis",
+            name="dolores",
+            created_at="est",
+            last_seen_at="ipsa",
+            token_preview="minus",
+            workplace={"sunt": 4},
+            type_="perferendis",
         )
-        self.assertEqual(test_model.slug, "quasi")
-        self.assertEqual(test_model.name, "doloremque")
-        self.assertEqual(test_model.created_at, "consequatur")
-        self.assertEqual(test_model.last_seen_at, "quaerat")
-        self.assertEqual(test_model.token_preview, "totam")
-        self.assertEqual(test_model.workplace, {"quibusdam": 7})
-        self.assertEqual(test_model.type_, "praesentium")
+        self.assertEqual(test_model.slug, "veritatis")
+        self.assertEqual(test_model.name, "dolores")
+        self.assertEqual(test_model.created_at, "est")
+        self.assertEqual(test_model.last_seen_at, "ipsa")
+        self.assertEqual(test_model.token_preview, "minus")
+        self.assertEqual(test_model.workplace, {"sunt": 4})
+        self.assertEqual(test_model.type_, "perferendis")
 
 
 if __name__ == "__main__":

@@ -4,9 +4,7 @@ from .base import BaseService
 from ..models.ConfigLogsListResponse import (
     ConfigLogsListResponse as ConfigLogsListResponseModel,
 )
-from ..models.ConfigLogsGetResponse import (
-    ConfigLogsGetResponse as ConfigLogsGetResponseModel,
-)
+from ..models.GetResponse import GetResponse as GetResponseModel
 from ..models.RollbackResponse import RollbackResponse as RollbackResponseModel
 
 
@@ -56,7 +54,7 @@ class ConfigLogs(BaseService):
             return ConfigLogsListResponseModel(**res)
         return res
 
-    def get(self, log: str, config: str, project: str) -> ConfigLogsGetResponseModel:
+    def get(self, log: str, config: str, project: str) -> GetResponseModel:
         """
         Retrieve
         Parameters:
@@ -89,7 +87,7 @@ class ConfigLogs(BaseService):
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ConfigLogsGetResponseModel(**res)
+            return GetResponseModel(**res)
         return res
 
     def rollback(self, log: str, config: str, project: str) -> RollbackResponseModel:

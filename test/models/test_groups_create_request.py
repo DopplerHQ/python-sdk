@@ -8,11 +8,9 @@ class TestGroupsCreateRequestModel(unittest.TestCase):
 
     def test_groups_create_request(self):
         # Create GroupsCreateRequest class instance
-        test_model = GroupsCreateRequest(
-            name="aspernatur", default_project_role="explicabo"
-        )
-        self.assertEqual(test_model.name, "aspernatur")
-        self.assertEqual(test_model.default_project_role, "explicabo")
+        test_model = GroupsCreateRequest(name="quasi", default_project_role="impedit")
+        self.assertEqual(test_model.name, "quasi")
+        self.assertEqual(test_model.default_project_role, "impedit")
 
     def test_groups_create_request_required_fields_missing(self):
         # Assert GroupsCreateRequest class generation fails without required fields

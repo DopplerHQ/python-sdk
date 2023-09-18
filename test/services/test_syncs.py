@@ -17,7 +17,7 @@ class TestSyncs_(unittest.TestCase):
         )
         # call the method to test
         test_service = Syncs("testkey")
-        response = test_service.create("et", "a", {})
+        response = test_service.create("eum", "distinctio", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +40,7 @@ class TestSyncs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Syncs("testkey")
-            test_service.create("quisquam", "id", {})
+            test_service.create("possimus", "maiores", {})
         responses.reset()
 
     @responses.activate
@@ -51,7 +51,7 @@ class TestSyncs_(unittest.TestCase):
         )
         # call the method to test
         test_service = Syncs("testkey")
-        response = test_service.get("maiores", "ipsa", "qui")
+        response = test_service.get("repellendus", "enim", "sed")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,7 +74,7 @@ class TestSyncs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Syncs("testkey")
-            test_service.get("recusandae", "voluptas", "sed")
+            test_service.get("enim", "quisquam", "corrupti")
         responses.reset()
 
     @responses.activate
@@ -85,7 +85,7 @@ class TestSyncs_(unittest.TestCase):
         )
         # call the method to test
         test_service = Syncs("testkey")
-        response = test_service.delete(True, "est", "repudiandae", "quam")
+        response = test_service.delete(True, "quis", "dicta", "in")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -108,7 +108,7 @@ class TestSyncs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Syncs("testkey")
-            test_service.delete(True, "tenetur", "suscipit", "quis")
+            test_service.delete(True, "possimus", "unde", "vel")
         responses.reset()
 
 
