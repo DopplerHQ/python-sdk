@@ -26,7 +26,7 @@ class BaseService:
         Sets bearer token key
     def _add_required_headers(headers: dict):
         Request authorization headers
-    def set_url(url: str):
+    def set_base_url(url: str):
         Sets the base url
     """
 
@@ -62,7 +62,7 @@ class BaseService:
                 f"Invalid value for {variable_name}: must match one of {enum_values}"
             )
 
-    def set_url(self, url: str) -> None:
+    def set_base_url(self, url: str) -> None:
         """
         Sets the base URL
 
@@ -93,6 +93,6 @@ class BaseService:
         headers: dict
             Headers dict to add auth headers to
         """
-        headers["User-Agent"] = "liblab/0.1.17 DopplerSDK/1.2.0 python/2.7"
+        headers["User-Agent"] = "liblab/0.1.19 DopplerSDK/1.2.1 python/2.7"
         headers["Authorization"] = f"Bearer {self._access_token}"
         return headers

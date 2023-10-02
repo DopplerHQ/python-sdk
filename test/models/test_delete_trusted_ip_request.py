@@ -8,8 +8,8 @@ class TestDeleteTrustedIpRequestModel(unittest.TestCase):
 
     def test_delete_trusted_ip_request(self):
         # Create DeleteTrustedIpRequest class instance
-        test_model = DeleteTrustedIpRequest(ip="nesciunt")
-        self.assertEqual(test_model.ip, "nesciunt")
+        test_model = DeleteTrustedIpRequest(ip="ipsam")
+        self.assertEqual(test_model.ip, "ipsam")
 
     def test_delete_trusted_ip_request_required_fields_missing(self):
         # Assert DeleteTrustedIpRequest class generation fails without required fields

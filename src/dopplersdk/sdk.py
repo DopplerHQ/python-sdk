@@ -7,12 +7,12 @@ Class:
 """
 from .net.environment import Environment
 from .services.projects import Projects
-from .services.secrets import Secrets
-from .services.config_logs import ConfigLogs
 from .services.environments import Environments
 from .services.configs import Configs
-from .services.activity_logs import ActivityLogs
+from .services.secrets import Secrets
+from .services.config_logs import ConfigLogs
 from .services.workplace import Workplace
+from .services.activity_logs import ActivityLogs
 from .services.service_tokens import ServiceTokens
 from .services.audit import Audit
 from .services.dynamic_secrets import DynamicSecrets
@@ -35,12 +35,12 @@ class DopplerSDK:
     Attributes
     ----------
     projects : Projects
-    secrets : Secrets
-    config_logs : ConfigLogs
     environments : Environments
     configs : Configs
-    activity_logs : ActivityLogs
+    secrets : Secrets
+    config_logs : ConfigLogs
     workplace : Workplace
+    activity_logs : ActivityLogs
     service_tokens : ServiceTokens
     audit : Audit
     dynamic_secrets : DynamicSecrets
@@ -57,7 +57,7 @@ class DopplerSDK:
 
     Methods
     -------
-    set_url(url: str)
+    set_base_url(url: str)
         Sets the end URL
     set_access_token(access_token)
         Set the access token
@@ -74,12 +74,12 @@ class DopplerSDK:
             The access token
         """
         self.projects = Projects(access_token)
-        self.secrets = Secrets(access_token)
-        self.config_logs = ConfigLogs(access_token)
         self.environments = Environments(access_token)
         self.configs = Configs(access_token)
-        self.activity_logs = ActivityLogs(access_token)
+        self.secrets = Secrets(access_token)
+        self.config_logs = ConfigLogs(access_token)
         self.workplace = Workplace(access_token)
+        self.activity_logs = ActivityLogs(access_token)
         self.service_tokens = ServiceTokens(access_token)
         self.audit = Audit(access_token)
         self.dynamic_secrets = DynamicSecrets(access_token)
@@ -94,9 +94,9 @@ class DopplerSDK:
         self.groups = Groups(access_token)
         self.users = Users(access_token)
 
-        self.set_url(environment.value)
+        self.set_base_url(environment.value)
 
-    def set_url(self, url: str) -> None:
+    def set_base_url(self, url: str) -> None:
         """
         Sets the end URL
 
@@ -105,26 +105,26 @@ class DopplerSDK:
             url:
                 The end URL
         """
-        self.projects.set_url(url)
-        self.secrets.set_url(url)
-        self.config_logs.set_url(url)
-        self.environments.set_url(url)
-        self.configs.set_url(url)
-        self.activity_logs.set_url(url)
-        self.workplace.set_url(url)
-        self.service_tokens.set_url(url)
-        self.audit.set_url(url)
-        self.dynamic_secrets.set_url(url)
-        self.auth.set_url(url)
-        self.integrations.set_url(url)
-        self.syncs.set_url(url)
-        self.workplace_roles.set_url(url)
-        self.project_roles.set_url(url)
-        self.project_members.set_url(url)
-        self.invites.set_url(url)
-        self.service_accounts.set_url(url)
-        self.groups.set_url(url)
-        self.users.set_url(url)
+        self.projects.set_base_url(url)
+        self.environments.set_base_url(url)
+        self.configs.set_base_url(url)
+        self.secrets.set_base_url(url)
+        self.config_logs.set_base_url(url)
+        self.workplace.set_base_url(url)
+        self.activity_logs.set_base_url(url)
+        self.service_tokens.set_base_url(url)
+        self.audit.set_base_url(url)
+        self.dynamic_secrets.set_base_url(url)
+        self.auth.set_base_url(url)
+        self.integrations.set_base_url(url)
+        self.syncs.set_base_url(url)
+        self.workplace_roles.set_base_url(url)
+        self.project_roles.set_base_url(url)
+        self.project_members.set_base_url(url)
+        self.invites.set_base_url(url)
+        self.service_accounts.set_base_url(url)
+        self.groups.set_base_url(url)
+        self.users.set_base_url(url)
 
     def set_access_token(self, token: str) -> None:
         """
@@ -136,12 +136,12 @@ class DopplerSDK:
             Auth token value
         """
         self.projects.set_access_token(token)
-        self.secrets.set_access_token(token)
-        self.config_logs.set_access_token(token)
         self.environments.set_access_token(token)
         self.configs.set_access_token(token)
-        self.activity_logs.set_access_token(token)
+        self.secrets.set_access_token(token)
+        self.config_logs.set_access_token(token)
         self.workplace.set_access_token(token)
+        self.activity_logs.set_access_token(token)
         self.service_tokens.set_access_token(token)
         self.audit.set_access_token(token)
         self.dynamic_secrets.set_access_token(token)

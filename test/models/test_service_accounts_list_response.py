@@ -10,8 +10,8 @@ class TestServiceAccountsListResponseModel(unittest.TestCase):
 
     def test_service_accounts_list_response(self):
         # Create ServiceAccountsListResponse class instance
-        test_model = ServiceAccountsListResponse(service_accounts=["asperiores", "rem"])
-        self.assertEqual(test_model.service_accounts, ["asperiores", "rem"])
+        test_model = ServiceAccountsListResponse(service_accounts=["quasi", "nemo"])
+        self.assertEqual(test_model.service_accounts, ["quasi", "nemo"])
 
 
 if __name__ == "__main__":

@@ -4,17 +4,17 @@ A list of all services and services methods.
 
     - [Projects](#projects)
 
-    - [Secrets](#secrets)
-
-    - [ConfigLogs](#configlogs)
-
     - [Environments](#environments)
 
     - [Configs](#configs)
 
-    - [ActivityLogs](#activitylogs)
+    - [Secrets](#secrets)
+
+    - [ConfigLogs](#configlogs)
 
     - [Workplace](#workplace)
+
+    - [ActivityLogs](#activitylogs)
 
     - [ServiceTokens](#servicetokens)
 
@@ -48,11 +48,39 @@ A list of all services and services methods.
 
 | Method    | Description|
 | :-------- | :----------| 
+| [update](#update) | Update |
+| [get](#get) | Retrieve |
+| [delete](#delete) | Delete |
+| [create](#create) | Create |
+| [list](#list) | List |
+
+
+## Environments
+
+| Method    | Description|
+| :-------- | :----------| 
+| [create](#create) | Create |
+| [list](#list) | List |
+| [get](#get) | Retrieve |
+| [delete](#delete) | Delete |
+| [rename](#rename) | Rename |
+
+
+## Configs
+
+| Method    | Description|
+| :-------- | :----------| 
 | [create](#create) | Create |
 | [list](#list) | List |
 | [update](#update) | Update |
 | [get](#get) | Retrieve |
 | [delete](#delete) | Delete |
+| [clone](#clone) | Clone |
+| [lock](#lock) | Lock |
+| [unlock](#unlock) | Unlock |
+| [add_trusted_ip](#add_trusted_ip) | Add |
+| [list_trusted_ips](#list_trusted_ips) | List |
+| [delete_trusted_ip](#delete_trusted_ip) | Delete |
 
 
 ## Secrets
@@ -77,48 +105,20 @@ A list of all services and services methods.
 | [rollback](#rollback) | Rollback |
 
 
-## Environments
-
-| Method    | Description|
-| :-------- | :----------| 
-| [get](#get) | Retrieve |
-| [delete](#delete) | Delete |
-| [rename](#rename) | Rename |
-| [create](#create) | Create |
-| [list](#list) | List |
-
-
-## Configs
-
-| Method    | Description|
-| :-------- | :----------| 
-| [create](#create) | Create |
-| [list](#list) | List |
-| [update](#update) | Update |
-| [get](#get) | Retrieve |
-| [delete](#delete) | Delete |
-| [clone](#clone) | Clone |
-| [lock](#lock) | Lock |
-| [unlock](#unlock) | Unlock |
-| [add_trusted_ip](#add_trusted_ip) | Add |
-| [list_trusted_ips](#list_trusted_ips) | List |
-| [delete_trusted_ip](#delete_trusted_ip) | Delete |
-
-
-## ActivityLogs
-
-| Method    | Description|
-| :-------- | :----------| 
-| [retrieve](#retrieve) | Retrieve |
-| [list](#list) | List |
-
-
 ## Workplace
 
 | Method    | Description|
 | :-------- | :----------| 
 | [update](#update) | Update |
 | [get](#get) | Retrieve |
+
+
+## ActivityLogs
+
+| Method    | Description|
+| :-------- | :----------| 
+| [list](#list) | List |
+| [retrieve](#retrieve) | Retrieve |
 
 
 ## ServiceTokens
@@ -252,6 +252,93 @@ A list of all services and services methods.
 ## All Methods
 
 
+### **update**
+Update
+- HTTP Method: POST
+- Endpoint: /v3/projects/project
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| request_input | [UpdateRequest](/src/dopplersdk/models/README.md#updaterequest) | Optional | Request body. |
+
+**Return Type**
+
+[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+request_body = {
+	'description': 'PROJECT_DESCRIPTION',
+	'name': 'PROJECT_NEW_NAME',
+	'project': 'PROJECT_NAME'
+}
+results = sdk.projects.update(request_input = request_body)
+
+pprint(vars(results))
+
+```
+
+### **get**
+Retrieve
+- HTTP Method: GET
+- Endpoint: /v3/projects/project
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required | Unique identifier for the project object. |
+
+**Return Type**
+
+[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.projects.get(project = 'PROJECT_NAME')
+
+pprint(vars(results))
+
+```
+
+### **delete**
+Delete
+- HTTP Method: DELETE
+- Endpoint: /v3/projects/project
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| request_input | [DeleteRequest](/src/dopplersdk/models/README.md#deleterequest) | Optional | Request body. |
+
+**Return Type**
+
+Returns a dict object.
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+request_body = {'project': 'PROJECT_NAME'}
+results = sdk.projects.delete(request_input = request_body)
+
+pprint(vars(results))
+
+```
+
 ### **create**
 Create
 - HTTP Method: POST
@@ -314,19 +401,21 @@ pprint(vars(results))
 
 ```
 
-### **update**
-Update
+
+### **create**
+Create
 - HTTP Method: POST
-- Endpoint: /v3/projects/project
+- Endpoint: /v3/environments
 
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| request_input | [ProjectsUpdateRequest](/src/dopplersdk/models/README.md#projectsupdaterequest) | Optional | Request body. |
+| project | str | Required | The project's name |
+| request_input | [EnvironmentsCreateRequest](/src/dopplersdk/models/README.md#environmentscreaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[ProjectsUpdateResponse](/src/dopplersdk/models/README.md#projectsupdateresponse) 
+[EnvironmentsCreateResponse](/src/dopplersdk/models/README.md#environmentscreateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
@@ -336,99 +425,13 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'description': 'PROJECT_DESCRIPTION',
-	'name': 'PROJECT_NEW_NAME',
-	'project': 'PROJECT_NAME'
+	'name': 'name',
+	'slug': 'slug'
 }
-results = sdk.projects.update(request_input = request_body)
-
-pprint(vars(results))
-
-```
-
-### **get**
-Retrieve
-- HTTP Method: GET
-- Endpoint: /v3/projects/project
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | Unique identifier for the project object. |
-
-**Return Type**
-
-[ProjectsGetResponse](/src/dopplersdk/models/README.md#projectsgetresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.projects.get(project = 'PROJECT_NAME')
-
-pprint(vars(results))
-
-```
-
-### **delete**
-Delete
-- HTTP Method: DELETE
-- Endpoint: /v3/projects/project
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| request_input | [DeleteRequest](/src/dopplersdk/models/README.md#deleterequest) | Optional | Request body. |
-
-**Return Type**
-
-Returns a dict object.
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-request_body = {'project': 'PROJECT_NAME'}
-results = sdk.projects.delete(request_input = request_body)
-
-pprint(vars(results))
-
-```
-
-
-### **update**
-Update
-- HTTP Method: POST
-- Endpoint: /v3/configs/config/secrets
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| request_input | [UpdateRequest](/src/dopplersdk/models/README.md#updaterequest) | Optional | Request body. |
-
-**Return Type**
-
-[UpdateResponse](/src/dopplersdk/models/README.md#updateresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-request_body = {
-	'config': 'CONFIG_NAME',
-	'project': 'PROJECT_NAME',
-	'secrets': {"ALGOLIA":"N9TOPUCTO","DATABASE":"${USER}@aws.dynamodb.com:9876","STRIPE":"sk_test_9YxLnoLDdvOPn2dfjBVPB"}
-}
-results = sdk.secrets.update(request_input = request_body)
+results = sdk.environments.create(
+	request_input = request_body,
+	project = 'project'
+)
 
 pprint(vars(results))
 
@@ -437,22 +440,16 @@ pprint(vars(results))
 ### **list**
 List
 - HTTP Method: GET
-- Endpoint: /v3/configs/config/secrets
+- Endpoint: /v3/environments
 
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| project | str | Required | Unique identifier for the project object. |
-| config | str | Required | Name of the config object. |
-| accepts | str | Optional | Available options are: **application/json**, **text/plain** |
-| include_dynamic_secrets | bool | Optional | Whether or not to issue leases and include dynamic secret values for the config |
-| dynamic_secrets_ttl_sec | int | Optional | The number of seconds until dynamic leases expire. Must be used with `include_dynamic_secrets`. Defaults to 1800 (30 minutes). |
-| secrets | str | Optional | A comma-separated list of secrets to include in the response |
-| include_managed_secrets | bool | Optional | Whether to include Doppler's auto-generated (managed) secrets |
+| project | str | Required | The project's name |
 
 **Return Type**
 
-[SecretsListResponse](/src/dopplersdk/models/README.md#secretslistresponse) 
+[EnvironmentsListResponse](/src/dopplersdk/models/README.md#environmentslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
@@ -461,295 +458,11 @@ from dopplersdk import DopplerSDK
 DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.secrets.list(
-	project = 'PROJECT_NAME',
-	config = 'CONFIG_NAME',
-	accepts = 'application/json',
-	include_dynamic_secrets = True,
-	dynamic_secrets_ttl_sec = -22530200,
-	secrets = 'secrets',
-	include_managed_secrets = True
-)
+results = sdk.environments.list(project = 'project')
 
 pprint(vars(results))
 
 ```
-
-### **get**
-Retrieve
-- HTTP Method: GET
-- Endpoint: /v3/configs/config/secret
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | Unique identifier for the project object. |
-| config | str | Required | Name of the config object. |
-| name | str | Required | Name of the secret. |
-
-**Return Type**
-
-[SecretsGetResponse](/src/dopplersdk/models/README.md#secretsgetresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.secrets.get(
-	project = 'PROJECT_NAME',
-	config = 'CONFIG_NAME',
-	name = 'SECRET_NAME'
-)
-
-pprint(vars(results))
-
-```
-
-### **delete**
-Delete
-- HTTP Method: DELETE
-- Endpoint: /v3/configs/config/secret
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | Unique identifier for the project object. |
-| config | str | Required | Name of the config object. |
-| name | str | Required | Name of the secret. |
-
-**Return Type**
-
-Returns a dict object.
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.secrets.delete(
-	project = 'PROJECT_NAME',
-	config = 'CONFIG_NAME',
-	name = 'SECRET_NAME'
-)
-
-pprint(vars(results))
-
-```
-
-### **download**
-Download
-- HTTP Method: GET
-- Endpoint: /v3/configs/config/secrets/download
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | Unique identifier for the project object. Not required if using a Service Token. |
-| config | str | Required | Name of the config object. Not required if using a Service Token. |
-| format | [Format](/src/dopplersdk/models/README.md#format) | Optional |  |
-| name_transformer | [NameTransformer](/src/dopplersdk/models/README.md#nametransformer) | Optional | Transform secret names to a different case |
-| include_dynamic_secrets | bool | Optional | Whether or not to issue leases and include dynamic secret values for the config |
-| dynamic_secrets_ttl_sec | int | Optional | The number of seconds until dynamic leases expire. Must be used with `include_dynamic_secrets`. Defaults to 1800 (30 minutes). |
-
-**Return Type**
-
-[DownloadResponse](/src/dopplersdk/models/README.md#downloadresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.secrets.download(
-	project = 'project',
-	config = 'config',
-	format = 'json',
-	name_transformer = 'dotnet',
-	include_dynamic_secrets = True,
-	dynamic_secrets_ttl_sec = 1800
-)
-
-pprint(vars(results))
-
-```
-
-### **names**
-List Names
-- HTTP Method: GET
-- Endpoint: /v3/configs/config/secrets/names
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | Unique identifier for the project object. |
-| config | str | Required | Name of the config object. |
-| include_dynamic_secrets | bool | Optional | Whether or not to issue leases and include dynamic secret values for the config |
-| include_managed_secrets | bool | Optional | Whether to include Doppler's auto-generated (managed) secrets |
-
-**Return Type**
-
-[NamesResponse](/src/dopplersdk/models/README.md#namesresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.secrets.names(
-	project = 'PROJECT_NAME',
-	config = 'CONFIG_NAME',
-	include_dynamic_secrets = True,
-	include_managed_secrets = True
-)
-
-pprint(vars(results))
-
-```
-
-### **update_note**
-Update Note
-- HTTP Method: POST
-- Endpoint: /v3/configs/config/secrets/note
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| request_input | [UpdateNoteRequest](/src/dopplersdk/models/README.md#updatenoterequest) | Optional | Request body. |
-
-**Return Type**
-
-[UpdateNoteResponse](/src/dopplersdk/models/README.md#updatenoteresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-request_body = {
-	'config': 'CONFIG_NAME',
-	'note': 'note',
-	'project': 'PROJECT_NAME',
-	'secret': 'secret'
-}
-results = sdk.secrets.update_note(request_input = request_body)
-
-pprint(vars(results))
-
-```
-
-
-### **list**
-List
-- HTTP Method: GET
-- Endpoint: /v3/configs/config/logs
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | Unique identifier for the project object. |
-| config | str | Required | Name of the config object. |
-| page | int | Optional | Page number |
-| per_page | int | Optional | Items per page |
-
-**Return Type**
-
-[ConfigLogsListResponse](/src/dopplersdk/models/README.md#configlogslistresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.config_logs.list(
-	project = 'PROJECT_NAME',
-	config = 'CONFIG_NAME',
-	page = 1,
-	per_page = 20
-)
-
-pprint(vars(results))
-
-```
-
-### **get**
-Retrieve
-- HTTP Method: GET
-- Endpoint: /v3/configs/config/logs/log
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | Unique identifier for the project object. |
-| config | str | Required | Name of the config object. |
-| log | str | Required | Unique identifier for the log object. |
-
-**Return Type**
-
-[GetResponse](/src/dopplersdk/models/README.md#getresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.config_logs.get(
-	project = 'PROJECT_NAME',
-	config = 'CONFIG_NAME',
-	log = 'LOG_ID'
-)
-
-pprint(vars(results))
-
-```
-
-### **rollback**
-Rollback
-- HTTP Method: POST
-- Endpoint: /v3/configs/config/logs/log/rollback
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | Unique identifier for the project object. |
-| config | str | Required | Name of the config object. |
-| log | str | Required | Unique identifier for the log object. |
-
-**Return Type**
-
-[RollbackResponse](/src/dopplersdk/models/README.md#rollbackresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.config_logs.rollback(
-	project = 'PROJECT_NAME',
-	config = 'CONFIG_NAME',
-	log = 'LOG_ID'
-)
-
-pprint(vars(results))
-
-```
-
 
 ### **get**
 Retrieve
@@ -845,68 +558,6 @@ results = sdk.environments.rename(
 	project = 'project',
 	environment = 'environment'
 )
-
-pprint(vars(results))
-
-```
-
-### **create**
-Create
-- HTTP Method: POST
-- Endpoint: /v3/environments
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | The project's name |
-| request_input | [EnvironmentsCreateRequest](/src/dopplersdk/models/README.md#environmentscreaterequest) | Optional | Request body. |
-
-**Return Type**
-
-[EnvironmentsCreateResponse](/src/dopplersdk/models/README.md#environmentscreateresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-request_body = {
-	'name': 'name',
-	'slug': 'slug'
-}
-results = sdk.environments.create(
-	request_input = request_body,
-	project = 'project'
-)
-
-pprint(vars(results))
-
-```
-
-### **list**
-List
-- HTTP Method: GET
-- Endpoint: /v3/environments
-
-**Parameters**
-| Name    | Type| Required | Description |
-| :-------- | :----------| :----------| :----------| 
-| project | str | Required | The project's name |
-
-**Return Type**
-
-[EnvironmentsListResponse](/src/dopplersdk/models/README.md#environmentslistresponse) 
-
-**Example Usage Code Snippet**
-```Python
-from pprint import pprint
-from dopplersdk import DopplerSDK
-DOPPLERSDK_ACCESS_TOKEN = ''  
-sdk = DopplerSDK()
-sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.environments.list(project = 'project')
 
 pprint(vars(results))
 
@@ -1268,19 +919,19 @@ pprint(vars(results))
 ```
 
 
-### **retrieve**
-Retrieve
-- HTTP Method: GET
-- Endpoint: /v3/logs/log
+### **update**
+Update
+- HTTP Method: POST
+- Endpoint: /v3/configs/config/secrets
 
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| log | str | Required | Unique identifier for the log object. |
+| request_input | [SecretsUpdateRequest](/src/dopplersdk/models/README.md#secretsupdaterequest) | Optional | Request body. |
 
 **Return Type**
 
-[RetrieveResponse](/src/dopplersdk/models/README.md#retrieveresponse) 
+[SecretsUpdateResponse](/src/dopplersdk/models/README.md#secretsupdateresponse) 
 
 **Example Usage Code Snippet**
 ```Python
@@ -1289,7 +940,12 @@ from dopplersdk import DopplerSDK
 DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.activity_logs.retrieve(log = 'LOG_ID')
+request_body = {
+	'config': 'CONFIG_NAME',
+	'project': 'PROJECT_NAME',
+	'secrets': {"ALGOLIA":"N9TOPUCTO","DATABASE":"${USER}@aws.dynamodb.com:9876","STRIPE":"sk_test_9YxLnoLDdvOPn2dfjBVPB"}
+}
+results = sdk.secrets.update(request_input = request_body)
 
 pprint(vars(results))
 
@@ -1298,17 +954,22 @@ pprint(vars(results))
 ### **list**
 List
 - HTTP Method: GET
-- Endpoint: /v3/logs
+- Endpoint: /v3/configs/config/secrets
 
 **Parameters**
 | Name    | Type| Required | Description |
 | :-------- | :----------| :----------| :----------| 
-| page | str | Optional | Page number |
-| per_page | int | Optional | Items per page |
+| project | str | Required | Unique identifier for the project object. |
+| config | str | Required | Name of the config object. |
+| accepts | str | Optional | Available options are: **application/json**, **text/plain** |
+| include_dynamic_secrets | bool | Optional | Whether or not to issue leases and include dynamic secret values for the config |
+| dynamic_secrets_ttl_sec | int | Optional | The number of seconds until dynamic leases expire. Must be used with `include_dynamic_secrets`. Defaults to 1800 (30 minutes). |
+| secrets | str | Optional | A comma-separated list of secrets to include in the response |
+| include_managed_secrets | bool | Optional | Whether to include Doppler's auto-generated (managed) secrets |
 
 **Return Type**
 
-[ActivityLogsListResponse](/src/dopplersdk/models/README.md#activitylogslistresponse) 
+[SecretsListResponse](/src/dopplersdk/models/README.md#secretslistresponse) 
 
 **Example Usage Code Snippet**
 ```Python
@@ -1317,9 +978,289 @@ from dopplersdk import DopplerSDK
 DOPPLERSDK_ACCESS_TOKEN = ''  
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
-results = sdk.activity_logs.list(
-	page = '1',
+results = sdk.secrets.list(
+	project = 'PROJECT_NAME',
+	config = 'CONFIG_NAME',
+	accepts = 'application/json',
+	include_dynamic_secrets = True,
+	dynamic_secrets_ttl_sec = -13515479,
+	secrets = 'secrets',
+	include_managed_secrets = True
+)
+
+pprint(vars(results))
+
+```
+
+### **get**
+Retrieve
+- HTTP Method: GET
+- Endpoint: /v3/configs/config/secret
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required | Unique identifier for the project object. |
+| config | str | Required | Name of the config object. |
+| name | str | Required | Name of the secret. |
+
+**Return Type**
+
+[SecretsGetResponse](/src/dopplersdk/models/README.md#secretsgetresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.secrets.get(
+	project = 'PROJECT_NAME',
+	config = 'CONFIG_NAME',
+	name = 'SECRET_NAME'
+)
+
+pprint(vars(results))
+
+```
+
+### **delete**
+Delete
+- HTTP Method: DELETE
+- Endpoint: /v3/configs/config/secret
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required | Unique identifier for the project object. |
+| config | str | Required | Name of the config object. |
+| name | str | Required | Name of the secret. |
+
+**Return Type**
+
+Returns a dict object.
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.secrets.delete(
+	project = 'PROJECT_NAME',
+	config = 'CONFIG_NAME',
+	name = 'SECRET_NAME'
+)
+
+pprint(vars(results))
+
+```
+
+### **download**
+Download
+- HTTP Method: GET
+- Endpoint: /v3/configs/config/secrets/download
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required | Unique identifier for the project object. Not required if using a Service Token. |
+| config | str | Required | Name of the config object. Not required if using a Service Token. |
+| format | [Format](/src/dopplersdk/models/README.md#format) | Optional |  |
+| name_transformer | [NameTransformer](/src/dopplersdk/models/README.md#nametransformer) | Optional | Transform secret names to a different case |
+| include_dynamic_secrets | bool | Optional | Whether or not to issue leases and include dynamic secret values for the config |
+| dynamic_secrets_ttl_sec | int | Optional | The number of seconds until dynamic leases expire. Must be used with `include_dynamic_secrets`. Defaults to 1800 (30 minutes). |
+
+**Return Type**
+
+[DownloadResponse](/src/dopplersdk/models/README.md#downloadresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.secrets.download(
+	project = 'project',
+	config = 'config',
+	format = 'json',
+	name_transformer = 'camel',
+	include_dynamic_secrets = True,
+	dynamic_secrets_ttl_sec = 1800
+)
+
+pprint(vars(results))
+
+```
+
+### **names**
+List Names
+- HTTP Method: GET
+- Endpoint: /v3/configs/config/secrets/names
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required | Unique identifier for the project object. |
+| config | str | Required | Name of the config object. |
+| include_dynamic_secrets | bool | Optional | Whether or not to issue leases and include dynamic secret values for the config |
+| include_managed_secrets | bool | Optional | Whether to include Doppler's auto-generated (managed) secrets |
+
+**Return Type**
+
+[NamesResponse](/src/dopplersdk/models/README.md#namesresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.secrets.names(
+	project = 'PROJECT_NAME',
+	config = 'CONFIG_NAME',
+	include_dynamic_secrets = True,
+	include_managed_secrets = True
+)
+
+pprint(vars(results))
+
+```
+
+### **update_note**
+Update Note
+- HTTP Method: POST
+- Endpoint: /v3/configs/config/secrets/note
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| request_input | [UpdateNoteRequest](/src/dopplersdk/models/README.md#updatenoterequest) | Optional | Request body. |
+
+**Return Type**
+
+[UpdateNoteResponse](/src/dopplersdk/models/README.md#updatenoteresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+request_body = {
+	'config': 'CONFIG_NAME',
+	'note': 'note',
+	'project': 'PROJECT_NAME',
+	'secret': 'secret'
+}
+results = sdk.secrets.update_note(request_input = request_body)
+
+pprint(vars(results))
+
+```
+
+
+### **list**
+List
+- HTTP Method: GET
+- Endpoint: /v3/configs/config/logs
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required | Unique identifier for the project object. |
+| config | str | Required | Name of the config object. |
+| page | int | Optional | Page number |
+| per_page | int | Optional | Items per page |
+
+**Return Type**
+
+[ConfigLogsListResponse](/src/dopplersdk/models/README.md#configlogslistresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.config_logs.list(
+	project = 'PROJECT_NAME',
+	config = 'CONFIG_NAME',
+	page = 1,
 	per_page = 20
+)
+
+pprint(vars(results))
+
+```
+
+### **get**
+Retrieve
+- HTTP Method: GET
+- Endpoint: /v3/configs/config/logs/log
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required | Unique identifier for the project object. |
+| config | str | Required | Name of the config object. |
+| log | str | Required | Unique identifier for the log object. |
+
+**Return Type**
+
+[ConfigLogsGetResponse](/src/dopplersdk/models/README.md#configlogsgetresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.config_logs.get(
+	project = 'PROJECT_NAME',
+	config = 'CONFIG_NAME',
+	log = 'LOG_ID'
+)
+
+pprint(vars(results))
+
+```
+
+### **rollback**
+Rollback
+- HTTP Method: POST
+- Endpoint: /v3/configs/config/logs/log/rollback
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| project | str | Required | Unique identifier for the project object. |
+| config | str | Required | Name of the config object. |
+| log | str | Required | Unique identifier for the log object. |
+
+**Return Type**
+
+[RollbackResponse](/src/dopplersdk/models/README.md#rollbackresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.config_logs.rollback(
+	project = 'PROJECT_NAME',
+	config = 'CONFIG_NAME',
+	log = 'LOG_ID'
 )
 
 pprint(vars(results))
@@ -1386,6 +1327,65 @@ pprint(vars(results))
 ```
 
 
+### **list**
+List
+- HTTP Method: GET
+- Endpoint: /v3/logs
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| page | str | Optional | Page number |
+| per_page | int | Optional | Items per page |
+
+**Return Type**
+
+[ActivityLogsListResponse](/src/dopplersdk/models/README.md#activitylogslistresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.activity_logs.list(
+	page = '1',
+	per_page = 20
+)
+
+pprint(vars(results))
+
+```
+
+### **retrieve**
+Retrieve
+- HTTP Method: GET
+- Endpoint: /v3/logs/log
+
+**Parameters**
+| Name    | Type| Required | Description |
+| :-------- | :----------| :----------| :----------| 
+| log | str | Required | Unique identifier for the log object. |
+
+**Return Type**
+
+[RetrieveResponse](/src/dopplersdk/models/README.md#retrieveresponse) 
+
+**Example Usage Code Snippet**
+```Python
+from pprint import pprint
+from dopplersdk import DopplerSDK
+DOPPLERSDK_ACCESS_TOKEN = ''  
+sdk = DopplerSDK()
+sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
+results = sdk.activity_logs.retrieve(log = 'LOG_ID')
+
+pprint(vars(results))
+
+```
+
+
 ### **create**
 Create
 - HTTP Method: POST
@@ -1410,7 +1410,7 @@ sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'access': 'read',
 	'config': 'CONFIG_NAME',
-	'expire_at': '1929-11-07T10:29:22.0Z',
+	'expire_at': '1934-04-18T03:42:08.0Z',
 	'name': 'TOKEN_NAME',
 	'project': 'PROJECT_NAME'
 }
@@ -1542,7 +1542,7 @@ request_body = {
 	'config': 'config',
 	'dynamic_secret': 'dynamic_secret',
 	'project': 'project',
-	'ttl_sec': -88419109
+	'ttl_sec': 47181137
 }
 results = sdk.dynamic_secrets.issue_lease(request_input = request_body)
 
@@ -2237,10 +2237,10 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'environments': ["aliqua sint consectetur irure","occaecat aute"],
+	'environments': ["dolor consequat labore","laboris veniam ut"],
 	'role': 'role',
 	'slug': 'slug',
-	'type_': 'service_account'
+	'type_': 'group'
 }
 results = sdk.project_members.add(
 	request_input = request_body,
@@ -2309,7 +2309,7 @@ sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_members.get(
 	project = 'project',
-	type = 'group',
+	type = 'workplace_user',
 	slug = 'slug'
 )
 
@@ -2342,12 +2342,12 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'environments': ["eu tempor Ut anim","ipsum elit"],
+	'environments': ["enim commodo officia adipisicing","in amet eiusmod Excepteur"],
 	'role': 'role'
 }
 results = sdk.project_members.update(
 	request_input = request_body,
-	type = 'service_account',
+	type = 'invite',
 	slug = 'slug',
 	project = 'project'
 )
@@ -2380,7 +2380,7 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_members.delete(
-	type = 'invite',
+	type = 'workplace_user',
 	slug = 'slug',
 	project = 'project'
 )
@@ -2445,7 +2445,7 @@ sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'name': 'name',
-	'workplace_role': {"identifier":"identifier","permissions":["nostrud Lorem do officia","cupidatat proident nisi dolore cillum"]}
+	'workplace_role': {"identifier":"identifier","permissions":["aliquip id","est"]}
 }
 results = sdk.service_accounts.create(request_input = request_body)
 
@@ -2535,7 +2535,7 @@ sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'name': 'name',
-	'workplace_role': {"identifier":"identifier","permissions":["deserunt Excepteur Lorem magna","veniam"]}
+	'workplace_role': {"identifier":"identifier","permissions":["ut reprehenderit sit sint sed","nisi"]}
 }
 results = sdk.service_accounts.update(
 	request_input = request_body,

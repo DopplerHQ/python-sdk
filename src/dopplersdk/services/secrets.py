@@ -2,8 +2,12 @@ from urllib.parse import quote
 from ..net import query_serializer
 from .base import BaseService
 from ..models.SecretsListResponse import SecretsListResponse as SecretsListResponseModel
-from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
-from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
+from ..models.SecretsUpdateRequest import (
+    SecretsUpdateRequest as SecretsUpdateRequestModel,
+)
+from ..models.SecretsUpdateResponse import (
+    SecretsUpdateResponse as SecretsUpdateResponseModel,
+)
 from ..models.SecretsGetResponse import SecretsGetResponse as SecretsGetResponseModel
 from ..models.Format import Format as FormatModel
 from ..models.NameTransformer import NameTransformer as NameTransformerModel
@@ -87,7 +91,9 @@ class Secrets(BaseService):
             return SecretsListResponseModel(**res)
         return res
 
-    def update(self, request_input: UpdateRequestModel = None) -> UpdateResponseModel:
+    def update(
+        self, request_input: SecretsUpdateRequestModel = None
+    ) -> SecretsUpdateResponseModel:
         """
         Update
         """
@@ -99,7 +105,7 @@ class Secrets(BaseService):
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return UpdateResponseModel(**res)
+            return SecretsUpdateResponseModel(**res)
         return res
 
     def get(self, name: str, config: str, project: str) -> SecretsGetResponseModel:

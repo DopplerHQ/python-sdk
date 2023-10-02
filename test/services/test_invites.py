@@ -17,7 +17,7 @@ class TestInvites_(unittest.TestCase):
         )
         # call the method to test
         test_service = Invites("testkey")
-        response = test_service.list(6, 2)
+        response = test_service.list(2, 3)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -29,7 +29,7 @@ class TestInvites_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Invites("testkey")
-            test_service.list(7, 9)
+            test_service.list(8, 3)
         responses.reset()
 
 

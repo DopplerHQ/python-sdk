@@ -17,7 +17,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.list("vero", "accusamus", 5, 6)
+        response = test_service.list("aut", "dolor", 5, 5)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +40,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.list("deleniti", "repudiandae", 2, 5)
+            test_service.list("rem", "cupiditate", 8, 6)
         responses.reset()
 
     @responses.activate
@@ -51,7 +51,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.get("voluptatibus", "cumque", "minus")
+        response = test_service.get("odio", "cum", "magni")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,7 +74,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.get("voluptatem", "culpa", "provident")
+            test_service.get("rem", "assumenda", "dolorum")
         responses.reset()
 
     @responses.activate
@@ -87,7 +87,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.rollback("natus", "quod", "facilis")
+        response = test_service.rollback("voluptate", "inventore", "est")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -114,7 +114,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.rollback("consectetur", "voluptate", "nulla")
+            test_service.rollback("exercitationem", "quod", "eum")
         responses.reset()
 
 

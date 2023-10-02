@@ -10,8 +10,8 @@ class TestProjectMembersUpdateResponseModel(unittest.TestCase):
 
     def test_project_members_update_response(self):
         # Create ProjectMembersUpdateResponse class instance
-        test_model = ProjectMembersUpdateResponse(member={"minus": 6})
-        self.assertEqual(test_model.member, {"minus": 6})
+        test_model = ProjectMembersUpdateResponse(member={"quod": 9})
+        self.assertEqual(test_model.member, {"quod": 9})
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ class TestServiceTokens_(unittest.TestCase):
         )
         # call the method to test
         test_service = ServiceTokens("testkey")
-        response = test_service.list("molestias", "culpa")
+        response = test_service.list("distinctio", "reprehenderit")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +40,7 @@ class TestServiceTokens_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ServiceTokens("testkey")
-            test_service.list("consequuntur", "perferendis")
+            test_service.list("vel", "commodi")
         responses.reset()
 
     @responses.activate

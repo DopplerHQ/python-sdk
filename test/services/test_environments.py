@@ -10,6 +10,62 @@ class TestEnvironments_(unittest.TestCase):
         self.assertTrue(True)
 
     @responses.activate
+    def test_list(self):
+        # Mock the API response
+        responses.get("https://api.doppler.com/v3/environments", json={}, status=200)
+        # call the method to test
+        test_service = Environments("testkey")
+        response = test_service.list("perferendis")
+        self.assertEqual(response, {})
+        responses.reset(),
+
+    @responses.activate
+    def test_list_required_fields_missing(self):
+        # Mock the API response
+        responses.get("https://api.doppler.com/v3/environments", json={}, status=202)
+        with self.assertRaises(TypeError):
+            test_service = Environments("testkey")
+            test_service.list()
+        responses.reset(),
+
+    @responses.activate
+    def test_list_error_on_non_200(self):
+        # Mock the API response
+        responses.get("https://api.doppler.com/v3/environments", json={}, status=404)
+        with self.assertRaises(ClientException):
+            test_service = Environments("testkey")
+            test_service.list("voluptatem")
+        responses.reset()
+
+    @responses.activate
+    def test_create(self):
+        # Mock the API response
+        responses.post("https://api.doppler.com/v3/environments", json={}, status=200)
+        # call the method to test
+        test_service = Environments("testkey")
+        response = test_service.create("dignissimos", {})
+        self.assertEqual(response, {})
+        responses.reset(),
+
+    @responses.activate
+    def test_create_required_fields_missing(self):
+        # Mock the API response
+        responses.post("https://api.doppler.com/v3/environments", json={}, status=202)
+        with self.assertRaises(TypeError):
+            test_service = Environments("testkey")
+            test_service.create()
+        responses.reset(),
+
+    @responses.activate
+    def test_create_error_on_non_200(self):
+        # Mock the API response
+        responses.post("https://api.doppler.com/v3/environments", json={}, status=404)
+        with self.assertRaises(ClientException):
+            test_service = Environments("testkey")
+            test_service.create("debitis", {})
+        responses.reset()
+
+    @responses.activate
     def test_get(self):
         # Mock the API response
         responses.get(
@@ -17,7 +73,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         # call the method to test
         test_service = Environments("testkey")
-        response = test_service.get("occaecati", "sequi")
+        response = test_service.get("distinctio", "aliquid")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +96,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Environments("testkey")
-            test_service.get("nostrum", "natus")
+            test_service.get("placeat", "amet")
         responses.reset()
 
     @responses.activate
@@ -51,7 +107,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         # call the method to test
         test_service = Environments("testkey")
-        response = test_service.rename("tenetur", "odit", {})
+        response = test_service.rename("soluta", "explicabo", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,7 +130,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Environments("testkey")
-            test_service.rename("quod", "aspernatur", {})
+            test_service.rename("culpa", "fuga", {})
         responses.reset()
 
     @responses.activate
@@ -85,7 +141,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         # call the method to test
         test_service = Environments("testkey")
-        response = test_service.delete("necessitatibus", "officiis")
+        response = test_service.delete("et", "praesentium")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -108,63 +164,7 @@ class TestEnvironments_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Environments("testkey")
-            test_service.delete("fuga", "ab")
-        responses.reset()
-
-    @responses.activate
-    def test_list(self):
-        # Mock the API response
-        responses.get("https://api.doppler.com/v3/environments", json={}, status=200)
-        # call the method to test
-        test_service = Environments("testkey")
-        response = test_service.list("quae")
-        self.assertEqual(response, {})
-        responses.reset(),
-
-    @responses.activate
-    def test_list_required_fields_missing(self):
-        # Mock the API response
-        responses.get("https://api.doppler.com/v3/environments", json={}, status=202)
-        with self.assertRaises(TypeError):
-            test_service = Environments("testkey")
-            test_service.list()
-        responses.reset(),
-
-    @responses.activate
-    def test_list_error_on_non_200(self):
-        # Mock the API response
-        responses.get("https://api.doppler.com/v3/environments", json={}, status=404)
-        with self.assertRaises(ClientException):
-            test_service = Environments("testkey")
-            test_service.list("dolorum")
-        responses.reset()
-
-    @responses.activate
-    def test_create(self):
-        # Mock the API response
-        responses.post("https://api.doppler.com/v3/environments", json={}, status=200)
-        # call the method to test
-        test_service = Environments("testkey")
-        response = test_service.create("beatae", {})
-        self.assertEqual(response, {})
-        responses.reset(),
-
-    @responses.activate
-    def test_create_required_fields_missing(self):
-        # Mock the API response
-        responses.post("https://api.doppler.com/v3/environments", json={}, status=202)
-        with self.assertRaises(TypeError):
-            test_service = Environments("testkey")
-            test_service.create()
-        responses.reset(),
-
-    @responses.activate
-    def test_create_error_on_non_200(self):
-        # Mock the API response
-        responses.post("https://api.doppler.com/v3/environments", json={}, status=404)
-        with self.assertRaises(ClientException):
-            test_service = Environments("testkey")
-            test_service.create("amet", {})
+            test_service.delete("adipisci", "ratione")
         responses.reset()
 
 

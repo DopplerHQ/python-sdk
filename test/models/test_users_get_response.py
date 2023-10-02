@@ -8,8 +8,8 @@ class TestUsersGetResponseModel(unittest.TestCase):
 
     def test_users_get_response(self):
         # Create UsersGetResponse class instance
-        test_model = UsersGetResponse(workplace_user={"dolorum": 1}, success=True)
-        self.assertEqual(test_model.workplace_user, {"dolorum": 1})
+        test_model = UsersGetResponse(workplace_user={"accusantium": 6}, success=True)
+        self.assertEqual(test_model.workplace_user, {"accusantium": 6})
         self.assertEqual(test_model.success, True)
 
 

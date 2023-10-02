@@ -17,7 +17,7 @@ class TestSyncs_(unittest.TestCase):
         )
         # call the method to test
         test_service = Syncs("testkey")
-        response = test_service.create("eum", "distinctio", {})
+        response = test_service.create("ducimus", "blanditiis", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +40,7 @@ class TestSyncs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Syncs("testkey")
-            test_service.create("possimus", "maiores", {})
+            test_service.create("corporis", "iure", {})
         responses.reset()
 
     @responses.activate
@@ -51,7 +51,7 @@ class TestSyncs_(unittest.TestCase):
         )
         # call the method to test
         test_service = Syncs("testkey")
-        response = test_service.get("repellendus", "enim", "sed")
+        response = test_service.get("laborum", "dicta", "provident")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,7 +74,7 @@ class TestSyncs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Syncs("testkey")
-            test_service.get("enim", "quisquam", "corrupti")
+            test_service.get("distinctio", "cum", "ducimus")
         responses.reset()
 
     @responses.activate
@@ -85,7 +85,7 @@ class TestSyncs_(unittest.TestCase):
         )
         # call the method to test
         test_service = Syncs("testkey")
-        response = test_service.delete(True, "quis", "dicta", "in")
+        response = test_service.delete(True, "quis", "dignissimos", "labore")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -108,7 +108,7 @@ class TestSyncs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Syncs("testkey")
-            test_service.delete(True, "possimus", "unde", "vel")
+            test_service.delete(True, "voluptatum", "repellendus", "ipsam")
         responses.reset()
 
 
