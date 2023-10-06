@@ -8,12 +8,10 @@ class TestUpdateRequestModel(unittest.TestCase):
 
     def test_update_request(self):
         # Create UpdateRequest class instance
-        test_model = UpdateRequest(
-            secrets={"reiciendis": 1}, config="architecto", project="adipisci"
-        )
-        self.assertEqual(test_model.secrets, {"reiciendis": 1})
-        self.assertEqual(test_model.config, "architecto")
-        self.assertEqual(test_model.project, "adipisci")
+        test_model = UpdateRequest(secrets={"ab": 3}, config="eum", project="repellat")
+        self.assertEqual(test_model.secrets, {"ab": 3})
+        self.assertEqual(test_model.config, "eum")
+        self.assertEqual(test_model.project, "repellat")
 
     def test_update_request_required_fields_missing(self):
         # Assert UpdateRequest class generation fails without required fields

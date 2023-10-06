@@ -8,8 +8,8 @@ class TestRevokeRequestModel(unittest.TestCase):
 
     def test_revoke_request(self):
         # Create RevokeRequest class instance
-        test_model = RevokeRequest(token="ratione")
-        self.assertEqual(test_model.token, "ratione")
+        test_model = RevokeRequest(token="laboriosam")
+        self.assertEqual(test_model.token, "laboriosam")
 
     def test_revoke_request_required_fields_missing(self):
         # Assert RevokeRequest class generation fails without required fields

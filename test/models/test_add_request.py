@@ -10,14 +10,14 @@ class TestAddRequestModel(unittest.TestCase):
         # Create AddRequest class instance
         test_model = AddRequest(
             type_="workplace_user",
-            slug="mollitia",
-            role="aspernatur",
-            environments=["asperiores", "mollitia"],
+            slug="harum",
+            role="eveniet",
+            environments=["blanditiis", "sunt"],
         )
         self.assertEqual(test_model.type_, "workplace_user")
-        self.assertEqual(test_model.slug, "mollitia")
-        self.assertEqual(test_model.role, "aspernatur")
-        self.assertEqual(test_model.environments, ["asperiores", "mollitia"])
+        self.assertEqual(test_model.slug, "harum")
+        self.assertEqual(test_model.role, "eveniet")
+        self.assertEqual(test_model.environments, ["blanditiis", "sunt"])
 
     def test_add_request_required_fields_missing(self):
         # Assert AddRequest class generation fails without required fields

@@ -9,12 +9,12 @@ class TestDownloadResponseModel(unittest.TestCase):
     def test_download_response(self):
         # Create DownloadResponse class instance
         test_model = DownloadResponse(
-            STRIPE="magnam", ALGOLIA="veritatis", DATABASE="voluptatibus", USER="iure"
+            STRIPE="necessitatibus", ALGOLIA="totam", DATABASE="placeat", USER="error"
         )
-        self.assertEqual(test_model.STRIPE, "magnam")
-        self.assertEqual(test_model.ALGOLIA, "veritatis")
-        self.assertEqual(test_model.DATABASE, "voluptatibus")
-        self.assertEqual(test_model.USER, "iure")
+        self.assertEqual(test_model.STRIPE, "necessitatibus")
+        self.assertEqual(test_model.ALGOLIA, "totam")
+        self.assertEqual(test_model.DATABASE, "placeat")
+        self.assertEqual(test_model.USER, "error")
 
 
 if __name__ == "__main__":
