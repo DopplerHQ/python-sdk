@@ -3,7 +3,7 @@
 {
 	"name": "Python SDK",
 	"image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
-	"postCreateCommand": "pip3 install --user -r requirements.txt && cd example && sh install.sh",
+	"postCreateCommand": "pip3 install --user -r requirements.txt && cd examples && sh install.sh",
 	"customizations": {
 		"codespaces":{
 		  "openFiles": ["examples/sample.py", "examples/README.md"]

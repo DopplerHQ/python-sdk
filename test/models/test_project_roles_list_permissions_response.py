@@ -10,8 +10,10 @@ class TestProjectRolesListPermissionsResponseModel(unittest.TestCase):
 
     def test_project_roles_list_permissions_response(self):
         # Create ProjectRolesListPermissionsResponse class instance
-        test_model = ProjectRolesListPermissionsResponse(permissions=["cum", "quae"])
-        self.assertEqual(test_model.permissions, ["cum", "quae"])
+        test_model = ProjectRolesListPermissionsResponse(
+            permissions=["molestiae", "consectetur"]
+        )
+        self.assertEqual(test_model.permissions, ["molestiae", "consectetur"])
 
 
 if __name__ == "__main__":

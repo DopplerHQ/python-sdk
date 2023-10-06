@@ -29,7 +29,7 @@ class TestGroups_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.list(6, 8)
+            test_service.list(1, 4)
         responses.reset()
 
     @responses.activate
@@ -59,11 +59,11 @@ class TestGroups_(unittest.TestCase):
     def test_get(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/groups/group/ex", json={}, status=200
+            "https://api.doppler.com/v3/workplace/groups/group/hic", json={}, status=200
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.get("ex")
+        response = test_service.get("hic")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -71,7 +71,7 @@ class TestGroups_(unittest.TestCase):
     def test_get_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/groups/group/aliquam",
+            "https://api.doppler.com/v3/workplace/groups/group/dicta",
             json={},
             status=202,
         )
@@ -84,24 +84,26 @@ class TestGroups_(unittest.TestCase):
     def test_get_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/groups/group/quo", json={}, status=404
+            "https://api.doppler.com/v3/workplace/groups/group/molestias",
+            json={},
+            status=404,
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.get("quo")
+            test_service.get("molestias")
         responses.reset()
 
     @responses.activate
     def test_update(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/groups/group/aliquam",
+            "https://api.doppler.com/v3/workplace/groups/group/illum",
             json={},
             status=200,
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.update("aliquam", {})
+        response = test_service.update("illum", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -109,7 +111,7 @@ class TestGroups_(unittest.TestCase):
     def test_update_required_fields_missing(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/groups/group/laudantium",
+            "https://api.doppler.com/v3/workplace/groups/group/veritatis",
             json={},
             status=202,
         )
@@ -122,24 +124,24 @@ class TestGroups_(unittest.TestCase):
     def test_update_error_on_non_200(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/groups/group/ex", json={}, status=404
+            "https://api.doppler.com/v3/workplace/groups/group/ab", json={}, status=404
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.update("ex", {})
+            test_service.update("ab", {})
         responses.reset()
 
     @responses.activate
     def test_delete(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/debitis",
+            "https://api.doppler.com/v3/workplace/groups/group/nesciunt",
             json={},
             status=200,
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.delete("debitis")
+        response = test_service.delete("nesciunt")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -147,7 +149,7 @@ class TestGroups_(unittest.TestCase):
     def test_delete_required_fields_missing(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/adipisci",
+            "https://api.doppler.com/v3/workplace/groups/group/maxime",
             json={},
             status=202,
         )
@@ -160,26 +162,26 @@ class TestGroups_(unittest.TestCase):
     def test_delete_error_on_non_200(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/illum",
+            "https://api.doppler.com/v3/workplace/groups/group/provident",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.delete("illum")
+            test_service.delete("provident")
         responses.reset()
 
     @responses.activate
     def test_add_member(self):
         # Mock the API response
         responses.post(
-            "https://api.doppler.com/v3/workplace/groups/group/beatae/members",
+            "https://api.doppler.com/v3/workplace/groups/group/dolorum/members",
             json={},
             status=200,
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.add_member("beatae", {})
+        response = test_service.add_member("dolorum", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -187,7 +189,7 @@ class TestGroups_(unittest.TestCase):
     def test_add_member_required_fields_missing(self):
         # Mock the API response
         responses.post(
-            "https://api.doppler.com/v3/workplace/groups/group/quod/members",
+            "https://api.doppler.com/v3/workplace/groups/group/officiis/members",
             json={},
             status=202,
         )
@@ -200,28 +202,26 @@ class TestGroups_(unittest.TestCase):
     def test_add_member_error_on_non_200(self):
         # Mock the API response
         responses.post(
-            "https://api.doppler.com/v3/workplace/groups/group/illum/members",
+            "https://api.doppler.com/v3/workplace/groups/group/rerum/members",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.add_member("illum", {})
+            test_service.add_member("rerum", {})
         responses.reset()
 
     @responses.activate
     def test_delete_member(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/perferendis/members/workplace_user/temporibus",
+            "https://api.doppler.com/v3/workplace/groups/group/perferendis/members/workplace_user/nemo",
             json={},
             status=200,
         )
         # call the method to test
         test_service = Groups("testkey")
-        response = test_service.delete_member(
-            "temporibus", "workplace_user", "perferendis"
-        )
+        response = test_service.delete_member("nemo", "workplace_user", "perferendis")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -229,7 +229,7 @@ class TestGroups_(unittest.TestCase):
     def test_delete_member_required_fields_missing(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/facilis/members/workplace_user/eveniet",
+            "https://api.doppler.com/v3/workplace/groups/group/ipsum/members/workplace_user/velit",
             json={},
             status=202,
         )
@@ -242,13 +242,13 @@ class TestGroups_(unittest.TestCase):
     def test_delete_member_error_on_non_200(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/groups/group/quos/members/workplace_user/totam",
+            "https://api.doppler.com/v3/workplace/groups/group/veniam/members/workplace_user/vitae",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = Groups("testkey")
-            test_service.delete_member("totam", "workplace_user", "quos")
+            test_service.delete_member("vitae", "workplace_user", "veniam")
         responses.reset()
 
 

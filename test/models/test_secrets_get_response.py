@@ -8,9 +8,9 @@ class TestSecretsGetResponseModel(unittest.TestCase):
 
     def test_secrets_get_response(self):
         # Create SecretsGetResponse class instance
-        test_model = SecretsGetResponse(name="vel", value={"distinctio": 2})
-        self.assertEqual(test_model.name, "vel")
-        self.assertEqual(test_model.value, {"distinctio": 2})
+        test_model = SecretsGetResponse(name="pariatur", value={"sequi": 7})
+        self.assertEqual(test_model.name, "pariatur")
+        self.assertEqual(test_model.value, {"sequi": 7})
 
 
 if __name__ == "__main__":

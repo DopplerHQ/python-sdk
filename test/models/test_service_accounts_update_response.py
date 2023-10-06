@@ -10,8 +10,8 @@ class TestServiceAccountsUpdateResponseModel(unittest.TestCase):
 
     def test_service_accounts_update_response(self):
         # Create ServiceAccountsUpdateResponse class instance
-        test_model = ServiceAccountsUpdateResponse(service_account={"laborum": 2})
-        self.assertEqual(test_model.service_account, {"laborum": 2})
+        test_model = ServiceAccountsUpdateResponse(service_account={"consectetur": 7})
+        self.assertEqual(test_model.service_account, {"consectetur": 7})
 
 
 if __name__ == "__main__":

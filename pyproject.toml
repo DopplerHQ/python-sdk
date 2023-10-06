@@ -4,26 +4,29 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "doppler-sdk"
-version = "1.2.0"
-license = { text = "SEE LICENSE IN LICENSE" }
+version = "1.2.1"
+license = { text = "MIT" }
 authors = [
-  { name="Example Author", email="author@example.com" },
+	"Doppler"
 ]
 description = """"""
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+	"License :: OSI Approved :: Apache Software License",
+	"Programming Language :: Python :: 3 :: Only",
+	"Operating System :: OS Independent",
+	"Topic :: Security"
 ]
 dependencies = [
-    "requests==2.31.0",
-    "http-exceptions==0.2.10",
-    "pytest==7.1.2",
-    "responses==0.21.0",
+	"requests",
+	"http-exceptions",
+	"pytest",
+	"responses"
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+Documentation = "https://docs.doppler.com/docs/sdk-python"
+Source = "https://github.com/DopplerHQ/python-sdk"
+Tracker = "https://github.com/DopplerHQ/python-sdk/issues"
+Homepage = "https://doppler.com"

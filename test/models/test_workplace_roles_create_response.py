@@ -10,8 +10,8 @@ class TestWorkplaceRolesCreateResponseModel(unittest.TestCase):
 
     def test_workplace_roles_create_response(self):
         # Create WorkplaceRolesCreateResponse class instance
-        test_model = WorkplaceRolesCreateResponse(role={"suscipit": 9})
-        self.assertEqual(test_model.role, {"suscipit": 9})
+        test_model = WorkplaceRolesCreateResponse(role={"neque": 3})
+        self.assertEqual(test_model.role, {"neque": 3})
 
 
 if __name__ == "__main__":

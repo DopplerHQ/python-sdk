@@ -8,8 +8,8 @@ class TestProjectRolesGetResponseModel(unittest.TestCase):
 
     def test_project_roles_get_response(self):
         # Create ProjectRolesGetResponse class instance
-        test_model = ProjectRolesGetResponse(role={"perspiciatis": 8})
-        self.assertEqual(test_model.role, {"perspiciatis": 8})
+        test_model = ProjectRolesGetResponse(role={"totam": 5})
+        self.assertEqual(test_model.role, {"totam": 5})
 
 
 if __name__ == "__main__":

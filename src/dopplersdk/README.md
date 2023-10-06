@@ -1,10 +1,10 @@
-# DopplerSDK Python SDK 1.2.0
+# DopplerSDK Python SDK 1.2.1
 A Python SDK for DopplerSDK.
 
 
 
-- API version: 1.2.0
-- SDK version: 1.2.0
+- API version: 1.2.1
+- SDK version: 1.2.1
 
 ## Table of Contents
 - [Requirements](#requirements)
@@ -18,6 +18,7 @@ A Python SDK for DopplerSDK.
 - [Configuration](#configuration)
 - [Sample Usage](#sample-usage)
 - [DopplerSDK Services](#dopplersdk-services)
+- [License](#license)
 
 ## Installation
 ```bash
@@ -579,7 +580,7 @@ results = sdk.secrets.list(
 	config = 'CONFIG_NAME',
 	accepts = 'application/json',
 	include_dynamic_secrets = True,
-	dynamic_secrets_ttl_sec = -22530200,
+	dynamic_secrets_ttl_sec = 7490721,
 	secrets = 'secrets',
 	include_managed_secrets = True
 )
@@ -1523,7 +1524,7 @@ sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'access': 'read',
 	'config': 'CONFIG_NAME',
-	'expire_at': '1929-11-07T10:29:22.0Z',
+	'expire_at': '1892-03-20T20:13:26.0Z',
 	'name': 'TOKEN_NAME',
 	'project': 'PROJECT_NAME'
 }
@@ -1655,7 +1656,7 @@ request_body = {
 	'config': 'config',
 	'dynamic_secret': 'dynamic_secret',
 	'project': 'project',
-	'ttl_sec': -88419109
+	'ttl_sec': -41918349
 }
 results = sdk.dynamic_secrets.issue_lease(request_input = request_body)
 
@@ -2350,10 +2351,10 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'environments': ["aliqua sint consectetur irure","occaecat aute"],
+	'environments': ["esse","ad"],
 	'role': 'role',
 	'slug': 'slug',
-	'type_': 'service_account'
+	'type_': 'invite'
 }
 results = sdk.project_members.add(
 	request_input = request_body,
@@ -2422,7 +2423,7 @@ sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_members.get(
 	project = 'project',
-	type = 'group',
+	type = 'workplace_user',
 	slug = 'slug'
 )
 
@@ -2455,12 +2456,12 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'environments': ["eu tempor Ut anim","ipsum elit"],
+	'environments': ["consectetur non elit","cupidatat consectetur id voluptate ea"],
 	'role': 'role'
 }
 results = sdk.project_members.update(
 	request_input = request_body,
-	type = 'service_account',
+	type = 'group',
 	slug = 'slug',
 	project = 'project'
 )
@@ -2493,7 +2494,7 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_members.delete(
-	type = 'invite',
+	type = 'group',
 	slug = 'slug',
 	project = 'project'
 )
@@ -2558,7 +2559,7 @@ sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'name': 'name',
-	'workplace_role': {"identifier":"identifier","permissions":["nostrud Lorem do officia","cupidatat proident nisi dolore cillum"]}
+	'workplace_role': {"identifier":"identifier","permissions":["veniam aliquip","Excepteur"]}
 }
 results = sdk.service_accounts.create(request_input = request_body)
 
@@ -2648,7 +2649,7 @@ sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'name': 'name',
-	'workplace_role': {"identifier":"identifier","permissions":["deserunt Excepteur Lorem magna","veniam"]}
+	'workplace_role': {"identifier":"identifier","permissions":["sit ut","est sed proident"]}
 }
 results = sdk.service_accounts.update(
 	request_input = request_body,
@@ -2965,4 +2966,6 @@ pprint(vars(results))
 
 
 
+## License
 
+License: MIT. See license in LICENSE.
