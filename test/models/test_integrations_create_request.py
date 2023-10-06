@@ -9,11 +9,11 @@ class TestIntegrationsCreateRequestModel(unittest.TestCase):
     def test_integrations_create_request(self):
         # Create IntegrationsCreateRequest class instance
         test_model = IntegrationsCreateRequest(
-            type_="numquam", name="alias", data={"voluptates": 4}
+            type_="deserunt", name="repellat", data={"sed": 7}
         )
-        self.assertEqual(test_model.type_, "numquam")
-        self.assertEqual(test_model.name, "alias")
-        self.assertEqual(test_model.data, {"voluptates": 4})
+        self.assertEqual(test_model.type_, "deserunt")
+        self.assertEqual(test_model.name, "repellat")
+        self.assertEqual(test_model.data, {"sed": 7})
 
     def test_integrations_create_request_required_fields_missing(self):
         # Assert IntegrationsCreateRequest class generation fails without required fields

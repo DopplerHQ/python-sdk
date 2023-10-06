@@ -8,9 +8,9 @@ class TestConfigsDeleteRequestModel(unittest.TestCase):
 
     def test_configs_delete_request(self):
         # Create ConfigsDeleteRequest class instance
-        test_model = ConfigsDeleteRequest(config="earum", project="ipsa")
-        self.assertEqual(test_model.config, "earum")
-        self.assertEqual(test_model.project, "ipsa")
+        test_model = ConfigsDeleteRequest(config="hic", project="quas")
+        self.assertEqual(test_model.config, "hic")
+        self.assertEqual(test_model.project, "quas")
 
     def test_configs_delete_request_required_fields_missing(self):
         # Assert ConfigsDeleteRequest class generation fails without required fields

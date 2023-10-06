@@ -6,9 +6,6 @@ build-backend = "setuptools.build_meta"
 name = "doppler-sdk"
 version = "1.2.1"
 license = { text = "MIT" }
-authors = [
-	"Doppler"
-]
 description = """"""
 readme = "README.md"
 requires-python = ">=3.7"

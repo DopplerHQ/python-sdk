@@ -580,7 +580,7 @@ results = sdk.secrets.list(
 	config = 'CONFIG_NAME',
 	accepts = 'application/json',
 	include_dynamic_secrets = True,
-	dynamic_secrets_ttl_sec = 7490721,
+	dynamic_secrets_ttl_sec = -76810366,
 	secrets = 'secrets',
 	include_managed_secrets = True
 )
@@ -685,7 +685,7 @@ results = sdk.secrets.download(
 	project = 'project',
 	config = 'config',
 	format = 'json',
-	name_transformer = 'dotnet',
+	name_transformer = 'camel',
 	include_dynamic_secrets = True,
 	dynamic_secrets_ttl_sec = 1800
 )
@@ -1524,7 +1524,7 @@ sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'access': 'read',
 	'config': 'CONFIG_NAME',
-	'expire_at': '1892-03-20T20:13:26.0Z',
+	'expire_at': '1904-01-08T14:23:04.0Z',
 	'name': 'TOKEN_NAME',
 	'project': 'PROJECT_NAME'
 }
@@ -1656,7 +1656,7 @@ request_body = {
 	'config': 'config',
 	'dynamic_secret': 'dynamic_secret',
 	'project': 'project',
-	'ttl_sec': -41918349
+	'ttl_sec': -29276405
 }
 results = sdk.dynamic_secrets.issue_lease(request_input = request_body)
 
@@ -2351,10 +2351,10 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'environments': ["esse","ad"],
+	'environments': ["ad","Lorem do sit in"],
 	'role': 'role',
 	'slug': 'slug',
-	'type_': 'invite'
+	'type_': 'group'
 }
 results = sdk.project_members.add(
 	request_input = request_body,
@@ -2423,7 +2423,7 @@ sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_members.get(
 	project = 'project',
-	type = 'workplace_user',
+	type = 'service_account',
 	slug = 'slug'
 )
 
@@ -2456,7 +2456,7 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
-	'environments': ["consectetur non elit","cupidatat consectetur id voluptate ea"],
+	'environments': ["cillum ut exercitation","Excepteur incididunt"],
 	'role': 'role'
 }
 results = sdk.project_members.update(
@@ -2494,7 +2494,7 @@ DOPPLERSDK_ACCESS_TOKEN = ''
 sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 results = sdk.project_members.delete(
-	type = 'group',
+	type = 'workplace_user',
 	slug = 'slug',
 	project = 'project'
 )
@@ -2559,7 +2559,7 @@ sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'name': 'name',
-	'workplace_role': {"identifier":"identifier","permissions":["veniam aliquip","Excepteur"]}
+	'workplace_role': {"identifier":"identifier","permissions":["Excepteur dolore nisi tempor","tempor aliquip"]}
 }
 results = sdk.service_accounts.create(request_input = request_body)
 
@@ -2649,7 +2649,7 @@ sdk = DopplerSDK()
 sdk.set_access_token(DOPPLERSDK_ACCESS_TOKEN)
 request_body = {
 	'name': 'name',
-	'workplace_role': {"identifier":"identifier","permissions":["sit ut","est sed proident"]}
+	'workplace_role': {"identifier":"identifier","permissions":["ipsum id reprehenderit ut","sint anim Excepteur eu sit"]}
 }
 results = sdk.service_accounts.update(
 	request_input = request_body,

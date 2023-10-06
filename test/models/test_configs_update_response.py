@@ -8,8 +8,8 @@ class TestConfigsUpdateResponseModel(unittest.TestCase):
 
     def test_configs_update_response(self):
         # Create ConfigsUpdateResponse class instance
-        test_model = ConfigsUpdateResponse(config={"aut": 3})
-        self.assertEqual(test_model.config, {"aut": 3})
+        test_model = ConfigsUpdateResponse(config={"neque": 9})
+        self.assertEqual(test_model.config, {"neque": 9})
 
 
 if __name__ == "__main__":

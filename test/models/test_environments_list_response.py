@@ -8,8 +8,8 @@ class TestEnvironmentsListResponseModel(unittest.TestCase):
 
     def test_environments_list_response(self):
         # Create EnvironmentsListResponse class instance
-        test_model = EnvironmentsListResponse(environments=["cum", "officiis"], page=5)
-        self.assertEqual(test_model.environments, ["cum", "officiis"])
+        test_model = EnvironmentsListResponse(environments=["ipsa", "veniam"], page=5)
+        self.assertEqual(test_model.environments, ["ipsa", "veniam"])
         self.assertEqual(test_model.page, 5)
 
 

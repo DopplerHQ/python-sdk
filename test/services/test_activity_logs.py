@@ -15,7 +15,7 @@ class TestActivityLogs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/logs/log", json={}, status=200)
         # call the method to test
         test_service = ActivityLogs("testkey")
-        response = test_service.retrieve("explicabo")
+        response = test_service.retrieve("cupiditate")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -34,7 +34,7 @@ class TestActivityLogs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/logs/log", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = ActivityLogs("testkey")
-            test_service.retrieve("vitae")
+            test_service.retrieve("occaecati")
         responses.reset()
 
     @responses.activate
@@ -43,7 +43,7 @@ class TestActivityLogs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/logs", json={}, status=200)
         # call the method to test
         test_service = ActivityLogs("testkey")
-        response = test_service.list("quod", 9)
+        response = test_service.list("perferendis", 8)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -53,7 +53,7 @@ class TestActivityLogs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/logs", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = ActivityLogs("testkey")
-            test_service.list("expedita", 8)
+            test_service.list("maiores", 7)
         responses.reset()
 
 

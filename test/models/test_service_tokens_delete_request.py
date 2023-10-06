@@ -9,12 +9,15 @@ class TestServiceTokensDeleteRequestModel(unittest.TestCase):
     def test_service_tokens_delete_request(self):
         # Create ServiceTokensDeleteRequest class instance
         test_model = ServiceTokensDeleteRequest(
-            config="cum", project="itaque", slug="doloribus", token="atque"
+            config="repudiandae",
+            project="voluptatibus",
+            slug="pariatur",
+            token="impedit",
         )
-        self.assertEqual(test_model.config, "cum")
-        self.assertEqual(test_model.project, "itaque")
-        self.assertEqual(test_model.slug, "doloribus")
-        self.assertEqual(test_model.token, "atque")
+        self.assertEqual(test_model.config, "repudiandae")
+        self.assertEqual(test_model.project, "voluptatibus")
+        self.assertEqual(test_model.slug, "pariatur")
+        self.assertEqual(test_model.token, "impedit")
 
     def test_service_tokens_delete_request_required_fields_missing(self):
         # Assert ServiceTokensDeleteRequest class generation fails without required fields
