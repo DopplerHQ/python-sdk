@@ -8,8 +8,8 @@ class TestIntegrationsGetResponseModel(unittest.TestCase):
 
     def test_integrations_get_response(self):
         # Create IntegrationsGetResponse class instance
-        test_model = IntegrationsGetResponse(integration={"aspernatur": 9})
-        self.assertEqual(test_model.integration, {"aspernatur": 9})
+        test_model = IntegrationsGetResponse(integration={"voluptas": 2})
+        self.assertEqual(test_model.integration, {"voluptas": 2})
 
 
 if __name__ == "__main__":

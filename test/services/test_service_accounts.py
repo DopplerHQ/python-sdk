@@ -17,7 +17,7 @@ class TestServiceAccounts_(unittest.TestCase):
         )
         # call the method to test
         test_service = ServiceAccounts("testkey")
-        response = test_service.list(3, 9)
+        response = test_service.list(6, 5)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -29,7 +29,7 @@ class TestServiceAccounts_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ServiceAccounts("testkey")
-            test_service.list(8, 5)
+            test_service.list(2, 2)
         responses.reset()
 
     @responses.activate
@@ -59,13 +59,13 @@ class TestServiceAccounts_(unittest.TestCase):
     def test_get(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/service_accounts/service_account/quasi",
+            "https://api.doppler.com/v3/workplace/service_accounts/service_account/praesentium",
             json={},
             status=200,
         )
         # call the method to test
         test_service = ServiceAccounts("testkey")
-        response = test_service.get("quasi")
+        response = test_service.get("praesentium")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -73,7 +73,7 @@ class TestServiceAccounts_(unittest.TestCase):
     def test_get_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/service_accounts/service_account/distinctio",
+            "https://api.doppler.com/v3/workplace/service_accounts/service_account/deserunt",
             json={},
             status=202,
         )
@@ -86,26 +86,26 @@ class TestServiceAccounts_(unittest.TestCase):
     def test_get_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/service_accounts/service_account/cupiditate",
+            "https://api.doppler.com/v3/workplace/service_accounts/service_account/quia",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = ServiceAccounts("testkey")
-            test_service.get("cupiditate")
+            test_service.get("quia")
         responses.reset()
 
     @responses.activate
     def test_update(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/service_accounts/service_account/voluptas",
+            "https://api.doppler.com/v3/workplace/service_accounts/service_account/repellat",
             json={},
             status=200,
         )
         # call the method to test
         test_service = ServiceAccounts("testkey")
-        response = test_service.update("voluptas", {})
+        response = test_service.update("repellat", {})
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -113,7 +113,7 @@ class TestServiceAccounts_(unittest.TestCase):
     def test_update_required_fields_missing(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/service_accounts/service_account/voluptate",
+            "https://api.doppler.com/v3/workplace/service_accounts/service_account/eaque",
             json={},
             status=202,
         )
@@ -126,26 +126,26 @@ class TestServiceAccounts_(unittest.TestCase):
     def test_update_error_on_non_200(self):
         # Mock the API response
         responses.patch(
-            "https://api.doppler.com/v3/workplace/service_accounts/service_account/veritatis",
+            "https://api.doppler.com/v3/workplace/service_accounts/service_account/vitae",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = ServiceAccounts("testkey")
-            test_service.update("veritatis", {})
+            test_service.update("vitae", {})
         responses.reset()
 
     @responses.activate
     def test_delete(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/service_accounts/service_account/reiciendis",
+            "https://api.doppler.com/v3/workplace/service_accounts/service_account/porro",
             json={},
             status=200,
         )
         # call the method to test
         test_service = ServiceAccounts("testkey")
-        response = test_service.delete("reiciendis")
+        response = test_service.delete("porro")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -153,7 +153,7 @@ class TestServiceAccounts_(unittest.TestCase):
     def test_delete_required_fields_missing(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/service_accounts/service_account/debitis",
+            "https://api.doppler.com/v3/workplace/service_accounts/service_account/iste",
             json={},
             status=202,
         )
@@ -166,13 +166,13 @@ class TestServiceAccounts_(unittest.TestCase):
     def test_delete_error_on_non_200(self):
         # Mock the API response
         responses.delete(
-            "https://api.doppler.com/v3/workplace/service_accounts/service_account/eos",
+            "https://api.doppler.com/v3/workplace/service_accounts/service_account/voluptatibus",
             json={},
             status=404,
         )
         with self.assertRaises(ClientException):
             test_service = ServiceAccounts("testkey")
-            test_service.delete("eos")
+            test_service.delete("voluptatibus")
         responses.reset()
 
 

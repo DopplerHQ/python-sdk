@@ -8,9 +8,9 @@ class TestGroupsUpdateRequestModel(unittest.TestCase):
 
     def test_groups_update_request(self):
         # Create GroupsUpdateRequest class instance
-        test_model = GroupsUpdateRequest(name="earum", default_project_role="vero")
-        self.assertEqual(test_model.name, "earum")
-        self.assertEqual(test_model.default_project_role, "vero")
+        test_model = GroupsUpdateRequest(name="enim", default_project_role="nemo")
+        self.assertEqual(test_model.name, "enim")
+        self.assertEqual(test_model.default_project_role, "nemo")
 
 
 if __name__ == "__main__":

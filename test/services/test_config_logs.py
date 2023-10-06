@@ -17,7 +17,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.list("velit", "autem", 7, 5)
+        response = test_service.list("accusamus", "sapiente", 1, 6)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -40,7 +40,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.list("totam", "perspiciatis", 7, 1)
+            test_service.list("eligendi", "esse", 6, 6)
         responses.reset()
 
     @responses.activate
@@ -51,7 +51,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.get("tempora", "libero", "delectus")
+        response = test_service.get("voluptas", "fuga", "deleniti")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,7 +74,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.get("minima", "occaecati", "doloremque")
+            test_service.get("mollitia", "dignissimos", "eos")
         responses.reset()
 
     @responses.activate
@@ -87,7 +87,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.rollback("consectetur", "placeat", "beatae")
+        response = test_service.rollback("odio", "delectus", "repellendus")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -114,7 +114,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.rollback("modi", "aliquam", "nostrum")
+            test_service.rollback("nisi", "error", "atque")
         responses.reset()
 
 

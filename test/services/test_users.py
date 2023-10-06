@@ -15,7 +15,7 @@ class TestUsers_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/workplace/users", json={}, status=200)
         # call the method to test
         test_service = Users("testkey")
-        response = test_service.list(5)
+        response = test_service.list(7)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -25,18 +25,20 @@ class TestUsers_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/workplace/users", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Users("testkey")
-            test_service.list(2)
+            test_service.list(5)
         responses.reset()
 
     @responses.activate
     def test_get(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/users/quidem", json={}, status=200
+            "https://api.doppler.com/v3/workplace/users/praesentium",
+            json={},
+            status=200,
         )
         # call the method to test
         test_service = Users("testkey")
-        response = test_service.get("quidem")
+        response = test_service.get("praesentium")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -44,7 +46,7 @@ class TestUsers_(unittest.TestCase):
     def test_get_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/users/quidem", json={}, status=202
+            "https://api.doppler.com/v3/workplace/users/reiciendis", json={}, status=202
         )
         with self.assertRaises(TypeError):
             test_service = Users("testkey")
@@ -55,11 +57,11 @@ class TestUsers_(unittest.TestCase):
     def test_get_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/users/corrupti", json={}, status=404
+            "https://api.doppler.com/v3/workplace/users/nihil", json={}, status=404
         )
         with self.assertRaises(ClientException):
             test_service = Users("testkey")
-            test_service.get("corrupti")
+            test_service.get("nihil")
         responses.reset()
 
 
