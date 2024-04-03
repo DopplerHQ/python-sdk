@@ -5,6 +5,8 @@ Performs API calls,sets authentication tokens and handles http exceptions.
 Class:
     BaseService
 """
+
+import platform
 from typing import List, Union
 from enum import Enum
 import re
@@ -93,6 +95,6 @@ class BaseService:
         headers: dict
             Headers dict to add auth headers to
         """
-        headers["User-Agent"] = "liblab/0.1.20 DopplerSDK/1.2.1 python/2.7"
+        headers["User-Agent"] = f"DopplerSDK/1.3.0 Python/{platform.python_version()}"
         headers["Authorization"] = f"Bearer {self._access_token}"
         return headers

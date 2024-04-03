@@ -3,7 +3,13 @@ from .base import BaseModel
 
 class Stripe(BaseModel):
     def __init__(
-        self, raw: str = None, computed: str = None, note: str = None, **kwargs
+        self,
+        raw: str = None,
+        computed: str = None,
+        note: str = None,
+        rawVisibility: str = None,
+        computedVisibility: str = None,
+        **kwargs,
     ):
         """
         Initialize Stripe
@@ -12,15 +18,25 @@ class Stripe(BaseModel):
             raw: str
             computed: str
             note: str
+            rawVisibility: str
+            computedVisibility: str
         """
         self.raw = raw
         self.computed = computed
         self.note = note
+        self.rawVisibility = rawVisibility
+        self.computedVisibility = computedVisibility
 
 
 class Algolia(BaseModel):
     def __init__(
-        self, raw: str = None, computed: str = None, note: str = None, **kwargs
+        self,
+        raw: str = None,
+        computed: str = None,
+        note: str = None,
+        rawVisibility: str = None,
+        computedVisibility: str = None,
+        **kwargs,
     ):
         """
         Initialize Algolia
@@ -29,15 +45,25 @@ class Algolia(BaseModel):
             raw: str
             computed: str
             note: str
+            rawVisibility: str
+            computedVisibility: str
         """
         self.raw = raw
         self.computed = computed
         self.note = note
+        self.rawVisibility = rawVisibility
+        self.computedVisibility = computedVisibility
 
 
 class Database(BaseModel):
     def __init__(
-        self, raw: str = None, computed: str = None, note: str = None, **kwargs
+        self,
+        raw: str = None,
+        computed: str = None,
+        note: str = None,
+        rawVisibility: str = None,
+        computedVisibility: str = None,
+        **kwargs,
     ):
         """
         Initialize Database
@@ -46,15 +72,25 @@ class Database(BaseModel):
             raw: str
             computed: str
             note: str
+            rawVisibility: str
+            computedVisibility: str
         """
         self.raw = raw
         self.computed = computed
         self.note = note
+        self.rawVisibility = rawVisibility
+        self.computedVisibility = computedVisibility
 
 
 class User(BaseModel):
     def __init__(
-        self, raw: str = None, computed: str = None, note: str = None, **kwargs
+        self,
+        raw: str = None,
+        computed: str = None,
+        note: str = None,
+        rawVisibility: str = None,
+        computedVisibility: str = None,
+        **kwargs,
     ):
         """
         Initialize User
@@ -63,10 +99,14 @@ class User(BaseModel):
             raw: str
             computed: str
             note: str
+            rawVisibility: str
+            computedVisibility: str
         """
         self.raw = raw
         self.computed = computed
         self.note = note
+        self.rawVisibility = rawVisibility
+        self.computedVisibility = computedVisibility
 
 
 class Secrets(BaseModel):

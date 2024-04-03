@@ -8,9 +8,9 @@ class TestUpdateNoteResponseModel(unittest.TestCase):
 
     def test_update_note_response(self):
         # Create UpdateNoteResponse class instance
-        test_model = UpdateNoteResponse(secret="asperiores", note="a")
-        self.assertEqual(test_model.secret, "asperiores")
-        self.assertEqual(test_model.note, "a")
+        test_model = UpdateNoteResponse(secret="laborum", note="maxime")
+        self.assertEqual(test_model.secret, "laborum")
+        self.assertEqual(test_model.note, "maxime")
 
 
 if __name__ == "__main__":

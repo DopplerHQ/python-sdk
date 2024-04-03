@@ -4,6 +4,7 @@ Collection of API calls according to the HTTP method and content type.
 Functions:
     multipart_form_data_request
 """
+
 import requests
 import io
 from mimetypes import guess_type
@@ -27,7 +28,7 @@ def multipart_form_data_request(method, endpoint_url, headers, body_input):
     data = {}
     files = {}
     request_method = getattr(requests, method)
-    del headers["Content-type"]
+    del headers["Content-Type"]
     for key, value in body_input.items():
         if isinstance(value, (io.TextIOWrapper, io.BufferedIOBase)):
             mime_type, encoding = guess_type(value.name)

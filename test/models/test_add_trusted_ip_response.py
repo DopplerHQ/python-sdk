@@ -8,8 +8,8 @@ class TestAddTrustedIpResponseModel(unittest.TestCase):
 
     def test_add_trusted_ip_response(self):
         # Create AddTrustedIpResponse class instance
-        test_model = AddTrustedIpResponse(ip="explicabo")
-        self.assertEqual(test_model.ip, "explicabo")
+        test_model = AddTrustedIpResponse(ip="laboriosam")
+        self.assertEqual(test_model.ip, "laboriosam")
 
 
 if __name__ == "__main__":

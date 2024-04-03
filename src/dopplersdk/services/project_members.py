@@ -67,7 +67,7 @@ class ProjectMembers(BaseService):
         """
 
         url_endpoint = "/v3/projects/project/members"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         query_params = []
         self._add_required_headers(headers)
         if not project:
@@ -90,7 +90,7 @@ class ProjectMembers(BaseService):
         ----------
             project: str
                 Project slug
-            type: Type
+            type_: Type
             slug: str
                 Member's slug
         """
@@ -140,7 +140,7 @@ class ProjectMembers(BaseService):
         Update
         Parameters:
         ----------
-            type: Type
+            type_: Type
             slug: str
                 Member's slug
             project: str
@@ -148,7 +148,7 @@ class ProjectMembers(BaseService):
         """
 
         url_endpoint = "/v3/projects/project/members/member/{type_}/{slug}"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         query_params = []
         self._add_required_headers(headers)
         if not type_:
@@ -186,7 +186,7 @@ class ProjectMembers(BaseService):
         Delete
         Parameters:
         ----------
-            type: Type
+            type_: Type
             slug: str
                 Member's slug
             project: str

@@ -17,9 +17,7 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.list(
-            "corporis", "pariatur", "numquam", True, 9, "dolores", True
-        )
+        response = test_service.list("iure", "ab", "occaecati", True, 4, "cumque", True)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -42,7 +40,7 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.list("aut", "repellendus", "autem", True, 9, "a", True)
+            test_service.list("commodi", "nulla", "facilis", True, 3, "impedit", True)
         responses.reset()
 
     @responses.activate
@@ -76,7 +74,7 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.get("Ena", "laudantium", "ad")
+        response = test_service.get("Granville", "ut", "perferendis")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -99,7 +97,7 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.get("Alex", "delectus", "reprehenderit")
+            test_service.get("Flo", "delectus", "dicta")
         responses.reset()
 
     @responses.activate
@@ -110,7 +108,7 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.delete("Gregory", "expedita", "eos")
+        response = test_service.delete("Ryley", "eos", "quae")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -133,7 +131,7 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.delete("Maye", "accusantium", "beatae")
+            test_service.delete("Alberta", "nobis", "quam")
         responses.reset()
 
     @responses.activate
@@ -146,7 +144,9 @@ class TestSecrets_(unittest.TestCase):
         )
         # call the method to test
         test_service = Secrets("testkey")
-        response = test_service.download("consequuntur", "in", "json", "camel", True, 2)
+        response = test_service.download(
+            "dicta", "dolorem", "json", "camel", True, 1, "ad"
+        )
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -173,47 +173,9 @@ class TestSecrets_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
-            test_service.download("voluptates", "harum", "json", "camel", True, 5)
-        responses.reset()
-
-    @responses.activate
-    def test_names(self):
-        # Mock the API response
-        responses.get(
-            "https://api.doppler.com/v3/configs/config/secrets/names",
-            json={},
-            status=200,
-        )
-        # call the method to test
-        test_service = Secrets("testkey")
-        response = test_service.names("fuga", "doloribus", True, True)
-        self.assertEqual(response, {})
-        responses.reset(),
-
-    @responses.activate
-    def test_names_required_fields_missing(self):
-        # Mock the API response
-        responses.get(
-            "https://api.doppler.com/v3/configs/config/secrets/names",
-            json={},
-            status=202,
-        )
-        with self.assertRaises(TypeError):
-            test_service = Secrets("testkey")
-            test_service.names()
-        responses.reset(),
-
-    @responses.activate
-    def test_names_error_on_non_200(self):
-        # Mock the API response
-        responses.get(
-            "https://api.doppler.com/v3/configs/config/secrets/names",
-            json={},
-            status=404,
-        )
-        with self.assertRaises(ClientException):
-            test_service = Secrets("testkey")
-            test_service.names("neque", "quidem", True, True)
+            test_service.download(
+                "error", "delectus", "json", "camel", True, 3, "ipsam"
+            )
         responses.reset()
 
     @responses.activate
@@ -241,6 +203,46 @@ class TestSecrets_(unittest.TestCase):
         with self.assertRaises(ClientException):
             test_service = Secrets("testkey")
             test_service.update_note({})
+        responses.reset()
+
+    @responses.activate
+    def test_names(self):
+        # Mock the API response
+        responses.get(
+            "https://api.doppler.com/v3/configs/config/secrets/names",
+            json={},
+            status=200,
+        )
+        # call the method to test
+        test_service = Secrets("testkey")
+        response = test_service.names("suscipit", "aspernatur", True, True)
+        self.assertEqual(response, {})
+        responses.reset(),
+
+    @responses.activate
+    def test_names_required_fields_missing(self):
+        # Mock the API response
+        responses.get(
+            "https://api.doppler.com/v3/configs/config/secrets/names",
+            json={},
+            status=202,
+        )
+        with self.assertRaises(TypeError):
+            test_service = Secrets("testkey")
+            test_service.names()
+        responses.reset(),
+
+    @responses.activate
+    def test_names_error_on_non_200(self):
+        # Mock the API response
+        responses.get(
+            "https://api.doppler.com/v3/configs/config/secrets/names",
+            json={},
+            status=404,
+        )
+        with self.assertRaises(ClientException):
+            test_service = Secrets("testkey")
+            test_service.names("necessitatibus", "odit", True, True)
         responses.reset()
 
 

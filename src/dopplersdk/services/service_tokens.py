@@ -1,6 +1,10 @@
 from urllib.parse import quote
 from ..net import query_serializer
 from .base import BaseService
+from ..models.ServiceTokensDeleteRequest import (
+    ServiceTokensDeleteRequest as ServiceTokensDeleteRequestModel,
+)
+from ..models.DeleteResponse import DeleteResponse as DeleteResponseModel
 from ..models.ServiceTokensListResponse import (
     ServiceTokensListResponse as ServiceTokensListResponseModel,
 )
@@ -10,13 +14,26 @@ from ..models.ServiceTokensCreateRequest import (
 from ..models.ServiceTokensCreateResponse import (
     ServiceTokensCreateResponse as ServiceTokensCreateResponseModel,
 )
-from ..models.ServiceTokensDeleteRequest import (
-    ServiceTokensDeleteRequest as ServiceTokensDeleteRequestModel,
-)
-from ..models.DeleteResponse import DeleteResponse as DeleteResponseModel
 
 
 class ServiceTokens(BaseService):
+    def delete(
+        self, request_input: ServiceTokensDeleteRequestModel = None
+    ) -> DeleteResponseModel:
+        """
+        Delete
+        """
+
+        url_endpoint = "/v3/configs/config/tokens/token"
+        headers = {"Content-Type": "application/json"}
+        self._add_required_headers(headers)
+
+        final_url = self._url_prefix + url_endpoint
+        res = self._http.delete(final_url, headers, True)
+        if res and isinstance(res, dict):
+            return DeleteResponseModel(**res)
+        return res
+
     def list(self, config: str, project: str) -> ServiceTokensListResponseModel:
         """
         List
@@ -56,28 +73,11 @@ class ServiceTokens(BaseService):
         """
 
         url_endpoint = "/v3/configs/config/tokens"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
 
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
             return ServiceTokensCreateResponseModel(**res)
-        return res
-
-    def delete(
-        self, request_input: ServiceTokensDeleteRequestModel = None
-    ) -> DeleteResponseModel:
-        """
-        Delete
-        """
-
-        url_endpoint = "/v3/configs/config/tokens/token"
-        headers = {"Content-type": "application/json"}
-        self._add_required_headers(headers)
-
-        final_url = self._url_prefix + url_endpoint
-        res = self._http.delete(final_url, headers, True)
-        if res and isinstance(res, dict):
-            return DeleteResponseModel(**res)
         return res

@@ -11,10 +11,10 @@ class TestProjectMembersUpdateRequestModel(unittest.TestCase):
     def test_project_members_update_request(self):
         # Create ProjectMembersUpdateRequest class instance
         test_model = ProjectMembersUpdateRequest(
-            role="inventore", environments=["dignissimos", "maxime"]
+            role="distinctio", environments=["sint", "accusantium"]
         )
-        self.assertEqual(test_model.role, "inventore")
-        self.assertEqual(test_model.environments, ["dignissimos", "maxime"])
+        self.assertEqual(test_model.role, "distinctio")
+        self.assertEqual(test_model.environments, ["sint", "accusantium"])
 
 
 if __name__ == "__main__":

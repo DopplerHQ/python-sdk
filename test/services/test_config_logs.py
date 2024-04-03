@@ -10,40 +10,6 @@ class TestConfigLogs_(unittest.TestCase):
         self.assertTrue(True)
 
     @responses.activate
-    def test_list(self):
-        # Mock the API response
-        responses.get(
-            "https://api.doppler.com/v3/configs/config/logs", json={}, status=200
-        )
-        # call the method to test
-        test_service = ConfigLogs("testkey")
-        response = test_service.list("accusamus", "sapiente", 1, 6)
-        self.assertEqual(response, {})
-        responses.reset(),
-
-    @responses.activate
-    def test_list_required_fields_missing(self):
-        # Mock the API response
-        responses.get(
-            "https://api.doppler.com/v3/configs/config/logs", json={}, status=202
-        )
-        with self.assertRaises(TypeError):
-            test_service = ConfigLogs("testkey")
-            test_service.list()
-        responses.reset(),
-
-    @responses.activate
-    def test_list_error_on_non_200(self):
-        # Mock the API response
-        responses.get(
-            "https://api.doppler.com/v3/configs/config/logs", json={}, status=404
-        )
-        with self.assertRaises(ClientException):
-            test_service = ConfigLogs("testkey")
-            test_service.list("eligendi", "esse", 6, 6)
-        responses.reset()
-
-    @responses.activate
     def test_get(self):
         # Mock the API response
         responses.get(
@@ -51,7 +17,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.get("voluptas", "fuga", "deleniti")
+        response = test_service.get("earum", "adipisci", "recusandae")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -74,7 +40,41 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.get("mollitia", "dignissimos", "eos")
+            test_service.get("veniam", "doloremque", "rerum")
+        responses.reset()
+
+    @responses.activate
+    def test_list(self):
+        # Mock the API response
+        responses.get(
+            "https://api.doppler.com/v3/configs/config/logs", json={}, status=200
+        )
+        # call the method to test
+        test_service = ConfigLogs("testkey")
+        response = test_service.list("animi", "quasi", 6, 4)
+        self.assertEqual(response, {})
+        responses.reset(),
+
+    @responses.activate
+    def test_list_required_fields_missing(self):
+        # Mock the API response
+        responses.get(
+            "https://api.doppler.com/v3/configs/config/logs", json={}, status=202
+        )
+        with self.assertRaises(TypeError):
+            test_service = ConfigLogs("testkey")
+            test_service.list()
+        responses.reset(),
+
+    @responses.activate
+    def test_list_error_on_non_200(self):
+        # Mock the API response
+        responses.get(
+            "https://api.doppler.com/v3/configs/config/logs", json={}, status=404
+        )
+        with self.assertRaises(ClientException):
+            test_service = ConfigLogs("testkey")
+            test_service.list("aut", "fugit", 3, 8)
         responses.reset()
 
     @responses.activate
@@ -87,7 +87,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         # call the method to test
         test_service = ConfigLogs("testkey")
-        response = test_service.rollback("odio", "delectus", "repellendus")
+        response = test_service.rollback("laudantium", "dolore", "quam")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -114,7 +114,7 @@ class TestConfigLogs_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = ConfigLogs("testkey")
-            test_service.rollback("nisi", "error", "atque")
+            test_service.rollback("libero", "placeat", "molestiae")
         responses.reset()
 
 

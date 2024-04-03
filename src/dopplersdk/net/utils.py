@@ -27,8 +27,12 @@ def to_serialize(obj):
     for key, value in iter_obj:
         if isinstance(value, (io.TextIOWrapper, io.BufferedIOBase)):
             result[key] = value
-        if isinstance(value, Enum):
+        elif isinstance(value, Enum):
             result[key] = value.value
+        elif isinstance(value, (list, set, tuple)):
+            for i in range(len(value)):
+                value[i] = to_serialize(value[i])
+            result[key] = value
         elif hasattr(value, "__dict__"):
             result[key] = to_serialize(value)
         else:

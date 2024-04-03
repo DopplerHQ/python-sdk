@@ -15,7 +15,7 @@ class TestProjects_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/projects", json={}, status=200)
         # call the method to test
         test_service = Projects("testkey")
-        response = test_service.list(9, 5)
+        response = test_service.list(6, 5)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -25,7 +25,7 @@ class TestProjects_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/projects", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = Projects("testkey")
-            test_service.list(9, 6)
+            test_service.list(2, 5)
         responses.reset()
 
     @responses.activate
@@ -55,7 +55,7 @@ class TestProjects_(unittest.TestCase):
         )
         # call the method to test
         test_service = Projects("testkey")
-        response = test_service.get("qui")
+        response = test_service.get("doloribus")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -78,7 +78,7 @@ class TestProjects_(unittest.TestCase):
         )
         with self.assertRaises(ClientException):
             test_service = Projects("testkey")
-            test_service.get("ducimus")
+            test_service.get("rem")
         responses.reset()
 
     @responses.activate

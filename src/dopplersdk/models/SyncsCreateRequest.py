@@ -22,7 +22,12 @@ class ImportOption(Enum):
 
 class SyncsCreateRequest(BaseModel):
     def __init__(
-        self, data: Data, integration: str, import_option: ImportOption = None, **kwargs
+        self,
+        data: Data,
+        integration: str,
+        import_option: ImportOption = None,
+        await_initial_sync: bool = None,
+        **kwargs,
     ):
         """
         Initialize SyncsCreateRequest
@@ -34,6 +39,8 @@ class SyncsCreateRequest(BaseModel):
                 The integration slug which the sync will use
             import_option: str
                 An option indicating if and how Doppler should attempt to import secrets from the sync destination
+            await_initial_sync: bool
+                Causes sync creation to wait for the initial sync to complete before returning.
         """
         self.data = data
         self.integration = integration
@@ -42,3 +49,4 @@ class SyncsCreateRequest(BaseModel):
             if import_option
             else None
         )
+        self.await_initial_sync = await_initial_sync

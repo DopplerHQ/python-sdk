@@ -9,10 +9,10 @@ class TestUsersListResponseModel(unittest.TestCase):
     def test_users_list_response(self):
         # Create UsersListResponse class instance
         test_model = UsersListResponse(
-            workplace_users=["saepe", "dolorem"], page=9, success=True
+            workplace_users=["enim", "neque"], page=3, success=True
         )
-        self.assertEqual(test_model.workplace_users, ["saepe", "dolorem"])
-        self.assertEqual(test_model.page, 9)
+        self.assertEqual(test_model.workplace_users, ["enim", "neque"])
+        self.assertEqual(test_model.page, 3)
         self.assertEqual(test_model.success, True)
 
 

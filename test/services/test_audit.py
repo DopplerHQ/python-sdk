@@ -13,11 +13,11 @@ class TestAudit_(unittest.TestCase):
     def test_get_user(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/users/7564717263", json={}, status=200
+            "https://api.doppler.com/v3/workplace/users/7029489251", json={}, status=200
         )
         # call the method to test
         test_service = Audit("testkey")
-        response = test_service.get_user("7564717263", True)
+        response = test_service.get_user("7029489251", True)
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -25,7 +25,7 @@ class TestAudit_(unittest.TestCase):
     def test_get_user_required_fields_missing(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/users/6983682484", json={}, status=202
+            "https://api.doppler.com/v3/workplace/users/4559693898", json={}, status=202
         )
         with self.assertRaises(TypeError):
             test_service = Audit("testkey")
@@ -36,11 +36,11 @@ class TestAudit_(unittest.TestCase):
     def test_get_user_error_on_non_200(self):
         # Mock the API response
         responses.get(
-            "https://api.doppler.com/v3/workplace/users/8410495771", json={}, status=404
+            "https://api.doppler.com/v3/workplace/users/5289739951", json={}, status=404
         )
         with self.assertRaises(ClientException):
             test_service = Audit("testkey")
-            test_service.get_user("8410495771", True)
+            test_service.get_user("5289739951", True)
         responses.reset()
 
 
