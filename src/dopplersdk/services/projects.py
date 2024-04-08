@@ -4,13 +4,9 @@ from .base import BaseService
 from ..models.ListResponse import ListResponse as ListResponseModel
 from ..models.CreateRequest import CreateRequest as CreateRequestModel
 from ..models.CreateResponse import CreateResponse as CreateResponseModel
-from ..models.ProjectsGetResponse import ProjectsGetResponse as ProjectsGetResponseModel
-from ..models.ProjectsUpdateRequest import (
-    ProjectsUpdateRequest as ProjectsUpdateRequestModel,
-)
-from ..models.ProjectsUpdateResponse import (
-    ProjectsUpdateResponse as ProjectsUpdateResponseModel,
-)
+from ..models.GetResponse import GetResponse as GetResponseModel
+from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
+from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
 from ..models.DeleteRequest import DeleteRequest as DeleteRequestModel
 
 
@@ -52,7 +48,7 @@ class Projects(BaseService):
         """
 
         url_endpoint = "/v3/projects"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
 
         final_url = self._url_prefix + url_endpoint
@@ -61,7 +57,7 @@ class Projects(BaseService):
             return CreateResponseModel(**res)
         return res
 
-    def get(self, project: str) -> ProjectsGetResponseModel:
+    def get(self, project: str) -> GetResponseModel:
         """
         Retrieve
         Parameters:
@@ -82,24 +78,22 @@ class Projects(BaseService):
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
-            return ProjectsGetResponseModel(**res)
+            return GetResponseModel(**res)
         return res
 
-    def update(
-        self, request_input: ProjectsUpdateRequestModel = None
-    ) -> ProjectsUpdateResponseModel:
+    def update(self, request_input: UpdateRequestModel = None) -> UpdateResponseModel:
         """
         Update
         """
 
         url_endpoint = "/v3/projects/project"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
 
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return ProjectsUpdateResponseModel(**res)
+            return UpdateResponseModel(**res)
         return res
 
     def delete(self, request_input: DeleteRequestModel = None):
@@ -108,7 +102,7 @@ class Projects(BaseService):
         """
 
         url_endpoint = "/v3/projects/project"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
 
         final_url = self._url_prefix + url_endpoint

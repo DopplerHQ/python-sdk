@@ -11,10 +11,10 @@ class TestServiceAccountsUpdateRequestModel(unittest.TestCase):
     def test_service_accounts_update_request(self):
         # Create ServiceAccountsUpdateRequest class instance
         test_model = ServiceAccountsUpdateRequest(
-            name="rerum", workplace_role={"voluptate": 7}
+            name="deserunt", workplace_role={"mollitia": 5}
         )
-        self.assertEqual(test_model.name, "rerum")
-        self.assertEqual(test_model.workplace_role, {"voluptate": 7})
+        self.assertEqual(test_model.name, "deserunt")
+        self.assertEqual(test_model.workplace_role, {"mollitia": 5})
 
 
 if __name__ == "__main__":

@@ -22,7 +22,7 @@ class Syncs(BaseService):
         """
 
         url_endpoint = "/v3/configs/config/syncs"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         query_params = []
         self._add_required_headers(headers)
         if not project:

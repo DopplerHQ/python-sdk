@@ -5,7 +5,7 @@ from enum import Enum
 
 class BaseModel:
     """
-    A base class that all models in the SDK inherite from (expect for Enum models).
+    A base class that all models in the SDK inherit from (expect for Enum models).
 
     Methods
     -------
@@ -16,7 +16,7 @@ class BaseModel:
         Checks if a value (str or enum) matches the required enum values.
         Returns the value if there's a match, otherwise throws an error.
     _one_of(cls, required_array, all_array, functions_array, input_data):
-        Validates wheter an input_data satisfies the oneOf requirments.
+        Validates whether an input_data satisfies the oneOf requirements.
     """
 
     def __init__(self):
@@ -43,15 +43,16 @@ class BaseModel:
     def _one_of(cls, required_array, all_array, functions_array, input_data):
         input_array = list(input_data.keys())
         for model, fields in required_array.items():
+            input_copy = input_array.copy()
             matches_required = True
             for param in fields:
-                if param not in input_array:
+                if param not in input_copy:
                     matches_required = False
                     break
-                input_array.remove(param)
+                input_copy.remove(param)
             if matches_required:
                 matches_all = True
-                for input in input_array:
+                for input in input_copy:
                     if input not in all_array[model]:
                         matches_all = False
                         break

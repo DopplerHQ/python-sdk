@@ -2,6 +2,7 @@
 An enum class containing all the possible environments that 
 a user can switch between in this SDK.
 """
+
 from enum import Enum
 
 

@@ -1,0 +1,1 @@
+WebhooksUpdateResponse = dict

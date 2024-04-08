@@ -1,27 +1,40 @@
 from typing import Any, Dict, List
+from enum import Enum
 
 explode = bool
 
 
 def simple(value: Any, explode: bool) -> str:
-    # Check if the value is a list
+    if value is None:
+        return "null"
+
+    if isinstance(value, Enum):
+        return str(value.value)
+
+    if isinstance(value, bool):
+        return str(value).lower()
+
     if isinstance(value, list):
-        return ",".join(value) if explode else "".join(value)
+        serialized_list = [simple(item, explode) for item in value]
+        return ",".join(serialized_list)
 
     if isinstance(value, dict):
         if explode:
             # Serialize object with exploded format: "key=value,key2=value2"
-            return ",".join([f"{k}={v}" for k, v in value.items()])
+            return ",".join([f"{k}={simple(v, explode)}" for k, v in value.items()])
         else:
             # Serialize object with non-exploded format: "key,value,key2,value2"
             return ",".join(
-                [str(item) for sublist in value.items() for item in sublist]
+                [simple(item, explode) for sublist in value.items() for item in sublist]
             )
 
     return str(value)
 
 
 def form(parameter_name: str, parameter_value: Any, explode: bool) -> str:
+    if isinstance(parameter_value, Enum):
+        return f"{parameter_name}=" + str(parameter_value.value)
+
     if isinstance(parameter_value, list):
         return (
             "&".join([f"{parameter_name}={v}" for v in parameter_value])
@@ -56,6 +69,8 @@ def serialize_query(parameter_style, explode, key: str, parameter_value: Any) ->
 def serialize_header(explode: bool, parameter_value: Any):
     if not style_methods.get("simple"):
         return ""
+    if hasattr(parameter_value, "__dict__"):
+        parameter_value = parameter_value.__dict__
     return style_methods["simple"](parameter_value, explode)
 
 

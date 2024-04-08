@@ -1,17 +1,23 @@
 from urllib.parse import quote
 from ..net import query_serializer
 from .base import BaseService
-from ..models.ProjectRolesListResponse import (
-    ProjectRolesListResponse as ProjectRolesListResponseModel,
-)
-from ..models.ProjectRolesCreateResponse import (
-    ProjectRolesCreateResponse as ProjectRolesCreateResponseModel,
-)
 from ..models.ProjectRolesGetResponse import (
     ProjectRolesGetResponse as ProjectRolesGetResponseModel,
 )
+from ..models.ProjectRolesUpdateRequest import (
+    ProjectRolesUpdateRequest as ProjectRolesUpdateRequestModel,
+)
 from ..models.ProjectRolesUpdateResponse import (
     ProjectRolesUpdateResponse as ProjectRolesUpdateResponseModel,
+)
+from ..models.ProjectRolesListResponse import (
+    ProjectRolesListResponse as ProjectRolesListResponseModel,
+)
+from ..models.ProjectRolesCreateRequest import (
+    ProjectRolesCreateRequest as ProjectRolesCreateRequestModel,
+)
+from ..models.ProjectRolesCreateResponse import (
+    ProjectRolesCreateResponse as ProjectRolesCreateResponseModel,
 )
 from ..models.ProjectRolesListPermissionsResponse import (
     ProjectRolesListPermissionsResponse as ProjectRolesListPermissionsResponseModel,
@@ -19,36 +25,6 @@ from ..models.ProjectRolesListPermissionsResponse import (
 
 
 class ProjectRoles(BaseService):
-    def list(self) -> ProjectRolesListResponseModel:
-        """
-        List
-        """
-
-        url_endpoint = "/v3/projects/roles"
-        headers = {}
-        self._add_required_headers(headers)
-
-        final_url = self._url_prefix + url_endpoint
-        res = self._http.get(final_url, headers, True)
-        if res and isinstance(res, dict):
-            return ProjectRolesListResponseModel(**res)
-        return res
-
-    def create(self) -> ProjectRolesCreateResponseModel:
-        """
-        Create
-        """
-
-        url_endpoint = "/v3/projects/roles"
-        headers = {}
-        self._add_required_headers(headers)
-
-        final_url = self._url_prefix + url_endpoint
-        res = self._http.post(final_url, headers, {}, True)
-        if res and isinstance(res, dict):
-            return ProjectRolesCreateResponseModel(**res)
-        return res
-
     def get(self, role: str) -> ProjectRolesGetResponseModel:
         """
         Retrieve
@@ -73,7 +49,9 @@ class ProjectRoles(BaseService):
             return ProjectRolesGetResponseModel(**res)
         return res
 
-    def update(self, role: str) -> ProjectRolesUpdateResponseModel:
+    def update(
+        self, role: str, request_input: ProjectRolesUpdateRequestModel = None
+    ) -> ProjectRolesUpdateResponseModel:
         """
         Update
         Parameters:
@@ -83,7 +61,7 @@ class ProjectRoles(BaseService):
         """
 
         url_endpoint = "/v3/projects/roles/role/{role}"
-        headers = {}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
         if not role:
             raise ValueError("Parameter role is required, cannot be empty or blank.")
@@ -92,7 +70,7 @@ class ProjectRoles(BaseService):
             quote(str(query_serializer.serialize_path("simple", False, role, None))),
         )
         final_url = self._url_prefix + url_endpoint
-        res = self._http.patch(final_url, headers, {}, True)
+        res = self._http.patch(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
             return ProjectRolesUpdateResponseModel(**res)
         return res
@@ -117,6 +95,38 @@ class ProjectRoles(BaseService):
         )
         final_url = self._url_prefix + url_endpoint
         res = self._http.delete(final_url, headers, True)
+        return res
+
+    def list(self) -> ProjectRolesListResponseModel:
+        """
+        List
+        """
+
+        url_endpoint = "/v3/projects/roles"
+        headers = {}
+        self._add_required_headers(headers)
+
+        final_url = self._url_prefix + url_endpoint
+        res = self._http.get(final_url, headers, True)
+        if res and isinstance(res, dict):
+            return ProjectRolesListResponseModel(**res)
+        return res
+
+    def create(
+        self, request_input: ProjectRolesCreateRequestModel = None
+    ) -> ProjectRolesCreateResponseModel:
+        """
+        Create
+        """
+
+        url_endpoint = "/v3/projects/roles"
+        headers = {"Content-Type": "application/json"}
+        self._add_required_headers(headers)
+
+        final_url = self._url_prefix + url_endpoint
+        res = self._http.post(final_url, headers, request_input, True)
+        if res and isinstance(res, dict):
+            return ProjectRolesCreateResponseModel(**res)
         return res
 
     def list_permissions(self) -> ProjectRolesListPermissionsResponseModel:

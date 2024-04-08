@@ -2,15 +2,19 @@ from urllib.parse import quote
 from ..net import query_serializer
 from .base import BaseService
 from ..models.SecretsListResponse import SecretsListResponse as SecretsListResponseModel
-from ..models.UpdateRequest import UpdateRequest as UpdateRequestModel
-from ..models.UpdateResponse import UpdateResponse as UpdateResponseModel
+from ..models.SecretsUpdateRequest import (
+    SecretsUpdateRequest as SecretsUpdateRequestModel,
+)
+from ..models.SecretsUpdateResponse import (
+    SecretsUpdateResponse as SecretsUpdateResponseModel,
+)
 from ..models.SecretsGetResponse import SecretsGetResponse as SecretsGetResponseModel
 from ..models.Format import Format as FormatModel
 from ..models.NameTransformer import NameTransformer as NameTransformerModel
 from ..models.DownloadResponse import DownloadResponse as DownloadResponseModel
-from ..models.NamesResponse import NamesResponse as NamesResponseModel
 from ..models.UpdateNoteRequest import UpdateNoteRequest as UpdateNoteRequestModel
 from ..models.UpdateNoteResponse import UpdateNoteResponse as UpdateNoteResponseModel
+from ..models.NamesResponse import NamesResponse as NamesResponseModel
 
 
 class Secrets(BaseService):
@@ -87,19 +91,21 @@ class Secrets(BaseService):
             return SecretsListResponseModel(**res)
         return res
 
-    def update(self, request_input: UpdateRequestModel = None) -> UpdateResponseModel:
+    def update(
+        self, request_input: SecretsUpdateRequestModel = None
+    ) -> SecretsUpdateResponseModel:
         """
         Update
         """
 
         url_endpoint = "/v3/configs/config/secrets"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
 
         final_url = self._url_prefix + url_endpoint
         res = self._http.post(final_url, headers, request_input, True)
         if res and isinstance(res, dict):
-            return UpdateResponseModel(**res)
+            return SecretsUpdateResponseModel(**res)
         return res
 
     def get(self, name: str, config: str, project: str) -> SecretsGetResponseModel:
@@ -184,6 +190,7 @@ class Secrets(BaseService):
         name_transformer: NameTransformerModel = None,
         include_dynamic_secrets: bool = None,
         dynamic_secrets_ttl_sec: int = None,
+        secrets: str = None,
     ) -> DownloadResponseModel:
         """
         Download
@@ -200,6 +207,8 @@ class Secrets(BaseService):
                 Whether or not to issue leases and include dynamic secret values for the config
             dynamic_secrets_ttl_sec: int
                 The number of seconds until dynamic leases expire. Must be used with `include_dynamic_secrets`. Defaults to 1800 (30 minutes).
+            secrets: str
+                Comma-delimited list of secrets to include in the download. Defaults to all secrets if left unspecified.
         """
 
         url_endpoint = "/v3/configs/config/secrets/download"
@@ -244,10 +253,31 @@ class Secrets(BaseService):
                     "form", False, "dynamic_secrets_ttl_sec", dynamic_secrets_ttl_sec
                 )
             )
+        if secrets:
+            query_params.append(
+                query_serializer.serialize_query("form", False, "secrets", secrets)
+            )
         final_url = self._url_prefix + url_endpoint + "?" + "&".join(query_params)
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
             return DownloadResponseModel(**res)
+        return res
+
+    def update_note(
+        self, request_input: UpdateNoteRequestModel = None
+    ) -> UpdateNoteResponseModel:
+        """
+        Update Note
+        """
+
+        url_endpoint = "/v3/configs/config/secrets/note"
+        headers = {"Content-Type": "application/json"}
+        self._add_required_headers(headers)
+
+        final_url = self._url_prefix + url_endpoint
+        res = self._http.post(final_url, headers, request_input, True)
+        if res and isinstance(res, dict):
+            return UpdateNoteResponseModel(**res)
         return res
 
     def names(
@@ -301,21 +331,4 @@ class Secrets(BaseService):
         res = self._http.get(final_url, headers, True)
         if res and isinstance(res, dict):
             return NamesResponseModel(**res)
-        return res
-
-    def update_note(
-        self, request_input: UpdateNoteRequestModel = None
-    ) -> UpdateNoteResponseModel:
-        """
-        Update Note
-        """
-
-        url_endpoint = "/v3/configs/config/secrets/note"
-        headers = {"Content-type": "application/json"}
-        self._add_required_headers(headers)
-
-        final_url = self._url_prefix + url_endpoint
-        res = self._http.post(final_url, headers, request_input, True)
-        if res and isinstance(res, dict):
-            return UpdateNoteResponseModel(**res)
         return res

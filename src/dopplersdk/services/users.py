@@ -6,13 +6,15 @@ from ..models.UsersGetResponse import UsersGetResponse as UsersGetResponseModel
 
 
 class Users(BaseService):
-    def list(self, page: int = None) -> UsersListResponseModel:
+    def list(self, page: int = None, email: str = None) -> UsersListResponseModel:
         """
         List
         Parameters:
         ----------
             page: int
                 The page of users to fetch
+            email: str
+                Filter results to only include the user with the provided email address
         """
 
         url_endpoint = "/v3/workplace/users"
@@ -22,6 +24,10 @@ class Users(BaseService):
         if page:
             query_params.append(
                 query_serializer.serialize_query("form", False, "page", page)
+            )
+        if email:
+            query_params.append(
+                query_serializer.serialize_query("form", False, "email", email)
             )
         final_url = self._url_prefix + url_endpoint
         if len(query_params) > 0:

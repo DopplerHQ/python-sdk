@@ -8,9 +8,9 @@ class TestCreateRequestModel(unittest.TestCase):
 
     def test_create_request(self):
         # Create CreateRequest class instance
-        test_model = CreateRequest(name="corporis", description="animi")
-        self.assertEqual(test_model.name, "corporis")
-        self.assertEqual(test_model.description, "animi")
+        test_model = CreateRequest(name="sint", description="aspernatur")
+        self.assertEqual(test_model.name, "sint")
+        self.assertEqual(test_model.description, "aspernatur")
 
     def test_create_request_required_fields_missing(self):
         # Assert CreateRequest class generation fails without required fields

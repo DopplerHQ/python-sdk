@@ -8,8 +8,8 @@ class TestUpdateResponseModel(unittest.TestCase):
 
     def test_update_response(self):
         # Create UpdateResponse class instance
-        test_model = UpdateResponse(secrets={"ipsam": 2})
-        self.assertEqual(test_model.secrets, {"ipsam": 2})
+        test_model = UpdateResponse(project={"neque": 4})
+        self.assertEqual(test_model.project, {"neque": 4})
 
 
 if __name__ == "__main__":

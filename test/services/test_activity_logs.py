@@ -10,12 +10,31 @@ class TestActivityLogs_(unittest.TestCase):
         self.assertTrue(True)
 
     @responses.activate
+    def test_list(self):
+        # Mock the API response
+        responses.get("https://api.doppler.com/v3/logs", json={}, status=200)
+        # call the method to test
+        test_service = ActivityLogs("testkey")
+        response = test_service.list("aspernatur", 2)
+        self.assertEqual(response, {})
+        responses.reset(),
+
+    @responses.activate
+    def test_list_error_on_non_200(self):
+        # Mock the API response
+        responses.get("https://api.doppler.com/v3/logs", json={}, status=404)
+        with self.assertRaises(ClientException):
+            test_service = ActivityLogs("testkey")
+            test_service.list("libero", 5)
+        responses.reset()
+
+    @responses.activate
     def test_retrieve(self):
         # Mock the API response
         responses.get("https://api.doppler.com/v3/logs/log", json={}, status=200)
         # call the method to test
         test_service = ActivityLogs("testkey")
-        response = test_service.retrieve("cupiditate")
+        response = test_service.retrieve("odit")
         self.assertEqual(response, {})
         responses.reset(),
 
@@ -34,26 +53,7 @@ class TestActivityLogs_(unittest.TestCase):
         responses.get("https://api.doppler.com/v3/logs/log", json={}, status=404)
         with self.assertRaises(ClientException):
             test_service = ActivityLogs("testkey")
-            test_service.retrieve("occaecati")
-        responses.reset()
-
-    @responses.activate
-    def test_list(self):
-        # Mock the API response
-        responses.get("https://api.doppler.com/v3/logs", json={}, status=200)
-        # call the method to test
-        test_service = ActivityLogs("testkey")
-        response = test_service.list("perferendis", 8)
-        self.assertEqual(response, {})
-        responses.reset(),
-
-    @responses.activate
-    def test_list_error_on_non_200(self):
-        # Mock the API response
-        responses.get("https://api.doppler.com/v3/logs", json={}, status=404)
-        with self.assertRaises(ClientException):
-            test_service = ActivityLogs("testkey")
-            test_service.list("maiores", 7)
+            test_service.retrieve("doloribus")
         responses.reset()
 
 

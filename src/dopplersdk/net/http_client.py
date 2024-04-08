@@ -40,8 +40,8 @@ class HTTPClient:
         """
         request_method = getattr(requests, method)
         serialized_body = rename_to_reserved_keys(to_serialize(body_input))
-        if "Content-type" in headers:
-            data_type, subtype = headers["Content-type"].split("/")
+        if "Content-Type" in headers:
+            data_type, subtype = headers["Content-Type"].split("/")
             if data_type == "multipart":
                 return multipart_form_data_request(
                     method, endpoint_url, headers, serialized_body

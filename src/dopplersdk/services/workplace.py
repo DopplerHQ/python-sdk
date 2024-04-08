@@ -36,7 +36,7 @@ class Workplace(BaseService):
         """
 
         url_endpoint = "/v3/workplace"
-        headers = {"Content-type": "application/json"}
+        headers = {"Content-Type": "application/json"}
         self._add_required_headers(headers)
 
         final_url = self._url_prefix + url_endpoint

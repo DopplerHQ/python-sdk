@@ -1,0 +1,1 @@
+WebhooksDeleteResponse = dict
