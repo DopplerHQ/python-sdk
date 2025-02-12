@@ -14,4 +14,4 @@ See [sample.py](examples/sample.py) for an up-to-date example.
 
 ## Reference Docs
 
-[A list of all services and service methods](./src/dopplersdk/services/README.MD)
+[A list of all services and service methods](./src/dopplersdk/services/README.md)
