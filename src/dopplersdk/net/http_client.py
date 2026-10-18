@@ -50,11 +50,11 @@ class HTTPClient:
                 return request_method(
                     endpoint_url, headers=headers, data=serialized_body
                 )
-        if not serialized_body or method in {"get", "delete"}:
+        if not serialized_body or method == "get":
             return request_method(endpoint_url, headers=headers)
         return request_method(endpoint_url, headers=headers, json=serialized_body)
 
-    def delete(self, endpoint_url: str, headers: dict, retry: bool = True):
+    def delete(self, endpoint_url: str, headers: dict, retry: bool = True, *, body_input=None):
         """
         Places API DELETE request and handles errors
 
@@ -66,9 +66,11 @@ class HTTPClient:
                 The http call's headers
             retry : bool
                 A boolean representing wether to attempt a retry
+            body_input : Any
+                Optional request body, serialized like POST and PATCH bodies
         """
 
-        response = self._make_http_request("delete", endpoint_url, headers, None)
+        response = self._make_http_request("delete", endpoint_url, headers, body_input)
         if response.status_code in self._retry_codes and retry:
             try_cnt = 1
             while (
@@ -77,7 +79,7 @@ class HTTPClient:
             ):
                 sleep(self._initial_delay ** (try_cnt - 1) / 1000)
                 response = self._make_http_request(
-                    "delete", endpoint_url, headers, None
+                    "delete", endpoint_url, headers, body_input
                 )
                 try_cnt += 1
 
